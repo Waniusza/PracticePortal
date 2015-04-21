@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+
+        <ui:include src="/templates/headerScheme.xhtml" />
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <ui:include src="/templates/layoutScheme.xhtml" />
+
+                <p:layoutUnit position="center">
+                    Welcome to PrimeFaces #{msg.list}
+
+                    <h:form id="form">
+                        <p:dataList value="#{listCtrl.listOfEl}" var="element" type="ordered">
+                            <f:facet name="header">
+                                Moje elementy
+                            </f:facet>
+                            #{element.title}, #{element.value}, #{element.checked}
+                        </p:dataList>
+                    </h:form>
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+</html>
+

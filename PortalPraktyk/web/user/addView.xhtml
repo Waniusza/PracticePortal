@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Add User</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <f:view contentType="text/html">
+
+        <ui:include src="/templates/headerScheme.xhtml" />
+
+        <h:body>
+
+            <p:layout fullPage="true">
+
+                <ui:include src="/templates/layoutScheme.xhtml" />
+
+                <p:layoutUnit position="center">    
+                    <div>Hey, do you wish sign in ? </div><br/>
+                     <h:outputLabel value="-#{addCtrl.test}-"  />
+                           
+                    <h:form>
+                        <p:growl id="msgs" />
+
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="title" for="login" />
+                            <h:inputText id="login" value="#{addCtrl.element.title}" title="name" />
+                            <h:outputLabel value="value" for="value" />
+                            <h:inputText id="value" value="#{addCtrl.element.value}" title="name" />
+                            <h:outputLabel value="check" for="check" />
+                            <p:selectBooleanButton id="value2" value="#{addCtrl.element.checked}" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:90px">
+                            </p:selectBooleanButton><br/>
+                        </h:panelGrid>
+                        <h:commandButton  value="ADD" action="#{addCtrl.add()}" />   <br />
+
+                    </h:form>
+
+                </p:layoutUnit>
+
+            </p:layout>
+
+        </h:body>
+
+    </f:view>
+
+</html>

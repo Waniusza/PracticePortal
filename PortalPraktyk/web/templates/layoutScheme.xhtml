@@ -1,0 +1,31 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"> 
+  
+
+
+  <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    Footer
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Add" url="/faces/user/addView.xhtml" />
+                            <p:menuitem value="List" url="/faces/user/listView.xhtml" />
+                            <p:menuitem value="..." url="" />
+                            <p:menuitem value="..." url="" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+    
+</ui:composition>
