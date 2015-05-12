@@ -6,23 +6,21 @@
 package com.gut.practice.controller;
 
 import com.gut.practice.entity.Element;
-import com.gut.practice.service.AddService;
 import java.io.Serializable;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
 /**
  *
  * @author janusz
  */
-@ManagedBean 
+@Named
 public class AddCtrl implements Serializable {
 
-
-    @EJB
-    private AddService addServ;
-    private Element element = null;
+//
+//    @Inject
+//    private AddService addServ;
+    private Element element = new Element();
     private String test = "Moj test";
 
     private static Logger log = Logger.getLogger(AddCtrl.class.getName());
@@ -40,11 +38,7 @@ public class AddCtrl implements Serializable {
     }
 
     public Element getElement() {
-        if (element == null) {
-            element = new Element();
-        }
         return element;
-
     }
 
     public void setElement(Element element) {
@@ -64,7 +58,9 @@ public class AddCtrl implements Serializable {
         log.info(element.getTitle());
         log.info(element.getChecked().toString());
         log.info(element.getValue().toString());
-        addServ.addElement(element);
+        log.info("MAM CIE!!");
+        
+ //       addServ.addElement(element);
         element = null;
     }
 

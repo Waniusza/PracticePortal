@@ -5,32 +5,27 @@
  */
 package com.gut.practice.entity;
 
-import java.io.Serializable;
-import javax.persistence.Entity;
+import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- *
- * @author janusz
- */
+
+
 @Getter
 @Setter
 @ToString
-@Entity
-public class Element implements Serializable {
-    private static final long serialVersionUID = 1L;
+
+public abstract class  BaseModel {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private String title = null;
-    private Long value   = null;
-    private Boolean checked = true;
-
-    
+    @Temporal(TemporalType.TIME)
+    private Date dateCreate;
 }

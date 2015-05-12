@@ -34,6 +34,7 @@ public class AddService {
 
     
     public void addElement (Element el) {
+        
         log.info("Hi! I'm tring to add" + el.getTitle() + " o id: " + el.getId());
         em.merge(el);
         em.flush(); 
