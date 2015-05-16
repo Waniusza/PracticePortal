@@ -23,13 +23,11 @@
                      <h:outputLabel value="-#{addCtrl.test}-"  />
                            
                     <h:form>
-                        <p:growl id="msgs" />
-
                         <h:panelGrid columns="2">
                             <h:outputLabel value="title" for="login" />
-                            <h:inputText id="login" value="#{addCtrl.element.title}" title="name" />
+                            <h:inputText id="login" value="#{addCtrl.element.title}" title="login" />
                             <h:outputLabel value="value" for="value" />
-                            <h:inputText id="value" value="#{addCtrl.element.value}" title="name" />
+                            <h:inputText id="value" value="#{addCtrl.element.value}" title="value" />
                             <h:outputLabel value="check" for="check" />
                             <p:selectBooleanButton id="value2" value="#{addCtrl.element.checked}" onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" style="width:90px">
                             </p:selectBooleanButton><br/>
