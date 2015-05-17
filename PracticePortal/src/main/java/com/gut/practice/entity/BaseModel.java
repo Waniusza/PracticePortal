@@ -17,7 +17,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-
+/**
+ *
+ * @author janusz & kongo
+ */
 
 @MappedSuperclass
 @Getter
@@ -26,11 +29,12 @@ import lombok.ToString;
 
 public abstract class  BaseModel  implements Serializable{
     
-    
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreate;
+    
+     public BaseModel() {
+    }
 }

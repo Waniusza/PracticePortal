@@ -17,10 +17,12 @@ import lombok.ToString;
  *
  * @author janusz
  */
+
 @Entity
 @Getter
 @Setter
 @ToString
+
 public class Subscribe extends BaseModel{
     
     private String email;
@@ -28,7 +30,6 @@ public class Subscribe extends BaseModel{
     
     @OneToMany
     private List<SubscribeType> types;
-    
     
     public Subscribe() {
     }

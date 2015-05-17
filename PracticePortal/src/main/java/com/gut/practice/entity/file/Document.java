@@ -3,27 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.entity.enums;
+package com.gut.practice.entity.file;
 
 import com.gut.practice.entity.BaseModel;
-import javax.persistence.MappedSuperclass;
+import com.gut.practice.entity.enums.Format;
+import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 /**
  *
- * @author janusz
+ * @author kongo
  */
 
-@MappedSuperclass
+@Entity
 @Getter
 @Setter
 @ToString
 
-public abstract class BaseConst extends BaseModel{
+public class Document extends BaseFile{
    
-    private String paramName;
-    private Boolean active;
+    private Format format;
+    private String urlDocument;
     
 }

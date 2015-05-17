@@ -9,14 +9,11 @@ import javax.persistence.Entity;
 
 /**
  *
- * @author janusz
+ * @author kongo
  */
 
 @Entity
 
-public class SubscribeType extends BaseConst{
-
-    public SubscribeType() {
-    }
-    
+public class TimePeriod extends BaseConst {
+    //TODO
 }

@@ -6,14 +6,22 @@
 package com.gut.practice.service;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author janusz
+ * @author janusz & kongo
  */
-public class BaseService  implements Serializable{
-    
+public abstract class BaseService<T>  implements Serializable{
+    @PersistenceContext
+    protected EntityManager em;
+     
+    public abstract Long add (T d);
+    public abstract Boolean edit(T d);
+    public abstract T getById (Long id);
+    public abstract List<T> getAll ();
+    public abstract Boolean remove (Long id);
    
-    
-    
 }
