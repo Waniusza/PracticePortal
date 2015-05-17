@@ -11,6 +11,7 @@ import javax.persistence.Entity;
  *
  * @author janusz
  */
+
 @Entity
 
 public class SubscribeType  extends  BaseConst{
