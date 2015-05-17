@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.pactice.entity;
+package com.gut.practice.entity.enums;
 
 import javax.persistence.Entity;
-import lombok.ToString;
 
 /**
  *
  * @author janusz
  */
 @Entity
-@ToString
-public class NewClass {
+
+public class SubscribeType  extends  BaseConst{
+
+    public SubscribeType() {
+    }
     
 }
