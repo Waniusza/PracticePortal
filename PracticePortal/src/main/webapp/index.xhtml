@@ -5,13 +5,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-          
+
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Sky Blue - free website template</title>
         <meta name="keywords" content="sky blue, free website template, CSS, HTML, 3-column" />
         <meta name="description" content="Sky Blue is a free website template provided by templatemo.com" />
-        <link href="resources/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+        <!--<link href="resources/css/templatemo_style.css" rel="stylesheet" type="text/css" />-->
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
         <script language="javascript" type="text/javascript">
             function clearText(field)
@@ -25,8 +26,10 @@
     </h:head>
 
     <h:body>
-        <h:link outcome="schema" value="Go to Schema" /> <br/>
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <div class="container">
+            <h:link outcome="schema" value="Go to Schema" /> <br/>
+            <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        </div>
     </h:body>
 </html>
 
