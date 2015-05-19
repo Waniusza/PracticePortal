@@ -1,28 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gut.practice.service.user;
 
-import com.gut.practice.entity.user.PortalUser;
+import com.gut.practice.entity.Practice;
+import com.gut.practice.entity.user.Student;
 
 /**
  *
  * @author kongo
  */
 public class StudentService extends PortalUserService {
-    @Override
-    public Boolean edit(PortalUser portalUser) { 
+    public boolean addPratice(Practice practice){
         try { 
-            PortalUser model = em.find(PortalUser.class, portalUser.getId()); 
-            model.setFirstName(portalUser.getFirstName());
-            model.setLastName(portalUser.getLastName()); 
-            model.setEmail(portalUser.getEmail()); 
+            Student student = new Student();//FIXME
+            student.getPracticeList().add(practice);
             return true; } 
         catch (Exception e) { 
-            System.out.printf("Sorry, can't edit this PortalUser ", e); 
+            System.out.printf("Sorry, can't add Pratice ", e); 
         }; 
         return false; 
-    };
+    }
 }

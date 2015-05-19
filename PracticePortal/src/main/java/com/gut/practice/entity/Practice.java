@@ -27,5 +27,5 @@ public class Practice extends BaseModel {
     private Date dateTo;
     private int hours;
     private Employer employer;
-    private ConfirmationStatus confirmationStatus;;
+    private ConfirmationStatus confirmationStatus;
 }
