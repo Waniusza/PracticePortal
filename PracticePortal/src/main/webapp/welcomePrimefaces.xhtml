@@ -6,118 +6,35 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Sky Blue - free website template</title>
-        <meta name="keywords" content="sky blue, free website template, CSS, HTML, 3-column" />
-        <meta name="description" content="Sky Blue is a free website template provided by templatemo.com" />
-        <!--<link href="resources/css/templatemo_style.css" rel="stylesheet" type="text/css" />-->
-        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link href="resources/css/custom.css" rel="stylesheet" type="text/css" />
-
-        <script language="javascript" type="text/javascript">
-            function clearText(field)
-            {
-                if (field.defaultValue == field.value)
-                    field.value = '';
-                else if (field.value == '')
-                    field.value = field.defaultValue;
-            }
-        </script>
+         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Practice Portal - welcome</title>
+    <meta name="keywords" content="PG, praktyki, praktyk, politechnika, gdańska" />
+    <meta name="description" content="Students' project for students" />
+    <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="resources/css/custom.css" rel="stylesheet" type="text/css" />
+    <script src="resources/js/bootstrap.js" />
+    <script src="resources/js/bootstrap.min.js" />
+    <script language="javascript" type="text/javascript">
+        function clearText(field)
+        {
+            if (field.defaultValue == field.value)
+                field.value = '';
+            else if (field.value == '')
+                field.value = field.defaultValue;
+        }
+    </script>
     </h:head>
 
-
-    <div class= "navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="../" class="navbar-brand">#{msg.portal_title}</a>
-            </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
-
-                    <li>
-                        <a href="http://builtwithbootstrap.com/" target="_blank"> #{msg.contact_us}
-                            <img  src="../faces/resources/img/schema/rss_icon.png"/>
-                        </a>
-                    </li>
-                    <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank"> #{msg.subscribe_us}
-                            <img  src="../faces/resources/img/schema/rss_icon.png"/>
-                        </a>
-                    </li>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="http://builtwithbootstrap.com/" target="_blank"> #{msg.log_in}
-                            <img  src="../faces/resources/img/schema/rss_icon.png"/>
-                        </a>
-                    </li>
-                    <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank"> #{msg.sign_in}
-                            <img  src="../faces/resources/img/schema/rss_icon.png"/>
-                        </a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </div>
-
-
-
-
+    <ui:include src="templates/navbarSchema.xhtml" />
     <f:view contentType="text/html">
 
 
-
         <p:layout fullPage="true">
-
-            <p:layoutUnit position="north"  size="200" minSize="50"  resizable="true" closable="true" collapsible="false">
-                <div style="height: 60px">
-
-                </div>
-              baner
-                <div>                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                    <img style="width: 100%" src="../faces/resources/img/schema/top_panel.jpg"/>
-                </div>
-
-
-
-
-            </p:layoutUnit>
-
-            <p:layoutUnit position="south" size="100" closable="false" collapsible="false"   >
-                Footer
-            </p:layoutUnit>
+            
+            <ui:include src="templates/layoutSchema.xhtml" />
+            
             <p:layoutUnit position="center">
                 Welcome to PrimeFaces #{msg.start}
-            </p:layoutUnit>
-
-
-            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
-                <p:menu>
-                    <p:submenu label="Student">
-                        <p:menuitem value="Add" url="/faces/user/addView.xhtml" />
-                        <p:menuitem value="List" url="/faces/user/listView.xhtml" />
-                        <p:menuitem value="..." url="" />
-                        <p:menuitem value="..." url="" />
-
-                    </p:submenu> 
-                    <p:submenu label="Co-ordinator">
-                        <p:menuitem value="Add" url="/faces/user/addView.xhtml" />
-                        <p:menuitem value="List" url="/faces/user/listView.xhtml" />
-                        <p:menuitem value="..." url="" />
-                        <p:menuitem value="..." url="" />
-
-                    </p:submenu> 
-                    <p:submenu label="Employer">
-                        <p:menuitem value="Add" url="/faces/user/addView.xhtml" />
-                        <p:menuitem value="List" url="/faces/user/listView.xhtml" />
-                        <p:menuitem value="..." url="" />
-                        <p:menuitem value="..." url="" />
-
-                    </p:submenu>
-
-                </p:menu>
             </p:layoutUnit>
         </p:layout>
         <!--                

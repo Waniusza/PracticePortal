@@ -1,5 +1,7 @@
 
 
+
+// Ograniczenie rozmiaru obrazkow logowania/rejestracji/navbaru
 .nav > li > a > img {
   max-width: 25px;
 }
