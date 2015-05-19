@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gut.practice.service;
 
 import com.gut.practice.entity.Practice;
+import com.gut.practice.entity.enums.ConfirmationStatus;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -103,5 +99,15 @@ public class PracticeService extends BaseService<Practice>  {
          }
          
          return pratices;
-     }
+    }
+    
+    public void confirm(Long id, ConfirmationStatus confirmationStatus){
+        Practice model;
+        try {
+            model = em.find(Practice.class, id);
+            model.setConfirmationStatus(confirmationStatus);
+        } catch (Exception e) {
+            System.out.printf("Sorry, can't get Practice with id: " + id + " and confirm status ", e);
+        }
+    }
 }

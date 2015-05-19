@@ -17,7 +17,6 @@ import lombok.ToString;
 @ToString
 
 public class Coordinator extends PortalUser {
-    List<TimePeriod> availablity;
-    Speciality speciality;
-    // TODO when availablity
+    private List<TimePeriod> availablity;
+    private Speciality speciality;
 }
