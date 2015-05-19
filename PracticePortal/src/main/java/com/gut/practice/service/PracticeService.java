@@ -6,8 +6,8 @@
 package com.gut.practice.service;
 
 import com.gut.practice.entity.Practice;
-import com.gut.practice.entity.Subscribe;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
@@ -45,7 +45,7 @@ public class PracticeService extends BaseService<Practice>  {
             model.setDateTo(practice.getDateTo()); 
             model.setHours(practice.getHours()); 
             model.setEmployer(practice.getEmployer()); 
-            em.merge(practice); 
+            model.setConfirmationStatus(practice.getConfirmationStatus()); 
             return true; } 
         catch (Exception e) { 
             System.out.printf("Sorry, can't edit this Practice ", e); 
@@ -94,4 +94,14 @@ public class PracticeService extends BaseService<Practice>  {
         }
         return false;
     }
+    
+    public List<Practice> getAllByDate(Date dateFrom, Date dateTo) {
+         List<Practice> pratices = new ArrayList<Practice>();
+         for(Practice practice : getAll()){
+             if(!practice.getDateFrom().before(dateFrom) || !practice.getDateTo().after(dateTo))
+                 pratices.add(practice);
+         }
+         
+         return pratices;
+     }
 }

@@ -1,6 +1,7 @@
 package com.gut.practice.service.user;
 
 import com.gut.practice.entity.user.PortalUser;
+import com.gut.practice.entity.user.Student;
 import com.gut.practice.service.BaseService;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +34,18 @@ public class PortalUserService extends BaseService<PortalUser>  {
     }
     
     @Override
-    public Boolean edit(PortalUser d) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public Boolean edit(PortalUser portalUser) { 
+        try { 
+            PortalUser model = em.find(PortalUser.class, portalUser.getId()); 
+            model.setFirstName(portalUser.getFirstName());
+            model.setLastName(portalUser.getLastName()); 
+            model.setEmail(portalUser.getEmail()); 
+            return true; } 
+        catch (Exception e) { 
+            System.out.printf("Sorry, can't edit this PortalUser ", e); 
+        }; 
+        return false; 
+    };
 
     @Override
     public PortalUser getById(Long id) {
@@ -67,27 +77,32 @@ public class PortalUserService extends BaseService<PortalUser>  {
        return new ArrayList<PortalUser>();
     }
     
-     @Override
+    @Override
     public Boolean remove(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PortalUser model = em.find(PortalUser.class, id);
+            em.remove(model);
+            return true;
+        } catch (Exception e) {
+            System.out.printf("Sorry, can't remove this PortalUser ", e);
+        }
+        return false;
     }
 
     public boolean checkIfExsist(PortalUser portalUser){
-        for(PortalUser portalUser2 : getAll())
-            if(portalUser.getFirstName().equals(portalUser2.getFirstName()) && portalUser.getLastName().equals(portalUser2.getLastName()))
+        for(PortalUser portalUser2 : getAll()){
+            if(portalUser.getEmail().equals(portalUser2.getEmail()))
                 return true;
+            if(portalUser instanceof Student && portalUser2 instanceof Student){
+                Student student = (Student) portalUser;
+                Student student2 = (Student) portalUser2;
+                if(student.getIndexID() == student2.getIndexID())
+                    return true;
+            }
+        }
 
         return false;
     }
     
-    public boolean checkIfExsist(String firstName, String lastName){
-        for(PortalUser portalUser2 : getAll())
-            if(firstName.equals(portalUser2.getFirstName()) && lastName.equals(portalUser2.getLastName()))
-                return true;
-
-        return false;
-    }
-    
-    //TODO zmienic edit i remove
-    //TODO confirm(long):bool
+    //TODO edit student, employer, coordinator
 }

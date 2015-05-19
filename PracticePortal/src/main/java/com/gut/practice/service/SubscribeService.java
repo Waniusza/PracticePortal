@@ -46,8 +46,7 @@ public class SubscribeService extends BaseService<Subscribe> {
             Subscribe model = em.find(Subscribe.class, sub.getId()); 
             model.setTypes(sub.getTypes()); 
             model.setActive(sub.getActive()); 
-            model.setEmail(sub.getEmail()); 
-            em.merge(sub); 
+            model.setEmail(sub.getEmail());  
             return true; } 
         catch (Exception e) { 
             System.out.printf("Sorry, can't edit this Subscription ", e); 

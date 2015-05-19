@@ -38,8 +38,7 @@ public class OpinionService extends BaseService<Opinion> {
             model.setCommentedEntityId(opinion.getCommentedEntityId());
             model.setComments(opinion.getComments()); 
             model.setText(opinion.getText()); 
-            model.setAuthor(opinion.getAuthor());
-            em.merge(opinion); 
+            model.setAuthor(opinion.getAuthor()); 
             return true; } 
         catch (Exception e) { 
             System.out.printf("Sorry, can't edit this Opinion ", e); 
@@ -88,14 +87,4 @@ public class OpinionService extends BaseService<Opinion> {
         }
         return false;
     }
-    
-     public List<Opinion> getAllByDate(Date date) {
-         List<Opinion> opinions = new ArrayList<Opinion>();
-         for(Opinion opinion : getAll()){
-             if(opinion.getDateCreate().equals(date))
-                 opinions.add(opinion);
-         }
-         
-         return opinions;
-     }
 }
