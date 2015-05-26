@@ -6,7 +6,10 @@
 package com.gut.practice.entity.file;
 
 import javax.persistence.Entity;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -22,4 +25,7 @@ import lombok.ToString;
 
 public class News extends BaseFile {
     private String urlPhoto;
+    
+    public News () {
+    };
 }

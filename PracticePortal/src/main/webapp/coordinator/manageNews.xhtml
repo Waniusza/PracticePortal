@@ -11,46 +11,40 @@
     <f:view contentType="text/html">
         <p:layout fullPage="true">
             <ui:include src="/templates/layoutSchema.xhtml" />
+            
             <p:layoutUnit position="center">
                 Welcome, manage News!
 
 
-                <h:form id="form">
 
-                    <h3>#{msg.titles_news}</h3>
-                    <p:growl id="msgs" showDetail="true" />
+                <div class="container-fluid">
+                    <h:form id="form">
 
-                    <p:tabView value="#{newsCtrl.optionsList}" var="tabItem">
-                        <p:ajax event="tabChange" listener="#{newsCtrl.onTabChange}" update=":form:msgs"/>
-                        <p:ajax event="tabClose" listener="#{newsCtrl.onTabClose}" update=":form:msgs"/>
-                        <p:tab title="#{tabItem.title}">
-                            <h:outputText value="#{tabItem.includeResource}"/>
-                            ... etc.
-                        </p:tab>
-                    </p:tabView>
+                        <h3>#{msg.titles_news}</h3>
+                        <p:growl id="msgs" showDetail="true" />
 
-                    <p:tabView>
-                        <p:ajax event="tabChange" listener="#{newsCtrl.onTabChange}" update=":form:msgs"/>
-                        <p:ajax event="tabClose" listener="#{newsCtrl.onTabClose}" update=":form:msgs"/>
-                        <!--
-                                                <p:tab jsfc="ui:repeat" value="#{optionsList}" var="contact">
-                                                </p:tab>-->
-                        <p:tab title="Add new">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage name="demo/images/godfather/godfather1.jpg" />
-                                <h:outputText
-                                    value="Here we can addd new..." />
-                            </h:panelGrid>
-                        </p:tab>
-                        <p:tab title="Show List" closable="true">
-                            <h:panelGrid columns="2" cellpadding="10">
-                                <p:graphicImage name="demo/images/godfather/godfather2.jpg" />
-                                <h:outputText value="And here show list ..." />
-                            </h:panelGrid>
-                        </p:tab>
+                        <p:tabView >
+                            <p:ajax event="tabChange" listener="#{newsCtrl.onTabChange}" update=":form:msgs"/>
+                            <p:ajax event="tabClose" listener="#{newsCtrl.onTabClose}" update=":form:msgs"/>
+                            <p:tab title="Add new">
+                                
+                                <h:outputText value="#{tabItem.includeResource}"/> 
+                                ... ADD FORM.
 
-                    </p:tabView>
-                </h:form>
+                                <ui:include  src="../templates/newAdd.xhtml" />
+
+                            </p:tab>
+                             <p:tab title="Show list">
+                                <h:outputText value="#{tabItem.includeResource}"/> 
+                                ... etc.
+
+                                <ui:include  src="../templates/newsList.xhtml" />
+
+                            </p:tab>
+                        </p:tabView>
+                        
+                    </h:form>
+                </div>
 
 
 

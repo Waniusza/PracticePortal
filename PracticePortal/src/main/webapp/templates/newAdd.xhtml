@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:form class="col-md-12">
+
+        <p:panelGrid columns="2">
+                <h3>Title:</h3>
+                <p:inputText  class="form-control"/>
+                <h3>Image:</h3>
+                <p:fileUpload  mode="simple" skinSimple="true"/>
+                <p:commandButton value="Submit" ajax="false"  disabled="true" />
+         
+            
+            <p:panel>
+            <h3>Date from:</h3>
+            <p:calendar id="popup1" />
+            </p:panel>
+            <p:panel>
+
+
+            <h3>Date to:</h3>
+            <p:calendar id="popup2" />
+            </p:panel>
+            <p:panel >
+            <h3>Description</h3>
+            <p:inputTextarea rows="6" cols="33" class="form-control"/>
+            </p:panel>
+
+
+        </p:panelGrid>      
+    </h:form> 
+</html>
+

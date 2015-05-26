@@ -7,6 +7,7 @@ package com.gut.practice.controller;
 
 import com.gut.practice.helpers.ViewTab;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -22,11 +23,12 @@ import org.primefaces.event.TabCloseEvent;
 public class NewsCtrl {
     
     private List<ViewTab> optionsList = new ArrayList<>();
-
+    private Date dateFrom = new Date();
+    private Date dateTo = new Date();
     
     public NewsCtrl() {
         optionsList.add(new ViewTab("Add new", "res1"));
-        optionsList.add(new ViewTab("Show list", "res2"));
+        optionsList.add(new ViewTab("Show list", "../templates/newsList.xhtml"));
     }
      
     public void onTabChange(TabChangeEvent event) {
