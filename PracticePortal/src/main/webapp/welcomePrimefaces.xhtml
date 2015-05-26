@@ -6,23 +6,8 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Practice Portal - welcome</title>
-    <meta name="keywords" content="PG, praktyki, praktyk, politechnika, gdańska" />
-    <meta name="description" content="Students' project for students" />
-    <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
-    <link href="resources/css/custom.css" rel="stylesheet" type="text/css" />
-    <script src="resources/js/bootstrap.js" />
-    <script src="resources/js/bootstrap.min.js" />
-    <script language="javascript" type="text/javascript">
-        function clearText(field)
-        {
-            if (field.defaultValue == field.value)
-                field.value = '';
-            else if (field.value == '')
-                field.value = field.defaultValue;
-        }
-    </script>
+        
+        <ui:include src="templates/headerSchema.xhtml" />
     </h:head>
 
     <ui:include src="templates/navbarSchema.xhtml" />
@@ -32,37 +17,14 @@
         <p:layout fullPage="true">
             
             <ui:include src="templates/layoutSchema.xhtml" />
-            
             <p:layoutUnit position="center">
+                
                 Welcome to PrimeFaces #{msg.start}
             </p:layoutUnit>
         </p:layout>
-        <!--                
-                                        <p:layout fullPage="true">
-                        
-                        
-                                            <p:layoutUnit  position="south" size="2" >
-                                                Welcome to PrimeFaces #{msg.start}
-                                            </p:layoutUnit>
-                                            <p:layoutUnit position="center">
-                                                Welcome to PrimeFaces #{msg.start}
-                                            </p:layoutUnit>
-                        
-                                        </p:layout>-->
 
 
     </f:view>
-    <!--        <p:layout fullPage="true">
-    
-    
-                <p:layoutUnit position="center"> 
-                    Welcome to PrimeFaces <br/>
-                    -#{testCtrl.test}-
-                    <h:outputLabel value="-#{testCtrl.test}-"  /><br/>
-                    <h:outputLabel value="-#{testCtrl.test}-"  /><br/>
-                </p:layoutUnit>
-    
-            </p:layout>-->
 
 
 </html>
