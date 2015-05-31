@@ -5,6 +5,7 @@
  */
 package com.gut.practice.controller;
 
+import com.gut.practice.entity.file.News;
 import com.gut.practice.helpers.ViewTab;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,26 +27,39 @@ public class NewsCtrl {
     private Date dateFrom = new Date();
     private Date dateTo = new Date();
     
-    public NewsCtrl() {
-        optionsList.add(new ViewTab("Add new", "res1"));
-        optionsList.add(new ViewTab("Show list", "../templates/newsList.xhtml"));
-    }
-     
+    private News addNew = new News();
+    
+    
     public void onTabChange(TabChangeEvent event) {
+        System.out.println("<---------------- Mam onTabChange!");
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle() + "All options: " );
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
+    };
          
     public void onTabClose(TabCloseEvent event) {
+        System.out.println("<---------------- Mam onTabClose!");
         FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
+    };
 
+    public void submit()  {
+        
+        System.out.println("<---------------- Mam submit!");
+        System.out.println("SUBMITUJE");
+        
+    };
+     
+    
 
     public List<ViewTab> getOptionsList() {
         return optionsList;
-    }
-    
-    
-    
+    };
+
+    public News getAddNew() {
+        return addNew;
+    };
+
+    public void setAddNew(News addNew) {
+        this.addNew = addNew;
+    };
 }
