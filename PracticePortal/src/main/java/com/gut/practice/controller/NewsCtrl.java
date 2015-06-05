@@ -5,9 +5,9 @@
  */
 package com.gut.practice.controller;
 
+import com.gut.practice.entity.file.News;
 import com.gut.practice.helpers.ViewTab;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -23,20 +23,20 @@ import org.primefaces.event.TabCloseEvent;
 public class NewsCtrl {
     
     private List<ViewTab> optionsList = new ArrayList<>();
-    private Date dateFrom = new Date();
-    private Date dateTo = new Date();
+    private News addNew = new News();
     
     public NewsCtrl() {
-        optionsList.add(new ViewTab("Add new", "res1"));
-        optionsList.add(new ViewTab("Show list", "../templates/newsList.xhtml"));
     }
      
     public void onTabChange(TabChangeEvent event) {
+        
+        System.out.println("<---------------- Mam onTabChange!");
         FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle() + "All options: " );
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
          
     public void onTabClose(TabCloseEvent event) {
+        System.out.println("<---------------- Mam onTabClose!");
         FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }
@@ -45,7 +45,14 @@ public class NewsCtrl {
     public List<ViewTab> getOptionsList() {
         return optionsList;
     }
-    
+ 
+     public News getAddNew() {
+         return addNew;
+     };
+ 
+     public void setAddNew(News addNew) {
+         this.addNew = addNew;
+     };
     
     
 }

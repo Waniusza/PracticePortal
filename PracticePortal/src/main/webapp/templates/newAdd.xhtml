@@ -5,33 +5,26 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <h:form class="col-md-12">
+   
+        <h:form class="col-md-12">
 
-        <p:panelGrid columns="2">
-                <h3>Title:</h3>
-                <p:inputText  class="form-control"/>
-                <h3>Image:</h3>
-                <p:fileUpload  mode="simple" skinSimple="true"/>
-                <p:commandButton value="Submit" ajax="false"  disabled="true" />
-         
-            
-            <p:panel>
-            <h3>Date from:</h3>
-            <p:calendar id="popup1" />
-            </p:panel>
-            <p:panel>
+            <div class="panel-body">
+
+                <p:panelGrid columns="2">
+                    <h4>Title:</h4>
+                    <p:inputText value="#{newsCtrl.addNew.title}"  class="form-control"/>
+                    <h4>Image:</h4>
+
+                    <div></div>
+                    <!--<p:fileUpload  mode="simple" skinSimple="true"/>-->
+                    <p:inputText value="#{newsCtrl.addNew.urlPhoto}"  class="form-control"/>
 
 
-            <h3>Date to:</h3>
-            <p:calendar id="popup2" />
-            </p:panel>
-            <p:panel >
-            <h3>Description</h3>
-            <p:inputTextarea rows="6" cols="33" class="form-control"/>
-            </p:panel>
-
-
-        </p:panelGrid>      
-    </h:form> 
+                    <h4>Description</h4>
+                    <p:inputTextarea value="#{newsCtrl.addNew.description}" class="form-control"/>
+                </p:panelGrid>  
+                
+            </div>
+        </h:form> 
 </html>
 

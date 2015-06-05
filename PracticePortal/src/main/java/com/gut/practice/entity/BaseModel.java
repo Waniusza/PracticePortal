@@ -35,6 +35,4 @@ public abstract class  BaseModel  implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreate;
     
-     public BaseModel() {
-    }
 }

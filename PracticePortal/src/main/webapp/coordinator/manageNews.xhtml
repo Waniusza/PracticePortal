@@ -5,13 +5,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <ui:include src="/templates/headerSchema.xhtml" />
+        <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
-    <ui:include src="/templates/navbarSchema.xhtml" />
+    <ui:include src="/templates/schema/navbar.xhtml" />
     <f:view contentType="text/html">
         <p:layout fullPage="true">
-            <ui:include src="/templates/layoutSchema.xhtml" />
-            
+            <ui:include src="/templates/schema/layout.xhtml" />
+
             <p:layoutUnit position="center">
                 Welcome, manage News!
 
@@ -20,29 +20,28 @@
                 <div class="container-fluid">
                     <h:form id="form">
 
-                        <h3>#{msg.titles_news}</h3>
-                        <p:growl id="msgs" showDetail="true" />
+                    <h3>#{msg.titles_news}</h3>
+                    <p:growl id="msgs" showDetail="true" />
 
-                        <p:tabView >
-                            <p:ajax event="tabChange" listener="#{newsCtrl.onTabChange}" update=":form:msgs"/>
-                            <p:ajax event="tabClose" listener="#{newsCtrl.onTabClose}" update=":form:msgs"/>
-                            <p:tab title="Add new">
-                                
-                                <h:outputText value="#{tabItem.includeResource}"/> 
-                                ... ADD FORM.
+                    <p:tabView >
+<!--                        <p:ajax event="tabChange" listener="#{newsCtrl.onTabChange}" update=":form:msgs"/>
+                        <p:ajax event="tabClose" listener="#{newsCtrl.onTabClose}" update=":form:msgs"/>-->
+                        <p:tab title="Add new">
 
-                                <ui:include  src="../templates/newAdd.xhtml" />
+                            <h:outputText value="#{tabItem.includeResource}"/> 
 
-                            </p:tab>
-                             <p:tab title="Show list">
-                                <h:outputText value="#{tabItem.includeResource}"/> 
-                                ... etc.
+                            <ui:include  src="../templates/newAdd.xhtml" />
 
+                        </p:tab>
+                        <p:tab title="Show list">
+                            <h:outputText value="#{tabItem.includeResource}"/> 
+ 
+                            <div class="panel">
                                 <ui:include  src="../templates/newsList.xhtml" />
+                            </div>
+                        </p:tab>
+                    </p:tabView>
 
-                            </p:tab>
-                        </p:tabView>
-                        
                     </h:form>
                 </div>
 

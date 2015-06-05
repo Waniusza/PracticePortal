@@ -6,13 +6,12 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:form>
+        <ui:repeat value="#{faqList.questions}" var="faq">
 
-        <ui:repeat value="#{newsList.news}" var="new">
-            <p:fieldset legend="#{new.title}" toggleable="true" toggleSpeed="500">
+            <p:fieldset legend="#{faq.question}" toggleable="true"  toggleSpeed="500" >
                 <h:panelGrid columns="2" cellpadding="5">
                      <img  src="../faces/resources/img/schema/rss_icon.png"/>
-                    <h:outputText value="#{new.description}"></h:outputText>
-                    <h:outputText value="#{new.dateCreate}"></h:outputText>
+                    <h:outputText value="#{faq.answer}"></h:outputText>
                 </h:panelGrid>
             </p:fieldset>
 
