@@ -28,4 +28,8 @@ public class Practice extends BaseModel {
     private int hours;
     private Employer employer;
     private ConfirmationStatus confirmationStatus;
+    
+    public Practice() {
+        
+    }
 }

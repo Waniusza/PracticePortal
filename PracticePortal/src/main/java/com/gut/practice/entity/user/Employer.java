@@ -17,4 +17,7 @@ public class Employer extends PortalUser {
     private String comapnyName;
     // TODO adress, asigned to student
     
+    public Employer() {
+        
+    }
 }

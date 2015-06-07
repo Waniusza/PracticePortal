@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+   
+     
+    <p:dataTable var="offer" value="#{jobOffersCtrl.offers}">
+        <p:column headerText="Company Name">
+            <h:outputText value="#{offer.company.companyName}" />
+        </p:column>
+
+        <p:column headerText="Main duty">
+            <h:outputText value="#{offer.mainDuty}" />
+        </p:column>
+        <p:column headerText="Salary">
+            <h:outputText value="#{offer.salaryMin} - #{offer.salaryMax}" />
+        </p:column>
+
+        <p:column headerText="Date to">
+            <h:outputText value="#{offer.dateTo}" />
+        </p:column>
+
+        <p:column headerText="Actions">
+            <h:outputText value="" />
+        </p:column>
+    </p:dataTable>
+</html>
+

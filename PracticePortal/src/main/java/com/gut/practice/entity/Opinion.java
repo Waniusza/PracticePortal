@@ -25,4 +25,8 @@ public class Opinion extends BaseModel {
     private String text;
     private PortalUser author = null;
     
+    public Opinion() {
+        
+    }
+    
 }

@@ -5,7 +5,6 @@
  */
 package com.gut.practice.entity.file;
 
-import com.gut.practice.entity.BaseModel;
 import com.gut.practice.entity.enums.Format;
 import javax.persistence.Entity;
 import lombok.Getter;
@@ -26,5 +25,9 @@ public class Document extends BaseFile{
    
     private Format format;
     private String urlDocument;
+    
+    public Document() {
+        
+    }
     
 }
