@@ -1,0 +1,22 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"> 
+
+
+    <h2>#{msg.subscribe1}   
+        <small><br/>
+            #{msg.subscribe2}
+        </small>
+    </h2>
+    <br/>
+    <div class="center-block">
+        <p:outputLabel value="Your e-mail:" for="subscribeMail" />
+        <p:inputText id="subscribeMail" value=""  />
+        <p:commandButton value="#{msg.close}"  onclick="PF('subscribeDialog').hide();" >
+            
+        </p:commandButton>
+    </div>
+</ui:composition>

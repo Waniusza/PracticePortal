@@ -14,28 +14,17 @@
 
             <p:layoutUnit position="center">
                 Welcome, manage News!
-
-
-
                 <div class="container-fluid">
                     <h:form id="form">
-
                     <h3>#{msg.titles_news}</h3>
                     <p:growl id="msgs" showDetail="true" />
-
                     <p:tabView >
 <!--                        <p:ajax event="tabChange" listener="#{newsCtrl.onTabChange}" update=":form:msgs"/>
                         <p:ajax event="tabClose" listener="#{newsCtrl.onTabClose}" update=":form:msgs"/>-->
                         <p:tab title="Add new">
-
-                            <h:outputText value="#{tabItem.includeResource}"/> 
-
                             <ui:include  src="../templates/newAdd.xhtml" />
-
                         </p:tab>
                         <p:tab title="Show list">
-                            <h:outputText value="#{tabItem.includeResource}"/> 
- 
                             <div class="panel">
                                 <ui:include  src="../templates/newsList.xhtml" />
                             </div>
@@ -56,4 +45,3 @@
 
 
 </html>
-

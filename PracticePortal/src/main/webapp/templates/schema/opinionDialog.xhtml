@@ -1,0 +1,20 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"> 
+
+
+    <h2>#{msg.opinion1}   
+        <small><br/>
+            #{msg.opinion2}
+        </small>
+    </h2>
+    <br/>
+    <div class="center-block">
+        <p:outputLabel value="Twoja opinia:" for="opinionIn" />
+        <p:inputText id="opinionIn" value=""  />
+        <p:commandButton value="#{msg.close}"  onclick="PF('opinionDialog').hide();" > </p:commandButton>
+    </div>
+</ui:composition>
