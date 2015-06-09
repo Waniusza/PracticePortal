@@ -6,13 +6,20 @@
     xmlns:p="http://primefaces.org/ui"> 
 
 
+        <h:outputText value="#{mainCtrl.availableOpinions}"/>
     <h2>#{msg.opinion1}   
         <small><br/>
             #{msg.opinion2}
         </small>
     </h2>
-    <br/>
+    <br/> 
     <div class="center-block">
+        <h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+            <p:outputLabel for="opinion" value="Opinia:" />
+            <p:selectOneRadio id="opinion" value="#{mainCtrl.selectedOpinion}"  layout="grid" columns="5">
+                <f:selectItems value="#{mainCtrl.availableOpinions}" var="c" itemLabel="#{opinion}" itemValue="#{opinion}"/>
+            </p:selectOneRadio>
+        </h:panelGrid>
         <p:outputLabel value="Twoja opinia:" for="opinionIn" />
         <p:inputText id="opinionIn" value=""  />
         <p:commandButton value="#{msg.close}"  onclick="PF('opinionDialog').hide();" > </p:commandButton>

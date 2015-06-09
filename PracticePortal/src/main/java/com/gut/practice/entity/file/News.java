@@ -5,11 +5,11 @@
  */
 package com.gut.practice.entity.file;
 
+import java.util.Date;
 import javax.persistence.Entity;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -20,11 +20,16 @@ import lombok.ToString;
 
 @Entity
 @Getter
-@Setter
+@Setter 
 @ToString
 
 public class News extends BaseFile {
     private String urlPhoto;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateFrom;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateTo;
+    
     
     public News () {
     };
