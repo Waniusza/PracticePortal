@@ -23,7 +23,7 @@ public class Student extends PortalUser {
     private int indexID;
     @OneToMany
     private List<Practice> practiceList;
-    private Speciality sspeciality;
+    private Speciality speciality;
     
     public Student(){
         
