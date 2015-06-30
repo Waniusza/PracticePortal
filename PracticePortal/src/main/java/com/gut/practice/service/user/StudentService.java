@@ -2,11 +2,12 @@ package com.gut.practice.service.user;
 
 import com.gut.practice.entity.Practice;
 import com.gut.practice.entity.user.Student;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfContentByte;
-import com.lowagie.text.pdf.PdfReader;
-import com.lowagie.text.pdf.PdfStamper;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 
