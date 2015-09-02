@@ -6,22 +6,48 @@
 package com.gut.practice.controller;
 
 import com.gut.practice.entity.file.News;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author student
  */
-@Named
+@ManagedBean
+@SessionScoped
 public class PracticeCtrl {
     
     News info ;
     String test = "s";
+    Integer count = 2;
     boolean immediately = true;
     boolean endless = false;
     
-    PracticeCtrl() {
-        info = new News();
+    private String firstname = "ssaa";
+    private String lastname;
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+ 
+    public String getFirstname() {
+        return firstname;
+    }
+ 
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+ 
+    public String getLastname() {
+        return lastname;
+    }
+ 
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public News getInfo() {

@@ -6,6 +6,7 @@
 package com.gut.practice.entity;
 
 import javax.persistence.Entity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,6 +20,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class Faq extends BaseModel{
     private String question;
     private String answer;

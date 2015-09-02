@@ -8,6 +8,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -21,6 +23,9 @@ import javax.persistence.criteria.Root;
 @SessionScoped
 public class PracticeService extends BaseService<Practice>  {
 
+     @PersistenceContext
+    protected EntityManager em;
+    
     @Override
     public Long add(Practice practice) {
          try {

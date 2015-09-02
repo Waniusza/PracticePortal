@@ -6,31 +6,35 @@
 package com.gut.practice.controller;
 
 import com.gut.practice.entity.Faq;
+import com.gut.practice.service.FaqService;
 import java.util.ArrayList;
 import java.util.List;
-import javax.inject.Named;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author janusz
  */
-@Named
+@ManagedBean
 public class FaqListCtrl {
-    private List<Faq> questions = new ArrayList<>();
+
+    @EJB
+    FaqService faqService;
     
-    FaqListCtrl() {
-        Faq question = new Faq();
-        for (int i=1; i<5; i++) {
-            question = new Faq();
-            question.setQuestion("QUESTION " + i);
-            question.setAnswer("ANSWER " + i);
-            questions.add(question);
-        }
+    private List<Faq> questions = new ArrayList<>();
+
+    public FaqListCtrl() {
+        System.out.println("[FaqListCtrl] init");
     }
 
     public List<Faq> getQuestions() {
+        setQuestions(faqService.getAll());
         return questions;
     }
-    
-    
+
+    public void setQuestions(List<Faq> questions) {
+        this.questions = questions;
+    }
+
 }

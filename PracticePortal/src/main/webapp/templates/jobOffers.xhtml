@@ -6,7 +6,7 @@
       xmlns:p="http://primefaces.org/ui">
 
    
-     
+    <h:outputText  value="a  #{jobOffersCtrl.offers}  a" ></h:outputText>
     <p:dataTable var="offer" value="#{jobOffersCtrl.offers}">
         <p:column headerText="Company Name">
             <h:outputText value="#{offer.company.companyName}" />

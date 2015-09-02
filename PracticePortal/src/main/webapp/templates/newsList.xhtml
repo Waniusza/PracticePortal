@@ -7,7 +7,7 @@
 
     <h:form>
 
-        <ui:repeat value="#{newsList.news}" var="new">
+        <ui:repeat value="#{newsListCtrl.news}" var="new">
 
             <p:fieldset legend="#{new.title}" toggleable="true" toggleSpeed="500">
                 <h:panelGrid columns="2" cellpadding="5">

@@ -7,14 +7,15 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
+import javax.ejb.Stateless;
 
 /**
  *
  * @author kongo
  */
+@Stateless
 public class StudentService extends PortalUserService {
     private static String INPUTFILE = "src/main/resources/PracticesCard.pdf";
     private static String OUTPUTFILE = "src/main/resources/OutPut.pdf";

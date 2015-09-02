@@ -10,8 +10,6 @@ import javax.persistence.Entity;
 @Entity
 
 public class SubscribeType extends BaseConst{
-
     public SubscribeType() {
     }
-    
 }

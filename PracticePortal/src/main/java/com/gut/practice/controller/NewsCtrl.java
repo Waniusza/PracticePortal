@@ -6,54 +6,32 @@
 package com.gut.practice.controller;
 
 import com.gut.practice.entity.file.News;
-import com.gut.practice.helpers.ViewTab;
-import java.util.ArrayList;
-import java.util.List;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Named;
-import org.primefaces.event.TabChangeEvent;
-import org.primefaces.event.TabCloseEvent;
+import com.gut.practice.service.NewsService;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author janusz
  */
-@Named
+@ManagedBean
 public class NewsCtrl {
     
-    private List<ViewTab> optionsList = new ArrayList<>();
+    @EJB
+    private NewsService newsService;
     private News addNew = new News();
     
     public NewsCtrl() {
+        System.out.println("[NewsCtrl] init");
     }
      
-    public void onTabChange(TabChangeEvent event) {
-        
-        System.out.println("<---------------- Mam onTabChange!");
-        FacesMessage msg = new FacesMessage("Tab Changed", "Active Tab: " + event.getTab().getTitle() + "All options: " );
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    };
-         
-    public void onTabClose(TabCloseEvent event) {
-        System.out.println("<---------------- Mam onTabClose!");
-        FacesMessage msg = new FacesMessage("Tab Closed", "Closed tab: " + event.getTab().getTitle());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    };
-
+   
     public void submit()  {
-        
-        System.out.println("<---------------- Mam submit!");
-        System.out.println("SUBMITUJE");
-        
+        System.out.println("SUBMITUJE : " + addNew.toString() + "!");
+        newsService.add(addNew);
+        addNew = new News();
     };
      
-    
-
-    public List<ViewTab> getOptionsList() {
-        return optionsList;
-    }
- 
      public News getAddNew() {
          return addNew;
      };

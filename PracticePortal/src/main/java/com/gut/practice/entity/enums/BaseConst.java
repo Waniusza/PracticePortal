@@ -9,7 +9,6 @@ import com.gut.practice.entity.BaseModel;
 import javax.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 /**
  *
@@ -19,7 +18,6 @@ import lombok.ToString;
 @MappedSuperclass
 @Getter
 @Setter
-@ToString
 
 public abstract class BaseConst extends BaseModel{
    

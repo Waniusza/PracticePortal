@@ -6,11 +6,10 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:form>
-        <ui:repeat value="#{faqList.questions}" var="faq">
+        <ui:repeat value="#{faqListCtrl.questions}" var="faq">
 
             <p:fieldset legend="#{faq.question}" toggleable="true"  toggleSpeed="500" >
                 <h:panelGrid columns="2" cellpadding="5">
-                     <img  src="../faces/resources/img/schema/rss_icon.png"/>
                     <h:outputText value="#{faq.answer}"></h:outputText>
                 </h:panelGrid>
             </p:fieldset>

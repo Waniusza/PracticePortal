@@ -14,9 +14,11 @@ import javax.persistence.PersistenceContext;
  *
  * @author janusz & kongo
  */
+
 public abstract class BaseService<T>  implements Serializable{
     @PersistenceContext
     protected EntityManager em;
+    
      
     public abstract Long add (T d);
     public abstract Boolean edit(T d);

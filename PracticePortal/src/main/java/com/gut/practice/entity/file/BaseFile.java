@@ -21,4 +21,9 @@ public abstract class BaseFile extends BaseModel {
     private String description;
     @ManyToOne
     private PortalUser author = null;
+
+    public BaseFile() {
+    }
+    
+    
 }

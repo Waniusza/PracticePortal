@@ -2,11 +2,12 @@ package com.gut.practice.service;
 
 import com.gut.practice.entity.Opinion;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -19,6 +20,11 @@ import javax.persistence.criteria.Root;
 @Stateless
 @SessionScoped
 public class OpinionService extends BaseService<Opinion> {
+    
+     @PersistenceContext
+    protected EntityManager em;
+    
+     
     @Override
     public Long add(Opinion opinion) {
         try {
@@ -39,6 +45,7 @@ public class OpinionService extends BaseService<Opinion> {
             model.setComments(opinion.getComments()); 
             model.setText(opinion.getText()); 
             model.setAuthor(opinion.getAuthor()); 
+            em.merge(model);
             return true; } 
         catch (Exception e) { 
             System.out.printf("Sorry, can't edit this Opinion ", e); 
@@ -83,7 +90,7 @@ public class OpinionService extends BaseService<Opinion> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this Subscription ", e);
+            System.out.printf("Sorry, can't remove this Opinion ", e);
         }
         return false;
     }

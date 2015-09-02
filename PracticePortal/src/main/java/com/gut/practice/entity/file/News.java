@@ -5,10 +5,14 @@
  */
 package com.gut.practice.entity.file;
 
+import com.gut.practice.entity.BaseModel;
+import com.gut.practice.entity.user.PortalUser;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,20 +21,25 @@ import lombok.ToString;
  *
  * @author kongo
  */
-
 @Entity
 @Getter
-@Setter 
+@Setter
 @ToString
+@AllArgsConstructor
 
-public class News extends BaseFile {
-    private String urlPhoto;
+public class News extends BaseModel {
+    private String title;
+    private String description;
+    private static final long serialVersionUID = 1L;
+    private String urlPhoto;  
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateFrom;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateTo;
-    
-    
-    public News () {
-    };
+    @ManyToOne
+    private PortalUser author = null;
+
+    public News() {
+    }
+
 }

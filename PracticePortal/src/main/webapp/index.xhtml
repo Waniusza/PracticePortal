@@ -13,15 +13,6 @@
         <meta name="description" content="Students' project for students" />
         <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" />
 
-        <script language="javascript" type="text/javascript">
-            function clearText(field)
-            {
-                if (field.defaultValue == field.value)
-                    field.value = '';
-                else if (field.value == '')
-                    field.value = field.defaultValue;
-            }
-        </script>
     </h:head>
 
     <h:body>
@@ -29,32 +20,6 @@
             <h:link outcome="schema" value="Go to Schema" /> <br/>
             <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
         </div>
-        <h:form>
-            <p:inputText id="input" value="#{practiceCtrl.test}">
-                <p:ajax event="keyup" update="output1 output2"></p:ajax>
-            </p:inputText>
-            <br/>
-            <p:outputLabel id="output1" value="Output A :#{practiceCtrl.test}"></p:outputLabel>
-            <br/>
-            <p:outputLabel id="output2" value="Output B :#{practiceCtrl.test}"></p:outputLabel>
-        </h:form>
-
-        <h:form>
-            <h:panelGrid columns="3" cellpadding="5">
-                <h:outputText value="KeyUp: " />
-                <p:inputText id="firstname" value="#{practiceCtrl.info.title}">
-                    <p:ajax event="keyup" update="out1" />
-                </p:inputText>
-                <h:outputText id="out1" value="#{practiceCtrl.info.title}" />
-
-                <h:outputText value="Blur: " />
-                <p:inputText id="surname" value="#{practiceCtrl.info.description}">
-                    <p:ajax event="blur" update="out2" />
-                </p:inputText>
-                <h:outputText id="out2" value="#{practiceCtrl.info.description}" />
-            </h:panelGrid>
-        </h:form>
-
 
     </h:body>
 </html>

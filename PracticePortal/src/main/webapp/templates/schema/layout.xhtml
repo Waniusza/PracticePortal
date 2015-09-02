@@ -5,59 +5,55 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:p="http://primefaces.org/ui"> 
 
-
-
-
-
     <p:layoutUnit position="north"  closable="false" collapsible="false">
-        <div style="height: 60px">
-
-        </div>
-        baner
         <div>                                                                                                                                                                                                                                                                                                                                                                                                                                           
-            <img style="width: 100%" src="../faces/resources/img/schema/top_panel.jpg"/>
+            <img style="width: 100%" src="/PracticePortal/faces/resources/img/schema/top_panel.jpg"/>
         </div>
         <div > 
             <div >
                 <ul class="nav nav-pills" style="margin-left: 30%">
-                    <li class="active"><a href="../faces/unlogged/news.xhtml">News</a></li>
-                    <li class="active"><a href="../faces/unlogged/jobOffers.xhtml" >Job Offers</a></li>
-                    <li class="active"><a href="../faces/unlogged/faq.xhtml"> FAQ</a></li>
-                   
+                    <li class="active"><a href="/PracticePortal/faces/usage/unlogged/news.xhtml">News</a></li>
+                    <li class="active"><a href="/PracticePortal/faces/usage/unlogged/jobOffers.xhtml" >Job Offers</a></li>
+                    <li class="active"><a href="/PracticePortal/faces/usage/unlogged/faq.xhtml"> FAQ</a></li>
+
                 </ul>
             </div>
         </div>
-        
-        
     </p:layoutUnit>
 
+    <p:layoutUnit position="west" header="ROLE"  closable="false" resizable="false" collapsible="true" style="height: 700px">
 
-
-    <p:layoutUnit position="west" header="ROLE"  closable="false" resizable="false" collapsible="true">
-        
-        <p:menu>
+        <p:slideMenu  style="height: 450px">
             <p:submenu label="Student" >
                 <p:menuitem value="My practices" url="" />
                 <p:menuitem value="My applications" url="" />
-
             </p:submenu> 
             <p:submenu label="Co-ordinator">
-                <p:menuitem icon="ui-icon-star"  value="Manage News" url="/faces/coordinator/manageNews.xhtml" />
-                <p:menuitem icon="ui-icon-star" value="Add practice" url="/faces/coordinator/addPractice.xhtml" />
-                <p:menuitem value="Manage practices" url="" />
-                <p:menuitem value="Manage confirmations" url="" />
-                <p:menuitem value="Add employer" url="" />
-                <p:menuitem value="Manage employers" url="" />
-                <p:menuitem value="Manage parameters" url="" />
-                <p:menuitem value="Manage consultations" url="" />
+                <p:submenu label="News">
+                    <p:menuitem icon="ui-icon-star"  value="Add News" url="/faces/usage/coordinator/addNews.xhtml" />
+                    <p:menuitem icon="ui-icon-star"  value="Manage News" url="/faces/usage/coordinator/manageNews.xhtml" />
+                </p:submenu>
+                <p:submenu label="Practices">
+                    <p:menuitem icon="ui-icon-star"  value="Manage News" url="/faces/usage/coordinator/manageNews.xhtml" />
+                    <p:menuitem icon="ui-icon-star" value="Add practice" url="/faces/usage/coordinator/addPractice.xhtml" />
+                    <p:menuitem value="Manage practices" url="" />
+                </p:submenu>
+                <p:submenu label="Employers">
+                    <p:menuitem value="Add employer" url="" />
+                    <p:menuitem value="Manage employers" url="" />
 
+                </p:submenu>
+                <p:submenu label="Manage">
+                    <p:menuitem value="Manage confirmations" url="" />
+                    <p:menuitem value="Manage parameters" url="" />
+                    <p:menuitem value="Manage consultations" url="" />
+                </p:submenu>
             </p:submenu> 
             <p:submenu label="Employer">
                 <p:menuitem value="My Employeers" url="/faces/user/addView.xhtml" />
                 <p:menuitem value="Manage practices" url="/faces/user/listView.xhtml" />
             </p:submenu>
-
-        </p:menu>
+        </p:slideMenu>
     </p:layoutUnit>
 
 

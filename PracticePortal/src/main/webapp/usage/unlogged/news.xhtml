@@ -4,23 +4,21 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+
     <h:head>
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
+
     <ui:include src="/templates/schema/navbar.xhtml" />
     <f:view contentType="text/html">
         <p:layout fullPage="true">
             <ui:include src="/templates/schema/layout.xhtml" />
-
             <p:layoutUnit position="center">
                 <div class="container-fluid">
-                    <ui:include  src="../templates/coordinator/addPractice.xhtml" />
+                    <ui:include src="/templates/newsList.xhtml" />
                 </div>
             </p:layoutUnit>
         </p:layout>
-
-
     </f:view>
-
-
 </html>
+

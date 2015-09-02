@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <ui:include src="/templates/schema/header.xhtml" />
+    </h:head>
+    <ui:include src="/templates/schema/navbar.xhtml" />
+    <f:view contentType="text/html">
+        <p:layout fullPage="true">
+            <ui:include src="/templates/schema/layout.xhtml" />
+
+            <p:layoutUnit position="center">
+                <div class="container-fluid">
+                    <h2>Welcome, manage News!</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h:form class="col-md-12">
+                                <div class="form-group col-md-12" >
+                                    <label class="col-md-2 control-label">Title:</label>
+                                    <p:inputText class="col-md-6" value="#{newsCtrl.addNew.title}"/>
+                                </div>
+                                <div class="form-group col-md-12" >
+                                    <label class="col-md-2 control-label">Image:</label>
+                                    <p:inputText class="col-md-6" value="#{newsCtrl.addNew.urlPhoto}"/>
+                                    <!--<p:fileUpload  mode="simple" skinSimple="true"/>-->
+                                </div>
+                                <div class="form-group col-md-12" >
+                                    <label class="col-md-2 control-label">Description:</label>
+                                    <p:inputTextarea class="col-md-6" value="#{newsCtrl.addNew.description}"/>
+                                </div>
+                            </h:form> 
+                        </div>
+                        <div class="panel-footer">
+                            <div class="pull-right">
+                                <p:commandButton  value="Submit" icon="ui-icon-check" onclick=""/>
+                            </div>
+                            <div class="clearfix">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </p:layoutUnit>
+        </p:layout>
+
+
+    </f:view>
+
+
+</html>

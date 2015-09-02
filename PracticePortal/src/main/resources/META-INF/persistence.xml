@@ -2,8 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="PracticePortalPU" transaction-type="JTA">
     <jta-data-source>jdbc/__default</jta-data-source>
-    <class>com.gut.practice.entity.enums.ConfirmationStatus</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>com.gut.practice.entity.Company</class>
+    <class>com.gut.practice.entity.file.News</class>
+    <class>com.gut.practice.entity.user.PortalUser</class>
+    <class>com.gut.practice.entity.user.Student</class>
+    <class>com.gut.practice.entity.enums.Speciality</class>
+    <class>com.gut.practice.entity.Practice</class>
+    <class>com.gut.practice.entity.Faq</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
