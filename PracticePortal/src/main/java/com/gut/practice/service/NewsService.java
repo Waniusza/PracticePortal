@@ -1,6 +1,6 @@
 package com.gut.practice.service;
 
-import com.gut.practice.entity.file.News;
+import com.gut.practice.entity.News;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

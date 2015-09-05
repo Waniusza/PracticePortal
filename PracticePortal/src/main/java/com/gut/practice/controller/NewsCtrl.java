@@ -5,7 +5,7 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.entity.file.News;
+import com.gut.practice.entity.News;
 import com.gut.practice.service.NewsService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

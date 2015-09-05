@@ -11,7 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -21,7 +20,6 @@ import lombok.ToString;
 
 @Entity
 @Getter
-@Setter
 @ToString
 public class JobOffer extends BaseModel{
 
@@ -35,7 +33,31 @@ public class JobOffer extends BaseModel{
     private Date dateTo;
     
     public JobOffer() {
-        
+    }
+
+    public JobOffer setCompany(Company company) {
+        this.company = company;
+        return this;
+    }
+
+    public JobOffer setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+        return this;
+    }
+
+    public JobOffer setMainDuty(String mainDuty) {
+        this.mainDuty = mainDuty;
+        return this;
+    }
+
+    public JobOffer setSalaryMax(Integer salaryMax) {
+        this.salaryMax = salaryMax;
+        return this;
+    }
+
+    public JobOffer setSalaryMin(Integer salaryMin) {
+        this.salaryMin = salaryMin;
+        return this;
     }
     
     

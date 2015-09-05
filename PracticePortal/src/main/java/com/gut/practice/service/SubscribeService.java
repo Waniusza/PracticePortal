@@ -45,6 +45,21 @@ public class SubscribeService extends BaseService<Subscribe> {
         return sub.getId();
     }
     
+    public Long add(String email) {
+        Subscribe sub = new Subscribe()
+                .setEmail(email)
+                .setActive(Boolean.TRUE)
+                .setTypes(SubscribeType.values());
+        try {
+            em.persist(sub);
+        } catch (EntityExistsException e) {
+            System.out.printf("Sorry, Subscription exist in DataBase! ", e);
+        } catch (Exception e) {
+            System.out.printf("Sorry, can't add tihs Subscription ", e);
+        }
+        return sub.getId();
+    }
+    
     @Override    
     public Boolean edit(Subscribe sub) { 
         try { 

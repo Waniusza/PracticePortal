@@ -6,10 +6,8 @@
 package com.gut.practice.entity;
 
 import com.gut.practice.util.SubscribeType;
-import java.util.List;
 import javax.persistence.Entity;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -19,7 +17,6 @@ import lombok.ToString;
 
 @Entity
 @Getter
-@Setter
 @ToString
 
 public class Subscribe extends BaseModel{
@@ -27,7 +24,23 @@ public class Subscribe extends BaseModel{
     private String email;
     private Boolean active = true;
      
-    private List<SubscribeType> types;
+    private SubscribeType[] types;
+
+    public Subscribe setActive(Boolean active) {
+        this.active = active;
+        return this;
+    }
+
+    public Subscribe setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public Subscribe setTypes(SubscribeType[] types) {
+        this.types = types;
+        return this;
+    }
+    
     
     public Subscribe() {
     }

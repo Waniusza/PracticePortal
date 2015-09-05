@@ -13,10 +13,12 @@
     </h2>
     <br/>
     <div class="center-block">
+        <h:form>
         <p:outputLabel value="Your e-mail:" for="subscribeMail" />
-        <p:inputText id="subscribeMail" value=""  />
-        <p:commandButton value="#{msg.close}"  onclick="PF('subscribeDialog').hide();" >
+        <p:inputText id="subscribeMail" value="#{mainCtrl.newSubscribe}"   />
+        <p:commandButton value="#{msg.close}"  actionListener="#{mainCtrl.addNewSubscriber()}" oncomplete="PF('subscribeDialog').hide();" >
             
         </p:commandButton>
+        </h:form>
     </div>
 </ui:composition>

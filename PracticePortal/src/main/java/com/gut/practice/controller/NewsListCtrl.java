@@ -5,7 +5,7 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.entity.file.News;
+import com.gut.practice.entity.News;
 import com.gut.practice.service.NewsService;
 import java.util.ArrayList;
 import java.util.List;

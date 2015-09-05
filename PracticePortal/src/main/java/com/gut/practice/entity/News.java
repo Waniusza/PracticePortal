@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.entity.file;
+package com.gut.practice.entity;
 
-import com.gut.practice.entity.BaseModel;
 import com.gut.practice.entity.user.PortalUser;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -13,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -23,9 +20,7 @@ import lombok.ToString;
  */
 @Entity
 @Getter
-@Setter
 @ToString
-@NoArgsConstructor
 
 public class News extends BaseModel {
     private String title;
@@ -39,6 +34,43 @@ public class News extends BaseModel {
     @ManyToOne
     private PortalUser author = null;
 
+    public News() {
+    }
+
+    
+    public News setAuthor(PortalUser author) {
+        this.author = author;
+        return this;
+    }
+
+    public News setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public News setTitle(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public News setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
+        return this;
+    }
+
+    public News setDateTo(Date dateTo) {
+        this.dateTo = dateTo;
+        return this;
+    }
+
+    public News setDateFrom(Date dateFrom) {
+        this.dateFrom = dateFrom;
+        return this;
+    }
+
+    
+    
+    
     
 
 }

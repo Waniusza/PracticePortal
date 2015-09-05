@@ -7,12 +7,13 @@ package com.gut.practice.controller;
 
 import com.gut.practice.entity.Faq;
 import com.gut.practice.entity.JobOffer;
+import com.gut.practice.entity.News;
 import com.gut.practice.entity.Practice;
-import com.gut.practice.entity.file.News;
 import com.gut.practice.service.FaqService;
 import com.gut.practice.service.JobOfferService;
 import com.gut.practice.service.NewsService;
 import com.gut.practice.service.PracticeService;
+import com.gut.practice.service.SubscribeService;
 import com.gut.practice.util.ConfirmationStatus;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,12 +38,16 @@ public class MainCtrl implements Serializable {
     PracticeService practiceService;
     @EJB
     JobOfferService jobOfferService;
+    @EJB
+    SubscribeService subscribeService;
 
     private final List<String> availbleRoles = new ArrayList<>();
     private String selectedRole;
 
     private final List<String> availableOpinions = new ArrayList<>();
     private String selectedOpinion;
+    
+    private String newSubscribe = "";
 
     public MainCtrl() {
         System.out.println("[MainCtrl] init");
@@ -70,6 +75,20 @@ public class MainCtrl implements Serializable {
         this.selectedOpinion = selectedOpinion;
     }
 
+    public String getNewSubscribe() {
+        return newSubscribe;
+    }
+
+    public void setNewSubscribe(String newSubscribe) {
+        this.newSubscribe = newSubscribe;
+    }
+        
+    public void addNewSubscriber() {
+        System.out.println("[MainCtrl] addNewSubscribe - newSubscribe " + newSubscribe);
+        subscribeService.add(newSubscribe);
+    }
+
+    
     @Deprecated
     private void initOptions() {
         if (availableOpinions.isEmpty()) {

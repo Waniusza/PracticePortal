@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -15,7 +14,6 @@ import lombok.ToString;
 
 @Entity
 @Getter
-@Setter
 @ToString
 
 public class Opinion extends BaseModel {
@@ -26,7 +24,30 @@ public class Opinion extends BaseModel {
     private PortalUser author = null;
     
     public Opinion() {
-        
     }
+
+    public Opinion setAuthor(PortalUser author) {
+        this.author = author;
+        return this;
+    }
+
+    public Opinion setCommentedEntityId(long commentedEntityId) {
+        this.commentedEntityId = commentedEntityId;
+        return this;
+    }
+
+    public Opinion setComments(List<Opinion> comments) {
+        this.comments = comments;
+        return this;
+    }
+
+    public Opinion setText(String text) {
+        this.text = text;
+        return this;
+    }
+    
+    
+    
+    
     
 }
