@@ -5,7 +5,7 @@
  */
 package com.gut.practice.entity;
 
-import com.gut.practice.enums.SubscribeType;
+import com.gut.practice.util.SubscribeType;
 import java.util.List;
 import javax.persistence.Entity;
 import lombok.Getter;

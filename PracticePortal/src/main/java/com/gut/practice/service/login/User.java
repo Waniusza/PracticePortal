@@ -5,10 +5,8 @@ package com.gut.practice.service.login;
  * @author kongo
  */
 
-public class User {
-	
-	private String name;
-	 
+public class User {   
+    private String name;
     private String password;
     
  

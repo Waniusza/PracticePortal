@@ -37,6 +37,7 @@ public class JobOffersCtrl {
     }
 
     public void setOffers(List<JobOffer> offers) {
+        
         this.offers = offers;
     }
     

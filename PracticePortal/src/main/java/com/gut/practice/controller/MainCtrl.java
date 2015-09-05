@@ -9,11 +9,11 @@ import com.gut.practice.entity.Faq;
 import com.gut.practice.entity.JobOffer;
 import com.gut.practice.entity.Practice;
 import com.gut.practice.entity.file.News;
-import com.gut.practice.enums.ConfirmationStatus;
 import com.gut.practice.service.FaqService;
 import com.gut.practice.service.JobOfferService;
 import com.gut.practice.service.NewsService;
 import com.gut.practice.service.PracticeService;
+import com.gut.practice.util.ConfirmationStatus;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -54,8 +54,8 @@ public class MainCtrl implements Serializable {
         initRoles();
         initOptions();
         initFaq();
-        initPractice();
-        initJobOffers();
+//        initPractice();
+//        initJobOffers();
     }
 
     public List<String> getAvailableOpinions() {

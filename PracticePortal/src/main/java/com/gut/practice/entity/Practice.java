@@ -1,6 +1,6 @@
 package com.gut.practice.entity;
 
-import com.gut.practice.enums.ConfirmationStatus;
+import com.gut.practice.util.ConfirmationStatus;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;

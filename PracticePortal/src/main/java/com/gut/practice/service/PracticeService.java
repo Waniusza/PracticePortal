@@ -1,7 +1,7 @@
 package com.gut.practice.service;
 
 import com.gut.practice.entity.Practice;
-import com.gut.practice.enums.ConfirmationStatus;
+import com.gut.practice.util.ConfirmationStatus;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

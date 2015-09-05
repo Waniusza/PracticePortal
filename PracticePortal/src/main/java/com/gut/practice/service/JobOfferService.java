@@ -4,6 +4,7 @@ import com.gut.practice.entity.JobOffer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
@@ -23,10 +24,12 @@ public class JobOfferService extends BaseService<JobOffer> {
 
     @PersistenceContext
     protected EntityManager em;
+    private final static Logger log = Logger.getLogger(JobOfferService.class.getName());
 
     @Override
     public Long add(JobOffer practice) {
         try {
+            
             practice.setDateCreate(new Date());
             em.persist(practice);
             System.out.printf("Successed added this JobOffer: " + practice);

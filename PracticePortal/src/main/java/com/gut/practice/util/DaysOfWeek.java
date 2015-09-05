@@ -1,4 +1,4 @@
-package com.gut.practice.enums;
+package com.gut.practice.util;
 
 /**
  *

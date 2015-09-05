@@ -15,32 +15,33 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li>
-                         <p:commandButton value="#{msg.contact_us}" type="text" onclick="PF('contactDialog').show();" >
-                              <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
-                         </p:commandButton>
+                        <p:commandButton value="#{msg.contact_us}" type="text" onclick="PF('contactDialog').show();" >
+                            <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
+                        </p:commandButton>
                     </li>
                     <li>
-                         <p:commandButton value="#{msg.subscribe_us}"  onclick="PF('subscribeDialog').show();" >
-                              <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
-                         </p:commandButton>
+                        <p:commandButton value="#{msg.subscribe_us}"  onclick="PF('subscribeDialog').show();" >
+                            <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
+                        </p:commandButton>
 
                     </li>
                     <li>
-                         <p:commandButton value="#{msg.opinion_us}"  onclick="PF('opinionDialog').show();" >
-                              <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
-                         </p:commandButton>
+                        <p:commandButton value="#{msg.opinion_us}"  onclick="PF('opinionDialog').show();" >
+                            <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
+                        </p:commandButton>
 
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a  > #{msg.log_in}
+                        <p:link  value="#{msg.log_in}" href="/faces/usage/security/signUp.xhtml">
                             <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
-                        </a>
+                        </p:link>
                     </li>
                     <li><a > #{msg.sign_in}
-                            <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png"/>
+                            <img  src="/PracticePortal/faces/resources/img/schema/rss_icon.png">
+                            </img>
                         </a>
                     </li>
                 </ul>
@@ -48,25 +49,25 @@
             </div>
         </div>
     </div>
-    
-    
-        <p:dialog header="#{msg.subscribe_header}" widgetVar="subscribeDialog" modal="true" height="250">
-            <ui:include src="/templates/schema/subscribeDialog.xhtml"/>
-        </p:dialog> 
-    
-    
-        <p:dialog header="#{msg.opinion_header}" widgetVar="opinionDialog" modal="true" height="350">
-            <ui:include src="/templates/schema/opinionDialog.xhtml"/>
-        </p:dialog> 
 
 
-       <p:dialog header="Modal Dialog" widgetVar="contactDialog" modal="true" height="100">
-            <h:outputText value="{{msg.contact_dialog_in    fo}}" />
-        </p:dialog>   
+    <p:dialog header="#{msg.subscribe_header}" widgetVar="subscribeDialog" modal="true" height="250">
+        <ui:include src="/templates/schema/subscribeDialog.xhtml"/>
+    </p:dialog> 
+
+
+    <p:dialog header="#{msg.opinion_header}" widgetVar="opinionDialog" modal="true" height="350">
+        <ui:include src="/templates/schema/opinionDialog.xhtml"/>
+    </p:dialog> 
+
+
+    <p:dialog header="Modal Dialog" widgetVar="contactDialog" modal="true" height="100">
+        <h:outputText value="{{msg.contact_dialog_in}}" />
+    </p:dialog>   
 
 
 
 
 
-  
+
 </ui:composition>
