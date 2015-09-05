@@ -76,14 +76,15 @@ public class MyLoginModule implements LoginModule {
 	String name = nameCallback.getName();
 	String password = new String(passwordCallback.getPassword());
 
-	if ("myName".equals(name) && "myPassword".equals(password)) {
+	//if ("myName".equals(name) && "myPassword".equals(password)) {
+	if(AuthenticationTest.dataSource.userExists(name, password)){
             System.out.println("Success! You get to log in!");
             succeeded = true;
             return succeeded;
 	} else {
             System.out.println("Failure! You don't get to log in");
             succeeded = false;
-            throw new FailedLoginException("Sorry! No login for you.");
+            throw new FailedLoginException("Sorry! Bad login or password.");
 	}
     }
 

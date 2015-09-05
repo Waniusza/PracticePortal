@@ -9,18 +9,25 @@ import javax.security.auth.login.LoginException;
  */
 public class AuthenticationTest {
     private static String INPUTFILE = "src/main/resources/jaas.config";
-    
+    public static DataSource dataSource;
+	
     public static void main(String[] args) {
-		System.setProperty("java.security.auth.login.config", INPUTFILE);
+	dataSource = new DataSource();
+		
+	System.setProperty("java.security.auth.login.config", INPUTFILE);
 
-		String name = "myName";
-		String password = "myPassword";
-
-		try {
-			LoginContext lc = new LoginContext("Test", new MyCallbackHandler(name, password));
-			lc.login();
-		} catch (LoginException e) {
-			e.printStackTrace();
-		}
-	}
+	String name = "user";
+	String password = "1234";
+		
+	User user = new User();
+	user.setName(name);
+	user.setPassword(password);
+	try {
+            //LoginContext lc = new LoginContext("Test", new MyCallbackHandler(name, password));
+            LoginContext lc = new LoginContext("Test", new MyCallbackHandler(user));
+            lc.login();
+	} catch (LoginException e) {
+            e.printStackTrace();
+        }
+    }
 }

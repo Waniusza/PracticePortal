@@ -20,6 +20,11 @@ public class MyCallbackHandler implements CallbackHandler {
 	this.name = name;
 	this.password = password;
     }
+    
+    public MyCallbackHandler(User user) {
+	this.name = user.getName();
+	this.password = user.getPassword();
+    }
 
     public void handle(Callback[] callbacks) throws IOException, UnsupportedCallbackException {
 	//System.out.println("Callback Handler - handle called");
