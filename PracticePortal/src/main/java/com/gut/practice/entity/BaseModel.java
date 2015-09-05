@@ -33,7 +33,4 @@ public abstract class  BaseModel  implements Serializable{
 
     public BaseModel() {
     }
-    
-    
-    
 }

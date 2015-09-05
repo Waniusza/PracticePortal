@@ -50,7 +50,7 @@ public class StudentService extends PortalUserService {
             // Pracodawca
             // TODO if(text.lenght>) split to two lines
             if(student.getPracticeList().size() >0){
-                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getEmployer().getComapnyName(), 71 + gapLeft, 459 + gapDown, 0);
+//                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getEmployer().getComapnyName(), 71 + gapLeft, 459 + gapDown, 0);
                 content.showTextAligned(PdfContentByte.ALIGN_LEFT, "adres firmy", 71 + gapLeft, 430 + gapDown, 0);
                 // poczatek praktyk
                 content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getDateFrom().toString(), 155 + gapLeft, 389 + gapDown, 0);

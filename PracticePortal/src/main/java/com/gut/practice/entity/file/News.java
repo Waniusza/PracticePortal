@@ -12,8 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -25,7 +25,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@AllArgsConstructor
+@NoArgsConstructor
 
 public class News extends BaseModel {
     private String title;
@@ -39,7 +39,6 @@ public class News extends BaseModel {
     @ManyToOne
     private PortalUser author = null;
 
-    public News() {
-    }
+    
 
 }

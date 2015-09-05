@@ -1,6 +1,6 @@
 package com.gut.practice.service.user;
 
-import com.gut.practice.entity.enums.TimePeriod;
+import com.gut.practice.entity.TimePeriod;
 import com.gut.practice.entity.user.Coordinator;
 import java.util.List;
 import javax.ejb.Stateless;

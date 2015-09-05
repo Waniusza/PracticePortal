@@ -17,7 +17,27 @@
                 <ui:include src="/templates/schema/layout.xhtml" />
                 <p:layoutUnit position="center">
                     <div class="container-fluid">
-                        <ui:include src="../templates/jobOffers.xhtml" />
+                        <h:outputText  value="a  #{jobOffersCtrl.offers}  a" ></h:outputText>
+                        <p:dataTable var="offer" value="#{jobOffersCtrl.offers}">
+                            <p:column headerText="Company Name">
+                                <h:outputText value="#{offer.company.companyName}" />
+                            </p:column>
+
+                            <p:column headerText="Main duty">
+                                <h:outputText value="#{offer.mainDuty}" />
+                            </p:column>
+                            <p:column headerText="Salary">
+                                <h:outputText value="#{offer.salaryMin} - #{offer.salaryMax}" />
+                            </p:column>
+
+                            <p:column headerText="Date to">
+                                <h:outputText value="#{offer.dateTo}" />
+                            </p:column>
+
+                            <p:column headerText="Actions">
+                                <h:outputText value="" />
+                            </p:column>
+                        </p:dataTable>
                     </div>
                 </p:layoutUnit>
             </p:layout>

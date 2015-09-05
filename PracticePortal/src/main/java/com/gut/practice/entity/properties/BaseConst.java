@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.helpers;
+package com.gut.practice.entity.properties;
 
+import com.gut.practice.entity.BaseModel;
+import javax.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,19 +14,17 @@ import lombok.Setter;
  *
  * @author janusz
  */
+
+@MappedSuperclass
 @Getter
 @Setter
-public class ViewTab {
-    
-    private String title;
-    private String includeResource;
 
-    public ViewTab() {
-    }
+public abstract class BaseConst extends BaseModel{
+   
+    private String paramName;
+    private Boolean active;
 
-    public ViewTab(String title, String includeResource) {
-        this.title = title;
-        this.includeResource = includeResource;
+    public BaseConst() {
     }
     
     

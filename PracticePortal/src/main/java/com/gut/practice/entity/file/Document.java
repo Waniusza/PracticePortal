@@ -5,9 +5,10 @@
  */
 package com.gut.practice.entity.file;
 
-import com.gut.practice.entity.enums.Format;
+import com.gut.practice.entity.properties.Format;
 import javax.persistence.Entity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -20,14 +21,11 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 
 public class Document extends BaseFile{
    
+    
     private Format format;
     private String urlDocument;
-    
-    public Document() {
-        
-    }
-    
 }

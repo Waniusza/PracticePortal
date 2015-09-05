@@ -5,10 +5,18 @@
  */
 package com.gut.practice.controller;
 
+import com.gut.practice.entity.Faq;
+import com.gut.practice.entity.JobOffer;
+import com.gut.practice.entity.Practice;
 import com.gut.practice.entity.file.News;
+import com.gut.practice.enums.ConfirmationStatus;
+import com.gut.practice.service.FaqService;
+import com.gut.practice.service.JobOfferService;
 import com.gut.practice.service.NewsService;
+import com.gut.practice.service.PracticeService;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -23,8 +31,12 @@ public class MainCtrl implements Serializable {
 
     @EJB
     NewsService newsService;
-//    @EJB
-//    FaqService faqService;
+    @EJB
+    FaqService faqService;
+    @EJB
+    PracticeService practiceService;
+    @EJB
+    JobOfferService jobOfferService;
 
     private final List<String> availbleRoles = new ArrayList<>();
     private String selectedRole;
@@ -41,7 +53,9 @@ public class MainCtrl implements Serializable {
         initNews();
         initRoles();
         initOptions();
-//        initFaq();
+        initFaq();
+        initPractice();
+        initJobOffers();
     }
 
     public List<String> getAvailableOpinions() {
@@ -86,11 +100,8 @@ public class MainCtrl implements Serializable {
             for (int i = 1; i < 5; i++) {
                 desc = desc.concat("Description-" + i + "  ");
 
-                News oneNew = new News(
-                        "Tytuł " + i,
-                        desc,
-                        "url" + i,
-                        null, null, null);
+                News oneNew = new News();
+                oneNew.setDescription(desc);
                 oneNew.setTitle("Title " + i);
                 oneNew.setUrlPhoto("url");
                 System.out.println("I'm adding " + oneNew.getTitle());
@@ -98,17 +109,47 @@ public class MainCtrl implements Serializable {
             }
         }
     }
-//
-//    private void initFaq() {
-//        if (faqService.getAll().isEmpty()) {
-//            Faq question = new Faq();
-//            for (int i = 1; i < 5; i++) {
-//                question = new Faq();
-//                question.setQuestion("QUESTION " + i);
-//                question.setAnswer("ANSWER " + i);
-//                faqService.add(question);
-//            }
-//        }
-//    }
+
+    @Deprecated
+    private void initFaq() {
+        if (faqService.getAll().isEmpty()) {
+            Faq question = new Faq();
+            for (int i = 1; i < 5; i++) {
+                question = new Faq();
+                question.setQuestion("QUESTION " + i);
+                question.setAnswer("ANSWER " + i);
+                faqService.add(question);
+            }
+        }
+    }
+
+    @Deprecated
+    private void initPractice() {
+        if (practiceService.getAll().isEmpty()) {
+            Practice practice;
+            for (int i = 1; i < 5; i++) {
+                practice = new Practice();
+                practice.setTitle("Praktyka nr. " + i);
+                practice.setDescription("To jest opis dla praktyki nr" + i);
+                practice.setConfirmationStatus(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
+                practice.setHours(i * 55 % 80);
+                practiceService.add(practice);
+            }
+        }
+    }
+
+    @Deprecated
+    private void initJobOffers() {
+        if (jobOfferService.getAll().isEmpty()) {
+            JobOffer jobOffer;
+            for (int i = 1; i < 5; i++) {
+                jobOffer = new JobOffer();
+                jobOffer.setMainDuty("Duty nr" + i);
+                jobOffer.setSalaryMax(2000*i % 2500);
+                jobOffer.setDateTo(new Date());
+                jobOfferService.add(jobOffer);
+            }
+        }
+    }
 
 }

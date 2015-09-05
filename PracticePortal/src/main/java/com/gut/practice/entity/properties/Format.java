@@ -1,4 +1,4 @@
-package com.gut.practice.entity.user;
+package com.gut.practice.entity.properties;
 
 import javax.persistence.Entity;
 import lombok.Getter;
@@ -11,16 +11,12 @@ import lombok.ToString;
  * @author kongo
  */
 
-
 @Entity
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor
 
-public class Employer extends PortalUser {
-    
-    private String comapnyName;
-    // TODO adress, asigned to student
+public class Format extends BaseConst {
     
 }

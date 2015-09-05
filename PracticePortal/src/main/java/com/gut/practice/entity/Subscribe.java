@@ -5,10 +5,9 @@
  */
 package com.gut.practice.entity;
 
-import com.gut.practice.entity.enums.SubscribeType;
+import com.gut.practice.enums.SubscribeType;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -27,8 +26,7 @@ public class Subscribe extends BaseModel{
     
     private String email;
     private Boolean active = true;
-    
-    @OneToMany
+     
     private List<SubscribeType> types;
     
     public Subscribe() {
