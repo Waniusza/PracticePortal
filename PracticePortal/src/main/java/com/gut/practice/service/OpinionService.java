@@ -42,7 +42,7 @@ public class OpinionService extends BaseService<Opinion> {
         try { 
             Opinion model = em.find(Opinion.class, opinion.getId()); 
             model.setCommentedEntityId(opinion.getCommentedEntityId());
-            model.setComments(opinion.getComments()); 
+            model.setName(opinion.getName()); 
             model.setText(opinion.getText()); 
             model.setAuthor(opinion.getAuthor()); 
             em.merge(model);

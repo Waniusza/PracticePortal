@@ -1,9 +1,8 @@
 package com.gut.practice.entity;
 
 import com.gut.practice.entity.user.PortalUser;
-import java.util.List;
+import com.gut.practice.util.OpinionName;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -18,8 +17,8 @@ import lombok.ToString;
 
 public class Opinion extends BaseModel {
     private long commentedEntityId;
-    @OneToMany
-    private List<Opinion> comments = null;
+   
+    private OpinionName name;
     private String text;
     private PortalUser author = null;
     
@@ -36,8 +35,8 @@ public class Opinion extends BaseModel {
         return this;
     }
 
-    public Opinion setComments(List<Opinion> comments) {
-        this.comments = comments;
+    public Opinion setName(OpinionName name) {
+        this.name = name;
         return this;
     }
 

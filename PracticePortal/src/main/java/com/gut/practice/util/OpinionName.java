@@ -9,8 +9,6 @@ package com.gut.practice.util;
  *
  * @author janusz
  */
-public enum Permission {
-    
-    STUDENT, EMPLOYEER, COORDINATOR
-    
+public enum OpinionName {
+     POOR, WEEK, OK, NICE, GREAT;
 }

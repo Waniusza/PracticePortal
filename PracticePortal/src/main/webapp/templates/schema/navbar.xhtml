@@ -41,11 +41,11 @@
                             <h:form>
                                 <div class="form-group col-md-12" >
                                     <label class="col-md-2 control-label">Name:</label>
-                                    <p:inputText class="col-md-6 col-md-offset-4"  value="#{securityCtrl.newUser.name}"/>
+                                    <p:inputText class="col-md-6 col-md-offset-4"  value="#{securityCtrl.newName}"/>
                                 </div>
                                 <div class="form-group col-md-12" >
                                     <label class="col-md-2 control-label">Password:</label>
-                                    <p:inputText class="col-md-6 col-md-offset-4" value="#{securityCtrl.newUser.password}"/>
+                                    <p:inputText class="col-md-6 col-md-offset-4" value="#{securityCtrl.newPass}"/>
                                 </div>
                                 <div class="pull-right">
                                     <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{newsCtrl.submit()}" ajax="false"/>

@@ -3,7 +3,6 @@ package com.gut.practice.service.login;
 import com.gut.practice.util.Permission;
 import java.util.List;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -12,7 +11,6 @@ import lombok.ToString;
  */
 
 @Getter
-@Setter
 @ToString
 
 public class User {   
@@ -21,19 +19,18 @@ public class User {
     private List<Permission> permissions;
     
  
-    public String getName() {
-        return name;
-    }
- 
-    public void setName(String name) {
+    public User setName(String name) {
         this.name = name;
+        return this;
     }
- 
-    public String getPassword() {
-        return password;
-    }
- 
-    public void setPassword(String password) {
+    public User setPassword(String password) {
         this.password = password;
+        return this;
     }
+
+    public User setPermissions(List<Permission> permissions) {
+        this.permissions = permissions;
+        return this;
+    }
+    
 }

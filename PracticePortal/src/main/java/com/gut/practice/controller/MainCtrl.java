@@ -15,6 +15,7 @@ import com.gut.practice.service.NewsService;
 import com.gut.practice.service.PracticeService;
 import com.gut.practice.service.SubscribeService;
 import com.gut.practice.util.ConfirmationStatus;
+import com.gut.practice.util.OpinionName;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,9 +45,9 @@ public class MainCtrl implements Serializable {
     private final List<String> availbleRoles = new ArrayList<>();
     private String selectedRole;
 
-    private final List<String> availableOpinions = new ArrayList<>();
-    private String selectedOpinion;
-    
+    private OpinionName[] availableOpinions;
+    private String selectedOpinion = "";
+
     private String newSubscribe = "";
 
     public MainCtrl() {
@@ -59,19 +60,19 @@ public class MainCtrl implements Serializable {
         initRoles();
         initOptions();
         initFaq();
-//        initPractice();
+        initPractice();
 //        initJobOffers();
     }
 
-    public List<String> getAvailableOpinions() {
+    public OpinionName[] getAvailableOpinions() {
         return availableOpinions;
     }
 
     public String getSelectedOpinion() {
         return selectedOpinion;
     }
-
-    public final void setSelectedOpinion(String selectedOpinion) {
+    
+    public void setSelectedOpinion(String selectedOpinion) {
         this.selectedOpinion = selectedOpinion;
     }
 
@@ -82,23 +83,16 @@ public class MainCtrl implements Serializable {
     public void setNewSubscribe(String newSubscribe) {
         this.newSubscribe = newSubscribe;
     }
-        
+
     public void addNewSubscriber() {
         System.out.println("[MainCtrl] addNewSubscribe - newSubscribe " + newSubscribe);
         subscribeService.add(newSubscribe);
     }
 
-    
     @Deprecated
     private void initOptions() {
-        if (availableOpinions.isEmpty()) {
-            availableOpinions.add("1_POOR");
-            availableOpinions.add("2_WEEK");
-            availableOpinions.add("3_OK");
-            availableOpinions.add("4_NICE");
-            availableOpinions.add("5_GREAT");
-            setSelectedOpinion(availableOpinions.get(2));
-        };
+        availableOpinions = OpinionName.values();
+        setSelectedOpinion(availableOpinions[2].name());
     }
 
     @Deprecated
@@ -123,7 +117,6 @@ public class MainCtrl implements Serializable {
                 oneNew.setDescription(desc);
                 oneNew.setTitle("Title " + i);
                 oneNew.setUrlPhoto("url");
-                System.out.println("I'm adding " + oneNew.getTitle());
                 newsService.add(oneNew);
             }
         }
@@ -153,6 +146,7 @@ public class MainCtrl implements Serializable {
                 practice.setConfirmationStatus(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
                 practice.setHours(i * 55 % 80);
                 practiceService.add(practice);
+                practice.setDescription("Added practice" + practice.getTitle());
             }
         }
     }
@@ -164,7 +158,7 @@ public class MainCtrl implements Serializable {
             for (int i = 1; i < 5; i++) {
                 jobOffer = new JobOffer();
                 jobOffer.setMainDuty("Duty nr" + i);
-                jobOffer.setSalaryMax(2000*i % 2500);
+                jobOffer.setSalaryMax(2000 * i % 2500);
                 jobOffer.setDateTo(new Date());
                 jobOfferService.add(jobOffer);
             }
