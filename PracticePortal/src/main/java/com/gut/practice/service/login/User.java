@@ -1,7 +1,9 @@
 package com.gut.practice.service.login;
 
+import com.gut.practice.entity.BaseModel;
 import com.gut.practice.util.Permission;
 import java.util.List;
+import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -10,10 +12,11 @@ import lombok.ToString;
  * @author kongo
  */
 
+@Entity
 @Getter
 @ToString
 
-public class User {   
+public class User extends BaseModel {   
     private String name;
     private String password;
     private List<Permission> permissions;

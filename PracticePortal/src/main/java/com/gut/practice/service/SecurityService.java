@@ -5,10 +5,14 @@
  */
 package com.gut.practice.service;
 
+import com.gut.practice.service.login.MyCallbackHandler;
 import com.gut.practice.service.login.User;
 import com.gut.practice.util.Permission;
+import java.util.ArrayList;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
 
 /**
  *
@@ -93,7 +97,6 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class SecurityService {
 
-    
     // Zarejestrowanie - nazewnictwo zgodnie z gitHub'em :)
     public Long signUp(User user) {
 
@@ -104,19 +107,20 @@ public class SecurityService {
     // Zalogowanie
     public User sinIn(String name, String pass) {
         // hasło powinno już przychodzić zaszyfrowane
-
         // Znalezienie użytkownika jeśli istnieje
+        
+        //TODO zmienić \/
         return new User();
         // w przeciwnym wypadku null
 //        return null;
 
     }
-
-    // Wylogowanie
+    
+        // Wylogowanie
     public User sinOut(String name, String pass) {
         // hasło powinno już przychodzić zaszyfrowane
-
         // Znalezienie użytkownika jeśli istnieje
+        
         return new User();
         // w przeciwnym wypadku null
 //        return null;

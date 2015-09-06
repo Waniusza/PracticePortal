@@ -1,5 +1,6 @@
 package com.gut.practice.service.login;
 
+import com.gut.practice.entity.user.PortalUser;
 import java.io.IOException;
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
@@ -21,7 +22,7 @@ public class MyCallbackHandler implements CallbackHandler {
 	this.password = password;
     }
     
-    public MyCallbackHandler(User user) {
+    public MyCallbackHandler(PortalUser user) {
 	this.name = user.getName();
 	this.password = user.getPassword();
     }
