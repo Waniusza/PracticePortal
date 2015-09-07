@@ -5,30 +5,36 @@
     xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:p="http://primefaces.org/ui"> 
 
-            <h:form class="col-md-12">
-                <div class="panel-body">
-                    <div class="form-group">
-                        <p:outputLabel for="title" value="Nazwa firmy:" class="col col-md-2"/>
-                        <p:inputText id="title" value="#{addCompanyCtrl.newCompany.companyName}"  class="col col-md-2"/>
-                    </div>
-                    <div class="form-group">
-                        <p:outputPanel id="test">   
-                            <p:outputLabel for="dateFrom" value="Date to:" class="col col-md-1"/>
-                            <p:calendar id="dateFrom" value="#{practiceCtrl.info.dateFrom}" pattern="dd-MM-yyyy" mask="true" disabled="#{practiceCtrl.immediately}"/>
-                        </p:outputPanel>
-                    </div>
-                    <div class="form-group">
-                        <label> Opis </label>
-                        <p:inputTextarea value="#{practiceCtrl.info.description}" class="form-control"/>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="pull-right">
-                        <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{practiceCtrl.submit()}" ajax="false"/>
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                </div>
-            </h:form> 
-
+    <h:form class="col-md-12">
+        <div class="panel-body">
+            <div class="form-group col col-md-12">
+                <p:outputLabel for="name" value="Nazwa firmy:" class="col col-md-12"/>
+                <p:inputText id="name" value="#{addCompanyCtrl.companyName}"  class="col col-md-4"/>
+            </div>
+            <div class="form-group  col col-md-3">
+                <p:outputLabel for="HRfirstName" value="HR name:" class="col col-md-12"/>
+                <p:inputText id="HRfirstName" value="#{addCompanyCtrl.HRfirstName}"  class="col col-md-12"/>
+            </div>
+            <div class="form-group  col col-md-3">
+                <p:outputLabel for="HRlastName" value="HR surname" class="col col-md-12"/>
+                <p:inputText id="HRlastName" value="#{addCompanyCtrl.HRlastName}"  class="col col-md-12"/>
+            </div>
+            <div class="form-group  col col-md-3">
+                <p:outputLabel for="HRmail" value="HR name:" class="col col-md-12"/>
+                <p:inputText id="HRmail" value="#{addCompanyCtrl.HRemail}"  class="col col-md-12"/>
+            </div>
+            
+            <div class="form-group  col col-md-3">
+                <p:outputLabel for="HRphone" value="HR name:" class="col col-md-12"/>
+                <p:inputText id="HRphone" value="#{addCompanyCtrl.HRphone}"  class="col col-md-12"/>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="pull-right">
+                <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{addCompanyCtrl.submit()}" ajax="false"/>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+    </h:form> 
 </ui:composition>
