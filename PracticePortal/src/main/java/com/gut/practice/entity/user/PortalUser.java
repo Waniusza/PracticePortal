@@ -19,7 +19,7 @@ import lombok.Setter;
 public class PortalUser extends BaseModel {
     private String name;
     private String password;
-    private LoginContext loginContext;
+    //private LoginContext loginContext;
     
     private String firstName;
     private String lastName;

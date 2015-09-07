@@ -25,7 +25,7 @@ import javax.security.auth.login.LoginException;
 @Stateless
 public class PortalUserService extends BaseService<PortalUser>  {
     
-    private static String INPUTFILE = "src/main/resources/jaas.config";
+    //private static String INPUTFILE = "src/main/resources/jaas.config";
  
      @PersistenceContext
     protected EntityManager em;
@@ -52,7 +52,7 @@ public class PortalUserService extends BaseService<PortalUser>  {
             return true; } 
         catch (Exception e) { 
             System.out.printf("Sorry, can't edit this PortalUser ", e); 
-        }; 
+        } 
         return false; 
     }
 
@@ -82,7 +82,7 @@ public class PortalUserService extends BaseService<PortalUser>  {
            
            System.out.printf("Sorry, can't get all PortalUsers " , e);
            
-       };
+       }
        return new ArrayList<PortalUser>();
     }
     
@@ -97,7 +97,7 @@ public class PortalUserService extends BaseService<PortalUser>  {
         }
         return false;
     }
-    
+    /*
     public PortalUser sinIn(String name, String pass) {
         System.setProperty("java.security.auth.login.config", INPUTFILE);
         
@@ -143,4 +143,5 @@ public class PortalUserService extends BaseService<PortalUser>  {
         }
         return null;
     }
+    */
 }

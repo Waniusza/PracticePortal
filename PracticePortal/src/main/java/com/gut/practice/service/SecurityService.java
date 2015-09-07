@@ -93,6 +93,7 @@ import javax.security.auth.login.LoginException;
  * *** OUT ***
  * Dane użytkownika be z hasła
  */ 
+
 @Stateless
 @SessionScoped
 public class SecurityService {
