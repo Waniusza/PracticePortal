@@ -24,12 +24,12 @@
     <p:layoutUnit position="west" header="ROLE"  closable="false" resizable="false" collapsible="true" style="height: 700px">
 
         <p:slideMenu  style="height: 450px">
-            <p:submenu label="Student" >
+             <p:submenu label="Student" >
                 <p:menuitem value="My practices" url="" />
                 <p:menuitem value="My applications" url="" />
             </p:submenu> 
-            <p:submenu label="Co-ordinator">
-                <p:submenu label="News">
+            <p:submenu  icon="ui-icon-star" label="Coordinator">
+                <p:submenu icon="ui-icon-star"  label="News">
                     <p:menuitem icon="ui-icon-star"  value="Add News" url="/faces/usage/coordinator/addNews.xhtml" />
                     <p:menuitem   value="Manage News" url="/faces/usage/coordinator/manageNews.xhtml" />
                 </p:submenu>
@@ -37,10 +37,9 @@
                     <p:menuitem icon="ui-icon-star" value="Add practice" url="/faces/usage/coordinator/addPractice.xhtml" />
                     <p:menuitem value="Manage practices" url="" />
                 </p:submenu>
-                <p:submenu label="Employers">
+                <p:submenu icon="ui-icon-star" label="Employeer">
                     <p:menuitem icon="ui-icon-star" value="Add employer" url="/faces/usage/coordinator/addEmployeer.xhtml" />
                     <p:menuitem icon="ui-icon-star" value="Manage employers" url="/faces/usage/coordinator/listEmployeer.xhtml"  />
-
                 </p:submenu>
                 <p:submenu label="Manage">
                     <p:menuitem value="Manage confirmations" url="" />
@@ -48,7 +47,7 @@
                     <p:menuitem value="Manage consultations" url="" />
                 </p:submenu>
             </p:submenu> 
-            <p:submenu label="Employer">
+            <p:submenu label="Employeer">
                 <p:menuitem value="My Employeers" url="/faces/user/addView.xhtml" />
                 <p:menuitem value="Manage practices" url="/faces/user/listView.xhtml" />
             </p:submenu>
@@ -62,3 +61,7 @@
     </p:layoutUnit>
 
 </ui:composition>
+
+
+
+           
