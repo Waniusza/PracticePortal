@@ -5,6 +5,7 @@
  */
 package com.gut.practice.controller;
 
+import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.SecurityService;
 import com.gut.practice.service.login.User;
 import javax.ejb.EJB;
@@ -22,17 +23,17 @@ public class SecurityCtrl {
     
     String newName = "";
     String newPass = "";
-    User newUser = new User();
+    PortalUser newUser = new PortalUser();
     
     public void submitSignUp() {
         System.out.println("Rejestruje!" + newUser.getName() + " :: " + newUser.getPassword());
     }
 
-    public User getNewUser() {
+    public PortalUser getNewUser() {
         return newUser;
     }
 
-    public void setNewUser(User newUser) {
+    public void setNewUser(PortalUser newUser) {
         this.newUser = newUser;
     }
 
