@@ -10,7 +10,7 @@
             <h:outputText value="#{company.companyName}" />
         </p:column>
         <p:column headerText="HR">
-            <h:outputText value="#{company.HRfirstName} + #{company.HRlastName}" />
+            <h:outputText value="#{company.HRfirstName}  #{company.HRlastName}" />
         </p:column>
         <p:column headerText="E-mail">
             <h:outputText value="#{company.HRemail}" />
@@ -18,11 +18,10 @@
         <p:column headerText="Phone">
             <h:outputText value="#{company.HRphone}" />
         </p:column>
+        <p:column headerText="Options">
+        </p:column>
 
     </p:dataTable>
-    <ui:repeat value="#{listCompanyCtrl.companies}" var="company">
-
-    </ui:repeat>
 
 </html>
 

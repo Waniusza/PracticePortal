@@ -8,6 +8,7 @@ package com.gut.practice.controller;
 import com.gut.practice.entity.Company;
 import com.gut.practice.service.CompanyService;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
@@ -17,18 +18,24 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class ListCompanyCtrl {
-    
+
     @EJB
     private CompanyService companyService;
-    
+
     private List<Company> companies;
-    
+
     public ListCompanyCtrl() {
         System.out.println("[ListCompanyCtrl] init");
-        _getData();
     }
-    
+
+    @PostConstruct
+    private void init() {
+        _getData();
+
+    }
+
     private void _getData() {
+        System.out.println("[ListCompanyCtrl] _getData");
         companies = companyService.getAll();
     }
 
@@ -39,6 +46,5 @@ public class ListCompanyCtrl {
     public void setCompanies(List<Company> companies) {
         this.companies = companies;
     }
-   
 
 }

@@ -25,11 +25,12 @@ public class SecurityCtrl {
     PortalUserService userService;
     
     LoginContext ctx = null;
+    String logName = "";
+    String logPass = "";
     String newName = "";
     String newPass = "";
     String newPermission = "";
     List<String> availbleRoles = new ArrayList<>();
-    User newUser = new User();
     
     public SecurityCtrl() {
         for( Permission perm : Permission.values()) {
@@ -56,13 +57,6 @@ public class SecurityCtrl {
      public void submitSignOut() {
         System.out.println("Wylogowuje!" + logName + " :: " + logPass);
         userService.sinOut(ctx);
-    }
-
-    public User getNewUser() {
-        return newUser;
-    }
-    public void setNewUser(User newUser) {
-        this.newUser = newUser;
     }
 
     public String getNewName() {
