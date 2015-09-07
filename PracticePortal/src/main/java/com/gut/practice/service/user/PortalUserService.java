@@ -16,12 +16,10 @@ import javax.persistence.criteria.Root;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
 
-
 /**
  *
  * @author kongo
  */
-
 @Stateless
 public class PortalUserService extends BaseService<PortalUser>  {
     
@@ -29,10 +27,10 @@ public class PortalUserService extends BaseService<PortalUser>  {
  
      @PersistenceContext
     protected EntityManager em;
-    
+
     @Override
     public Long add(PortalUser portalUser) {
-         try {
+        try {
             em.persist(portalUser);
             System.out.printf("Successfully added PortalUser id: " +portalUser.getId());
         } catch (EntityExistsException e) {
@@ -42,19 +40,19 @@ public class PortalUserService extends BaseService<PortalUser>  {
         }
         return portalUser.getId();
     }
-    
+
     @Override
-    public Boolean edit(PortalUser portalUser) { 
-        try { 
-            PortalUser model = em.find(PortalUser.class, portalUser.getId()); 
+    public Boolean edit(PortalUser portalUser) {
+        try {
+            PortalUser model = em.find(PortalUser.class, portalUser.getId());
             model.setFirstName(portalUser.getFirstName());
-            model.setLastName(portalUser.getLastName()); 
-            model.setEmail(portalUser.getEmail()); 
-            return true; } 
-        catch (Exception e) { 
-            System.out.printf("Sorry, can't edit this PortalUser ", e); 
-        } 
-        return false; 
+            model.setLastName(portalUser.getLastName());
+            model.setEmail(portalUser.getEmail());
+            return true;
+        } catch (Exception e) {
+            System.out.printf("Sorry, can't edit this PortalUser ", e);
+        }
+        return false;
     }
 
     @Override
@@ -66,27 +64,27 @@ public class PortalUserService extends BaseService<PortalUser>  {
             model = new PortalUser();
             System.out.printf("Sorry, can't get PortalUser with id: " + id, e);
         }
-        
+
         return model;
     }
 
     @Override
     public List<PortalUser> getAll() {
         try {
-           CriteriaBuilder cb = em.getCriteriaBuilder();
-           CriteriaQuery <PortalUser> cq = cb.createQuery(PortalUser.class);
-           Root<PortalUser> root = cq.from(PortalUser.class);
-           
-           return em.createQuery(cq.select(root)).getResultList();
-         
-       } catch (Exception e) {
-           
-           System.out.printf("Sorry, can't get all PortalUsers " , e);
-           
-       }
-       return new ArrayList<PortalUser>();
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<PortalUser> cq = cb.createQuery(PortalUser.class);
+            Root<PortalUser> root = cq.from(PortalUser.class);
+
+            return em.createQuery(cq.select(root)).getResultList();
+
+        } catch (Exception e) {
+
+            System.out.printf("Sorry, can't get all PortalUsers ", e);
+
+        }
+        return new ArrayList<PortalUser>();
     }
-    
+
     @Override
     public Boolean remove(Long id) {
         try {

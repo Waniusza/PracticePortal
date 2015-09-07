@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <p:dataTable var="company" value="#{listCompanyCtrl.companies}">
+        <p:column headerText="Company name">
+            <h:outputText value="#{company.companyName}" />
+        </p:column>
+        <p:column headerText="HR">
+            <h:outputText value="#{company.HRfirstName} + #{company.HRlastName}" />
+        </p:column>
+        <p:column headerText="E-mail">
+            <h:outputText value="#{company.HRemail}" />
+        </p:column>
+        <p:column headerText="Phone">
+            <h:outputText value="#{company.HRphone}" />
+        </p:column>
+
+    </p:dataTable>
+    <ui:repeat value="#{listCompanyCtrl.companies}" var="company">
+
+    </ui:repeat>
+
+</html>
+

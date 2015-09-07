@@ -129,7 +129,7 @@ public class SubscribeService extends BaseService<Subscribe> {
     public List<Subscribe> getAllByType(SubscribeType type) {
         List<Subscribe> subscribes = new ArrayList<Subscribe>();
         for (Subscribe subscribe : getAll()) {
-            if (type.equals(subscribe.getTypes())) {
+            if (subscribe.getTypes().equals(type)) {
                 subscribes.add(subscribe);
                 break;
             }

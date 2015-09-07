@@ -15,7 +15,18 @@
             <ui:include src="/templates/schema/layout.xhtml" />
             <p:layoutUnit position="center">
                 <div class="container-fluid">
-                    <ui:include src="/templates/newsList.xhtml" />
+                    <!--<ui:include src="/templates/newsList.xhtml" />-->
+                    <h:form>
+                        <ui:repeat value="#{newsListCtrl.news}" var="new">
+                            <p:fieldset legend="#{new.title}" toggleable="true" toggleSpeed="500">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <p:graphicImage name="#{new.urlPhoto}" alt="#{new.urlPhoto}" />
+                                    <h:outputText value="#{new.description}"></h:outputText>
+                                    <h:outputText value="#{new.dateCreate}"></h:outputText>
+                                </h:panelGrid>
+                            </p:fieldset>
+                        </ui:repeat>
+                    </h:form> 
                 </div>
             </p:layoutUnit>
         </p:layout>
