@@ -5,7 +5,11 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.service.SecurityService;
+import com.gut.practice.entity.user.PortalUser;
+import com.gut.practice.service.user.PortalUserService;
+import com.gut.practice.util.Permission;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.security.auth.login.LoginContext;
@@ -18,9 +22,9 @@ import javax.security.auth.login.LoginContext;
 public class SecurityCtrl {
     
     @EJB
-    SecurityService securityService;
+    PortalUserService userService;
     
-    LoginContext ctx;
+    LoginContext ctx = null;
     String newName = "";
     String newPass = "";
     String logName = "";
@@ -28,11 +32,24 @@ public class SecurityCtrl {
     
     public void submitSignUp() {
         System.out.println("Rejestruje!" + newName + " :: " + newPass);
+        PortalUser newUser = new PortalUser();
+        List<Permission> perm = new ArrayList<>();
+        perm.add(Permission.STUDENT);
+        newUser.setName(newName)
+                .setPassword(newPass)
+                .setPermissions(perm);
+        userService.add(newUser);
     }    
     public void submitSignIn() {
         System.out.println("Loguje!" + logName + " :: " + logPass);
+        ctx = userService.sinIn(logName, logPass);
         logName = "";
         logPass = "";
+    }
+    
+     public void submitSignOut() {
+        System.out.println("Wylogowuje!" + logName + " :: " + logPass);
+        userService.sinOut(ctx);
     }
 
 

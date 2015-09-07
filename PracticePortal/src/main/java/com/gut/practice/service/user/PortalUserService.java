@@ -2,6 +2,8 @@ package com.gut.practice.service.user;
 
 import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.BaseService;
+import com.gut.practice.service.login.MyCallbackHandler;
+import com.gut.practice.util.Permission;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -11,6 +13,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.security.auth.login.LoginContext;
+import javax.security.auth.login.LoginException;
 
 
 /**
@@ -21,7 +25,7 @@ import javax.persistence.criteria.Root;
 @Stateless
 public class PortalUserService extends BaseService<PortalUser>  {
     
-    //private static String INPUTFILE = "src/main/resources/jaas.config";
+    private static String INPUTFILE = "src/main/resources/jaas.config";
  
      @PersistenceContext
     protected EntityManager em;
@@ -94,51 +98,50 @@ public class PortalUserService extends BaseService<PortalUser>  {
         }
         return false;
     }
-    /*
-    public PortalUser sinIn(String name, String pass) {
+    
+       public LoginContext sinIn(String name, String pass) {
         System.setProperty("java.security.auth.login.config", INPUTFILE);
-        
-        PortalUser user = null;
-	try {
-            user = checkIfExsist(name, pass);
-            LoginContext loginContext = new LoginContext("Test", new MyCallbackHandler(user));
+
+        LoginContext loginContext = null;
+        PortalUser user = checkIfExsist(name, pass);
+        try {
+            loginContext = new LoginContext("Test", new MyCallbackHandler(user));
             loginContext.login();
-            user.setLoginContext(loginContext);
-            
-	} catch (LoginException e) {
+
+        } catch (LoginException e) {
             e.printStackTrace();
             return null;
         }
-        
-        return user;
+
+        return loginContext;
     }
-    
-    public User sinOut(String name, String pass) {
-        PortalUser user = null;
+
+    public void sinOut(LoginContext loginContext) {
         try {
-            user = checkIfExsist(name, pass);
-            user.getLoginContext().logout();
-	} catch (LoginException e) {
+            loginContext.logout();
+        } catch (LoginException e) {
             e.printStackTrace();
         }
-        return new User();
     }
-    
+
     public boolean isPermissed(PortalUser user, Permission permission) {
         // Sprawdzenie czy użytkownik posiada dane uprawnienia
-        for(Permission userPermission : user.getPermissions())
-            if(userPermission.equals(permission))
+        for (Permission userPermission : user.getPermissions()) {
+            if (userPermission.equals(permission)) {
                 return true;
+            }
+        }
         return false;
     }
 
-    public PortalUser checkIfExsist(String name, String password){
-        for(PortalUser portalUser : getAll()){
-            if(portalUser.getName().equals(name))
-                if(portalUser.getPassword().equals(password))
+    public PortalUser checkIfExsist(String name, String password) {
+        for (PortalUser portalUser : getAll()) {
+            if (portalUser.getName().equals(name)) {
+                if (portalUser.getPassword().equals(password)) {
                     return portalUser;
+                }
+            }
         }
         return null;
     }
-    */
 }
