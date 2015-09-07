@@ -22,17 +22,16 @@ import javax.persistence.criteria.Root;
  *
  * @author janusz & kongo
  */
-
 @Stateless
 @SessionScoped
 public class SubscribeService extends BaseService<Subscribe> {
-     @PersistenceContext
+
+    @PersistenceContext
     protected EntityManager em;
-    
 
     public SubscribeService() {
     }
-    
+
     @Override
     public Long add(Subscribe sub) {
         try {
@@ -44,12 +43,12 @@ public class SubscribeService extends BaseService<Subscribe> {
         }
         return sub.getId();
     }
-    
+
     public Long add(String email) {
         Subscribe sub = new Subscribe()
                 .setEmail(email)
                 .setActive(Boolean.TRUE)
-                .setTypes(SubscribeType.values());
+                .setTypes(SubscribeType.ALL.name());
         try {
             em.persist(sub);
         } catch (EntityExistsException e) {
@@ -59,20 +58,22 @@ public class SubscribeService extends BaseService<Subscribe> {
         }
         return sub.getId();
     }
-    
-    @Override    
-    public Boolean edit(Subscribe sub) { 
-        try { 
-            Subscribe model = em.find(Subscribe.class, sub.getId()); 
-            model.setTypes(sub.getTypes()); 
-            model.setActive(sub.getActive()); 
-            model.setEmail(sub.getEmail());  
-            return true; } 
-        catch (Exception e) { 
-            System.out.printf("Sorry, can't edit this Subscription ", e); 
-        }; 
-        return false; 
-    };
+
+    @Override
+    public Boolean edit(Subscribe sub) {
+        try {
+            Subscribe model = em.find(Subscribe.class, sub.getId());
+            model.setTypes(sub.getTypes());
+            model.setActive(sub.getActive());
+            model.setEmail(sub.getEmail());
+            return true;
+        } catch (Exception e) {
+            System.out.printf("Sorry, can't edit this Subscription ", e);
+        };
+        return false;
+    }
+
+    ;
     
      @Override
     public Subscribe getById(Long id) {
@@ -83,27 +84,27 @@ public class SubscribeService extends BaseService<Subscribe> {
             model = new Subscribe();
             System.out.printf("Sorry, can't get Subscription with id: " + id, e);
         }
-        
+
         return model;
     }
-    
+
     @Override
     public List<Subscribe> getAll() {
         try {
-           CriteriaBuilder cb = em.getCriteriaBuilder();
-           CriteriaQuery <Subscribe> cq = cb.createQuery(Subscribe.class);
-           Root<Subscribe> root = cq.from(Subscribe.class);
-           
-           return em.createQuery(cq.select(root)).getResultList();
-         
-       } catch (Exception e) {
-           
-           System.out.printf("Sorry, can't get all Subscriptions " , e);
-           
-       }
-       return new ArrayList<Subscribe>();
-    }   
-    
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Subscribe> cq = cb.createQuery(Subscribe.class);
+            Root<Subscribe> root = cq.from(Subscribe.class);
+
+            return em.createQuery(cq.select(root)).getResultList();
+
+        } catch (Exception e) {
+
+            System.out.printf("Sorry, can't get all Subscriptions ", e);
+
+        }
+        return new ArrayList<Subscribe>();
+    }
+
     public Boolean remove(Long id) {
         try {
             Subscribe model = em.find(Subscribe.class, id);
@@ -114,26 +115,25 @@ public class SubscribeService extends BaseService<Subscribe> {
         }
         return false;
     }
-    
-     public List<Subscribe> getAllActive() {
+
+    public List<Subscribe> getAllActive() {
         List<Subscribe> subscribes = new ArrayList<Subscribe>();
-        for(Subscribe subscribe : getAll()){
-            if(subscribe.getActive())
+        for (Subscribe subscribe : getAll()) {
+            if (subscribe.getActive()) {
                 subscribes.add(subscribe);
-        }
-        return subscribes;
-     }
-    
-    public List<Subscribe> getAllByType(SubscribeType type) {
-        List<Subscribe> subscribes = new ArrayList<Subscribe>();
-        for(Subscribe subscribe : getAll()){
-            for(SubscribeType type2 : subscribe.getTypes()){
-                if(type.equals(type2)){
-                    subscribes.add(subscribe);
-                    break;
-                }
             }
         }
         return subscribes;
     }
- }
+
+    public List<Subscribe> getAllByType(SubscribeType type) {
+        List<Subscribe> subscribes = new ArrayList<Subscribe>();
+        for (Subscribe subscribe : getAll()) {
+            if (subscribe.getTypes().equals(type)) {
+                subscribes.add(subscribe);
+                break;
+            }
+        }
+        return subscribes;
+    }
+}

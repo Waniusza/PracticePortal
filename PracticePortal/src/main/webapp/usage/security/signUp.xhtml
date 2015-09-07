@@ -25,11 +25,17 @@
                                     <div class="form-group col-md-12" >
                                         <div class="form-group col-md-12" >
                                             <label class="col-md-2 control-label">Name:</label>
-                                            <p:inputText class="col-md-6" value="#{securityCtrl.newUser.name}"/>
+                                            <p:inputText class="col-md-4" value="#{securityCtrl.newUser.name}"/>
                                         </div>
                                         <div class="form-group col-md-12" >
                                             <label class="col-md-2 control-label">Password:</label>
-                                            <p:inputText class="col-md-6" value="#{securityCtrl.newUser.password}"/>
+                                            <p:inputText class="col-md-4" value="#{securityCtrl.newUser.password}"/>
+                                        </div>
+                                        <div class="form-group col-md-12" >
+                                            <h:outputLabel class="col-md-2 control-label" for="txt3" value="Role:" />
+                                            <h:selectOneMenu id="txt3" value="#{securityCtrl.newPermission}" class="col-md-4" label="Role:" > 
+                                                <f:selectItems value="#{securityCtrl.availbleRoles}" />
+                                            </h:selectOneMenu>
                                         </div>
                                     </div>
                                 </div>

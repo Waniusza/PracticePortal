@@ -47,6 +47,7 @@ public class MainCtrl implements Serializable {
 
     private OpinionName[] availableOpinions;
     private String selectedOpinion = "";
+    private String newOpinion = "";
 
     private String newSubscribe = "";
 
@@ -61,7 +62,7 @@ public class MainCtrl implements Serializable {
         initOptions();
         initFaq();
         initPractice();
-//        initJobOffers();
+        initJobOffers();
     }
 
     public OpinionName[] getAvailableOpinions() {
@@ -74,6 +75,15 @@ public class MainCtrl implements Serializable {
     
     public void setSelectedOpinion(String selectedOpinion) {
         this.selectedOpinion = selectedOpinion;
+    }
+
+    public void setNewOpinion(String newOpinion) {
+        this.newOpinion = newOpinion;
+    }
+
+    
+    public String getNewOpinion() {
+        return newOpinion;
     }
 
     public String getNewSubscribe() {

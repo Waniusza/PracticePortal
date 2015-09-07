@@ -1,0 +1,39 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"> 
+
+    <div class="container-fluid">
+        <div class="panel panel-default">
+            <h2>#{msg.titles_addCompany}</h2>
+            <h:form class="col-md-12">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <p:outputLabel for="title" value="Nazwa firmy:" class="col col-md-2"/>
+                        <p:inputText id="title" value="#{addCompanyCtrl.newCompany.companyName}"  class="col col-md-2"/>
+                    </div>
+                    <div class="form-group">
+                        <p:outputPanel id="test">   
+                            <p:outputLabel for="dateFrom" value="Date to:" class="col col-md-1"/>
+                            <p:calendar id="dateFrom" value="#{practiceCtrl.info.dateFrom}" pattern="dd-MM-yyyy" mask="true" disabled="#{practiceCtrl.immediately}"/>
+                        </p:outputPanel>
+                    </div>
+                    <div class="form-group">
+                        <label> Opis </label>
+                        <p:inputTextarea value="#{practiceCtrl.info.description}" class="form-control"/>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="pull-right">
+                        <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{practiceCtrl.submit()}" ajax="false"/>
+                    </div>
+                    <div class="clearfix">
+                    </div>
+                </div>
+            </h:form> 
+
+        </div>
+    </div>
+</ui:composition>

@@ -5,10 +5,7 @@
  */
 package com.gut.practice.entity;
 
-import com.gut.practice.util.SubscribeType;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -26,8 +23,8 @@ public class Subscribe extends BaseModel{
     private String email;
     private Boolean active = true;
      
-    @Enumerated(EnumType.STRING)
-    private SubscribeType[] types;
+//    @Enumerated(EnumType.STRING)
+    private String types;
 
     public Subscribe setActive(Boolean active) {
         this.active = active;
@@ -39,7 +36,7 @@ public class Subscribe extends BaseModel{
         return this;
     }
 
-    public Subscribe setTypes(SubscribeType[] types) {
+    public Subscribe setTypes(String types) {
         this.types = types;
         return this;
     }

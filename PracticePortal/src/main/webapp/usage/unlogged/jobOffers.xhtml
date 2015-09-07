@@ -17,7 +17,6 @@
                 <ui:include src="/templates/schema/layout.xhtml" />
                 <p:layoutUnit position="center">
                     <div class="container-fluid">
-                        <h:outputText  value="a  #{jobOffersCtrl.offers}  a" ></h:outputText>
                         <p:dataTable var="offer" value="#{jobOffersCtrl.offers}">
                             <p:column headerText="Company Name">
                                 <h:outputText value="#{offer.company.companyName}" />
