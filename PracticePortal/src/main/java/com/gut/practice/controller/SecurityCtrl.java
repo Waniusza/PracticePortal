@@ -5,11 +5,10 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.SecurityService;
-import com.gut.practice.service.login.User;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.security.auth.login.LoginContext;
 
 /**
  *
@@ -21,21 +20,21 @@ public class SecurityCtrl {
     @EJB
     SecurityService securityService;
     
+    LoginContext ctx;
     String newName = "";
     String newPass = "";
-    PortalUser newUser = new PortalUser();
+    String logName = "";
+    String logPass = "";
     
     public void submitSignUp() {
-        System.out.println("Rejestruje!" + newUser.getName() + " :: " + newUser.getPassword());
+        System.out.println("Rejestruje!" + newName + " :: " + newPass);
+    }    
+    public void submitSignIn() {
+        System.out.println("Loguje!" + logName + " :: " + logPass);
+        logName = "";
+        logPass = "";
     }
 
-    public PortalUser getNewUser() {
-        return newUser;
-    }
-
-    public void setNewUser(PortalUser newUser) {
-        this.newUser = newUser;
-    }
 
     public String getNewName() {
         return newName;
@@ -49,6 +48,22 @@ public class SecurityCtrl {
         return newPass;
     }
 
+    public void setLogName(String logName) {
+        this.logName = logName;
+    }
+
+    public String getLogName() {
+        return logName;
+    }
+
+    public void setLogPass(String logPass) {
+        this.logPass = logPass;
+    }
+
+    public String getLogPass() {
+        return logPass;
+    }
+    
     public void setNewPass(String newPass) {
         this.newPass = newPass;
     }

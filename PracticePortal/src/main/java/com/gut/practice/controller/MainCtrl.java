@@ -9,13 +9,16 @@ import com.gut.practice.entity.Faq;
 import com.gut.practice.entity.JobOffer;
 import com.gut.practice.entity.News;
 import com.gut.practice.entity.Practice;
+import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.FaqService;
 import com.gut.practice.service.JobOfferService;
 import com.gut.practice.service.NewsService;
 import com.gut.practice.service.PracticeService;
 import com.gut.practice.service.SubscribeService;
+import com.gut.practice.service.user.PortalUserService;
 import com.gut.practice.util.ConfirmationStatus;
 import com.gut.practice.util.OpinionName;
+import com.gut.practice.util.Permission;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,6 +44,8 @@ public class MainCtrl implements Serializable {
     JobOfferService jobOfferService;
     @EJB
     SubscribeService subscribeService;
+    @EJB
+    PortalUserService userService;
 
     private final List<String> availbleRoles = new ArrayList<>();
     private String selectedRole;
@@ -61,7 +66,8 @@ public class MainCtrl implements Serializable {
         initOptions();
         initFaq();
         initPractice();
-//        initJobOffers();
+        initJobOffers();
+        initUsers();
     }
 
     public OpinionName[] getAvailableOpinions() {
@@ -71,7 +77,7 @@ public class MainCtrl implements Serializable {
     public String getSelectedOpinion() {
         return selectedOpinion;
     }
-    
+
     public void setSelectedOpinion(String selectedOpinion) {
         this.selectedOpinion = selectedOpinion;
     }
@@ -162,6 +168,37 @@ public class MainCtrl implements Serializable {
                 jobOffer.setDateTo(new Date());
                 jobOfferService.add(jobOffer);
             }
+        }
+    }
+
+    @Deprecated
+    private void initUsers() {
+        System.out.println("[MainCtrl] initUsers");
+        if (userService.getAll().isEmpty()) {
+            System.out.println("[MainCtrl] initUsers EMPTY");
+            List<Permission> permStud = new ArrayList<>();
+            permStud.add(Permission.STUDENT);
+            List<Permission> permCord = new ArrayList<>();
+            permCord.add(Permission.COORDINATOR);
+            List<Permission> permEmp = new ArrayList<>();
+            permEmp.add(Permission.EMPLOYEER);
+            PortalUser user1 = new PortalUser()
+                    .setName("Janusz")
+                    .setPassword("wania")
+                    .setPermissions(permStud);
+            userService.add(user1);
+            
+            PortalUser user2 = new PortalUser()
+                    .setName("Patryk")
+                    .setPassword("kongo")
+                    .setPermissions(permCord);
+            userService.add(user2);
+            
+            PortalUser user3 = new PortalUser()
+                    .setName("Patryk")
+                    .setPassword("profesor")
+                    .setPermissions(permEmp);
+            userService.add(user3);
         }
     }
 

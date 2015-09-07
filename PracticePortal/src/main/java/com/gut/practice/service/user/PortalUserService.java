@@ -30,6 +30,7 @@ public class PortalUserService extends BaseService<PortalUser>  {
     public Long add(PortalUser portalUser) {
          try {
             em.persist(portalUser);
+            System.out.printf("Successfully added PortalUser id: " +portalUser.getId());
         } catch (EntityExistsException e) {
             System.out.printf("Sorry, PortalUser exist in DataBase! ", e);
         } catch (Exception e) {

@@ -41,14 +41,14 @@
                             <h:form>
                                 <div class="form-group col-md-12" >
                                     <label class="col-md-2 control-label">Name:</label>
-                                    <p:inputText class="col-md-6 col-md-offset-4"  value="#{securityCtrl.newName}"/>
+                                    <p:inputText type="text" class="col-md-6 col-md-offset-4"  value="#{securityCtrl.logName}"/>
                                 </div>
                                 <div class="form-group col-md-12" >
                                     <label class="col-md-2 control-label">Password:</label>
-                                    <p:inputText class="col-md-6 col-md-offset-4" value="#{securityCtrl.newPass}"/>
+                                    <p:inputText type="password" class="col-md-6 col-md-offset-4" value="#{securityCtrl.logPass}"/>
                                 </div>
                                 <div class="pull-right">
-                                    <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{newsCtrl.submit()}" ajax="false"/>
+                                    <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{securityCtrl.submitSignIn()}" ajax="false"/>
                                 </div>
                             </h:form>
                             </div>
