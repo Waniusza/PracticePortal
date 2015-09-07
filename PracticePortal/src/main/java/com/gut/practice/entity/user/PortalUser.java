@@ -4,7 +4,6 @@ import com.gut.practice.entity.BaseModel;
 import com.gut.practice.util.Permission;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.security.auth.login.LoginContext;
 import lombok.Getter;
 import lombok.Setter;
 

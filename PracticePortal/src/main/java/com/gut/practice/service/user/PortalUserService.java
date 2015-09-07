@@ -2,9 +2,6 @@ package com.gut.practice.service.user;
 
 import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.BaseService;
-import com.gut.practice.service.login.MyCallbackHandler;
-import com.gut.practice.service.login.User;
-import com.gut.practice.util.Permission;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -14,8 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
+
 
 /**
  *
