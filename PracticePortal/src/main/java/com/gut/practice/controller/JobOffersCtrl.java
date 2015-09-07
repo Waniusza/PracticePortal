@@ -11,13 +11,13 @@ import com.gut.practice.service.JobOfferService;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.inject.Named;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author janusz
  */
-@Named
+@ManagedBean
 public class JobOffersCtrl {
 
     @EJB

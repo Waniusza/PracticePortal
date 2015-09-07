@@ -10,7 +10,14 @@
     <class>com.gut.practice.entity.Opinion</class>
     <class>com.gut.practice.entity.user.Employer</class>
     <class>com.gut.practice.entity.News</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>com.gut.practice.entity.Subscribe</class>
+    <class>com.gut.practice.entity.user.Student</class>
+    <class>com.gut.practice.entity.user.PortalUser</class>
+    <class>com.gut.practice.entity.properties.Format</class>
+    <class>com.gut.practice.entity.user.Coordinator</class>
+    <class>com.gut.practice.entity.TimePeriod</class>
+    <class>com.gut.practice.entity.file.Document</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
