@@ -17,8 +17,8 @@ import lombok.Getter;
 @Entity
 @Getter
 
-public class Company extends BaseModel{
-    
+public class Company extends BaseModel {
+
     private String companyName;
 //TODO complete Adress
     private String HRfirstName;
@@ -28,7 +28,7 @@ public class Company extends BaseModel{
     private String adress;
     @ManyToOne
     private Student assignation;
-    
+
     public Company() {
     }
 
@@ -66,8 +66,4 @@ public class Company extends BaseModel{
         this.HRphone = HRphone;
         return this;
     }
-    
-    
-    
-    
 }

@@ -19,25 +19,69 @@ public class AddCompanyCtrl {
     
     @EJB
     private CompanyService companyService;
-    private Company newCompany = new Company();
+    
+    private String companyName;
+    private String HRfirstName;
+    private String HRlastName;
+    private String HRemail;
+    private String HRphone;
     
     public AddCompanyCtrl() {
         System.out.println("[AddCompanyCtrl] init");
     }
      
-    
-   
     public void submit()  {
-        System.out.println("SUBMITUJE : " + newCompany.toString() + "!");
-//        newsService.add(addNew);
-        newCompany = new Company();
+        Company newCompany = new Company()
+                .setCompanyName(companyName)
+                .setHRemail(HRemail)
+                .setHRfirstName(HRfirstName)
+                .setHRlastName(HRlastName)
+                .setHRphone(HRphone);
+        
+        System.out.println("SUBMITUJE : " + companyName + "!");
+        companyService.add(newCompany);
     }
 
-    public void setNewCompany(Company newCompany) {
-        this.newCompany = newCompany;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public Company getNewCompany() {
-        return newCompany;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
+
+    public String getHRemail() {
+        return HRemail;
+    }
+
+    public void setHRemail(String HRemail) {
+        this.HRemail = HRemail;
+    }
+
+    public String getHRfirstName() {
+        return HRfirstName;
+    }
+
+    public void setHRfirstName(String HRfirstName) {
+        this.HRfirstName = HRfirstName;
+    }
+
+    public String getHRlastName() {
+        return HRlastName;
+    }
+
+    public void setHRlastName(String HRlastName) {
+        this.HRlastName = HRlastName;
+    }
+
+    public String getHRphone() {
+        return HRphone;
+    }
+
+    public void setHRphone(String HRphone) {
+        this.HRphone = HRphone;
+    }
+
+    
+    
 }

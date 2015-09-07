@@ -12,7 +12,7 @@ import lombok.ToString;
  * @author kongo
  */
 
-@Entity
+//@Entity
 @Getter
 @ToString
 

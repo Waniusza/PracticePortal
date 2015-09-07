@@ -5,14 +5,11 @@
  */
 package com.gut.practice.service;
 
-import com.gut.practice.service.login.MyCallbackHandler;
+import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.login.User;
 import com.gut.practice.util.Permission;
-import java.util.ArrayList;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
-import javax.security.auth.login.LoginContext;
-import javax.security.auth.login.LoginException;
 
 /**
  *
@@ -106,23 +103,23 @@ public class SecurityService {
     }
 
     // Zalogowanie
-    public User sinIn(String name, String pass) {
+    public PortalUser sinIn(String name, String pass) {
         // hasło powinno już przychodzić zaszyfrowane
         // Znalezienie użytkownika jeśli istnieje
         
         //TODO zmienić \/
-        return new User();
+        return new PortalUser();
         // w przeciwnym wypadku null
 //        return null;
 
     }
     
         // Wylogowanie
-    public User sinOut(String name, String pass) {
+    public PortalUser sinOut(String name, String pass) {
         // hasło powinno już przychodzić zaszyfrowane
         // Znalezienie użytkownika jeśli istnieje
         
-        return new User();
+        return new PortalUser();
         // w przeciwnym wypadku null
 //        return null;
 

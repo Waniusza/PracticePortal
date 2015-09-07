@@ -5,13 +5,14 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.service.SecurityService;
-import com.gut.practice.service.login.User;
+import com.gut.practice.entity.user.PortalUser;
+import com.gut.practice.service.user.PortalUserService;
 import com.gut.practice.util.Permission;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.security.auth.login.LoginContext;
 
 /**
  *
@@ -21,8 +22,9 @@ import javax.faces.bean.ManagedBean;
 public class SecurityCtrl {
     
     @EJB
-    SecurityService securityService;
+    PortalUserService userService;
     
+    LoginContext ctx = null;
     String newName = "";
     String newPass = "";
     String newPermission = "";
@@ -35,7 +37,25 @@ public class SecurityCtrl {
         }
     }
     public void submitSignUp() {
-        System.out.println("Rejestruje!" + newUser.getName() + " :: " + newUser.getPassword());
+        System.out.println("Rejestruje!" + newName + " :: " + newPass);
+        PortalUser newUser = new PortalUser();
+        List<Permission> perm = new ArrayList<>();
+        perm.add(Permission.STUDENT);
+        newUser.setName(newName)
+                .setPassword(newPass)
+                .setPermissions(perm);
+        userService.add(newUser);
+    }    
+    public void submitSignIn() {
+        System.out.println("Loguje!" + logName + " :: " + logPass);
+        ctx = userService.sinIn(logName, logPass);
+        logName = "";
+        logPass = "";
+    }
+    
+     public void submitSignOut() {
+        System.out.println("Wylogowuje!" + logName + " :: " + logPass);
+        userService.sinOut(ctx);
     }
 
     public User getNewUser() {
@@ -74,6 +94,22 @@ public class SecurityCtrl {
         return newPass;
     }
 
+    public void setLogName(String logName) {
+        this.logName = logName;
+    }
+
+    public String getLogName() {
+        return logName;
+    }
+
+    public void setLogPass(String logPass) {
+        this.logPass = logPass;
+    }
+
+    public String getLogPass() {
+        return logPass;
+    }
+    
     public void setNewPass(String newPass) {
         this.newPass = newPass;
     }
