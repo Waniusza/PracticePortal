@@ -1,5 +1,6 @@
 package com.gut.practice.service.login;
 
+import com.gut.practice.entity.user.PortalUser;
 import javax.security.auth.login.LoginContext;
 import javax.security.auth.login.LoginException;
 
@@ -19,7 +20,7 @@ public class AuthenticationTest {
 	String name = "user";
 	String password = "1234";
 		
-	User user = new User();
+	PortalUser user = new PortalUser();
 	user.setName(name);
 	user.setPassword(password);
 	try {
