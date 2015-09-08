@@ -9,22 +9,15 @@
 
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
+    <h:body  style="background: #50a1e5" >
+        <ui:include src="/templates/schema/navbar.xhtml" />
+        <ui:include src="/templates/schema/layout.xhtml" />
 
-    <ui:include src="/templates/schema/navbar.xhtml" />
-    <f:view contentType="text/html">
+        <div class="col col-md-10">
+            Welcome to PrimeFaces #{msg.start}
+        </div>
 
-
-        <p:layout fullPage="true">
-
-            <ui:include src="/templates/schema/layout.xhtml" />
-            <p:layoutUnit position="center">
-                Welcome to PrimeFaces #{msg.start}
-            </p:layoutUnit>
-        </p:layout>
-
-
-    </f:view>
-
-
+        <ui:include src="/templates/schema/footer.xhtml" />
+    </h:body>
 </html>
 

@@ -9,49 +9,46 @@
 
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
-    <h:body>
+    <h:body  style="background: #50a1e5" >
+
         <ui:include src="/templates/schema/navbar.xhtml" />
-        <f:view contentType="text/html">
 
-            <p:layout fullPage="true">
-                <ui:include src="/templates/schema/layout.xhtml" />
-                <p:layoutUnit position="center">
-                    <div class="container-fluid">
+        <ui:include src="/templates/schema/layout.xhtml" />
+        <div class="col col-md-10">
 
-                        <h2>Sing us up</h2>
-                        <div class="panel panel-default">
-                            <h:form class="col-md-12">
-                                <div class="panel-body">
-                                    <div class="form-group col-md-12" >
-                                        <div class="form-group col-md-12" >
-                                            <label class="col-md-2 control-label">Name:</label>
-                                            <p:inputText class="col-md-4" value="#{securityCtrl.newUser.name}"/>
-                                        </div>
-                                        <div class="form-group col-md-12" >
-                                            <label class="col-md-2 control-label">Password:</label>
-                                            <p:inputText class="col-md-4" value="#{securityCtrl.newUser.password}"/>
-                                        </div>
-                                        <div class="form-group col-md-12" >
-                                            <h:outputLabel class="col-md-2 control-label" for="txt3" value="Role:" />
-                                            <h:selectOneMenu id="txt3" value="#{securityCtrl.newPermission}" class="col-md-4" label="Role:" > 
-                                                <f:selectItems value="#{securityCtrl.availbleRoles}" />
-                                            </h:selectOneMenu>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-footer">
-                                    <div class="pull-right">
-                                        <p:commandButton  value="Sign up" icon="ui-icon-check" actionListener="#{securityCtrl.submitSignUp()}" ajax="false"/>
-                                    </div>
-                                    <div class="clearfix">
-                                    </div>
-                                </div>
-                            </h:form> 
+            <h2>Sing us up</h2>
+            <div>
+                <h:form class="col-md-12">
+                    <div class="panel-body">
+                        <div class="form-group col-md-12" >
+                            <div class="form-group col-md-12" >
+                                <label class="col-md-2 control-label">Name:</label>
+                                <p:inputText class="col-md-4" value="#{securityCtrl.newName}"/>
+                            </div>
+                            <div class="form-group col-md-12" >
+                                <label class="col-md-2 control-label">Password:</label>
+                                <p:inputText class="col-md-4" value="#{securityCtrl.newPass}"/>
+                            </div>
+                            <div class="form-group col-md-12" >
+                                <h:outputLabel class="col-md-2 control-label" for="txt3" value="Role:" />
+                                <h:selectOneMenu id="txt3" value="#{securityCtrl.newPermission}" class="col-md-4" label="Role:" > 
+                                    <f:selectItems value="#{securityCtrl.availbleRoles}" />
+                                </h:selectOneMenu>
+                            </div>
                         </div>
                     </div>
-                </p:layoutUnit>
-            </p:layout>
-        </f:view>
+                    <div class="panel-footer">
+                        <div class="pull-right">
+                            <p:commandButton  value="Sign up" icon="ui-icon-check" actionListener="#{securityCtrl.submitSignUp()}" ajax="false"/>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </h:form> 
+            </div>
+        </div>
+        <ui:include src="/templates/schema/footer.xhtml" />
+
     </h:body>
 </html>
 

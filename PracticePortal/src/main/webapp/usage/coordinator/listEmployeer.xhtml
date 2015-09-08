@@ -7,24 +7,20 @@
     <h:head>
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
-    <ui:include src="/templates/schema/navbar.xhtml" />
-    <f:view contentType="text/html">
-        <p:layout fullPage="true">
-            <ui:include src="/templates/schema/layout.xhtml" />
+    <h:body  style="background: #50a1e5" >
+        <ui:include src="/templates/schema/navbar.xhtml" />
+        <ui:include src="/templates/schema/layout.xhtml" />
 
-            <p:layoutUnit position="center">
-                <div class="container-fluid">
-                    
-                    <h2>#{msg.titles_listCompany}</h2>
-                    <div class="panel panel-default">
-                       
-                        <ui:include src="/templates/temp/listCompany.xhtml" />
+        
+        <div class="col col-md-10">
+            <h2>#{msg.titles_listCompany}</h2>
+            <div class="panel panel-default">
 
-                    </div>
-                </div>
-            </p:layoutUnit>
-        </p:layout>
-    </f:view>
+                <ui:include src="/templates/temp/listCompany.xhtml" />
 
+            </div>
+        </div>
 
+        <ui:include src="/templates/schema/footer.xhtml" />
+    </h:body>
 </html>

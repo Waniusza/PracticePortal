@@ -9,40 +9,36 @@
 
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
-    <h:body>
+    <h:body  style="background: #50a1e5" >
+
         <ui:include src="/templates/schema/navbar.xhtml" />
-        <f:view contentType="text/html">
 
-            <p:layout fullPage="true">
-                <ui:include src="/templates/schema/layout.xhtml" />
-                <p:layoutUnit position="center">
-                    <div class="container-fluid">
-                        <p:dataTable var="offer" value="#{jobOffersCtrl.offers}">
-                            <p:column headerText="Company Name">
-                                <h:outputText value="#{offer.company.companyName}" />
-                            </p:column>
+        <ui:include src="/templates/schema/layout.xhtml" />
 
-                            <p:column headerText="Main duty">
-                                <h:outputText value="#{offer.mainDuty}" />
-                            </p:column>
-                            <p:column headerText="Salary">
-                                <h:outputText value="#{offer.salaryMin} - #{offer.salaryMax}" />
-                            </p:column>
+        <div class="col col-md-10">
+            <p:dataTable var="offer" value="#{jobOffersCtrl.offers}">
+                <p:column headerText="Company Name">
+                    <h:outputText value="#{offer.company.companyName}" />
+                </p:column>
 
-                            <p:column headerText="Date to">
-                                <h:outputText value="#{offer.dateTo}" />
-                            </p:column>
+                <p:column headerText="Main duty">
+                    <h:outputText value="#{offer.mainDuty}" />
+                </p:column>
+                <p:column headerText="Salary">
+                    <h:outputText value="#{offer.salaryMin} - #{offer.salaryMax}" />
+                </p:column>
 
-                            <p:column headerText="Actions">
-                                <h:outputText value="" />
-                            </p:column>
-                        </p:dataTable>
-                    </div>
-                </p:layoutUnit>
-            </p:layout>
+                <p:column headerText="Date to">
+                    <h:outputText value="#{offer.dateTo}" />
+                </p:column>
 
+                <p:column headerText="Actions">
+                    <h:outputText value="" />
+                </p:column>
+            </p:dataTable>
+        </div>
 
-        </f:view>
+        <ui:include src="/templates/schema/footer.xhtml" />
 
     </h:body>
 </html>

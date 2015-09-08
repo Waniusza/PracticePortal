@@ -7,18 +7,18 @@
     <h:head>
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
-    <ui:include src="/templates/schema/navbar.xhtml" />
-    <f:view contentType="text/html">
-        <p:layout fullPage="true">
-            <ui:include src="/templates/schema/layout.xhtml" />
+    <h:body  style="background: #50a1e5" >
 
-            <p:layoutUnit position="center">
-                <div class="container-fluid">
-                   <div class="panel panel-default">
-                        <h2>#{msg.titles_addNews}</h2>
-                        <h:form class="col-md-12">
-                            <div class="panel-body">
-                         
+        <ui:include src="/templates/schema/navbar.xhtml" />
+
+        <ui:include src="/templates/schema/layout.xhtml" />
+
+        <div class="col col-md-10">
+            <div class="panel panel-default">
+                <h2>#{msg.titles_addNews}</h2>
+                <h:form class="col-md-12">
+                    <div class="panel-body">
+
                         <div class="form-group">
                             <p:outputLabel for="title" value="Tytuł:" class="col col-md-1"/>
                             <p:inputText id="title" value="#{practiceCtrl.info.title}" />
@@ -33,23 +33,20 @@
                             <label> Opis </label>
                             <p:inputTextarea value="#{practiceCtrl.info.description}" class="form-control"/>
                         </div>
-                     </div>
-                            <div class="panel-footer">
-                                <div class="pull-right">
-                                        <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{practiceCtrl.submit()}" ajax="false"/>
-                                </div>
-                                <div class="clearfix">
-                                </div>
-                            </div>
-                        </h:form> 
-
                     </div>
-                </div>
-            </p:layoutUnit>
-        </p:layout>
+                    <div class="panel-footer">
+                        <div class="pull-right">
+                            <p:commandButton  value="Add" icon="ui-icon-check" actionListener="#{practiceCtrl.submit()}" ajax="false"/>
+                        </div>
+                        <div class="clearfix">
+                        </div>
+                    </div>
+                </h:form> 
 
+            </div>
+        </div>
 
-    </f:view>
+        <ui:include src="/templates/schema/footer.xhtml" />
 
-
+    </h:body>
 </html>
