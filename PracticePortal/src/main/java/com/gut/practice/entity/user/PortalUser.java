@@ -18,6 +18,7 @@ import lombok.Setter;
 public class PortalUser extends BaseModel {
     private String name;
     private String password;
+    private boolean loged;
     //private LoginContext loginContext;
     
     private String firstName;
@@ -26,6 +27,7 @@ public class PortalUser extends BaseModel {
     private List<Permission> permissions;
     
     public PortalUser() {
+        loged = false;
     }
     
     public PortalUser setName(String name) {

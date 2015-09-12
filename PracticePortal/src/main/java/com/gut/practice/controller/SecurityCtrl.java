@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.security.auth.login.LoginContext;
 
 /**
  *
@@ -24,12 +23,12 @@ public class SecurityCtrl {
     @EJB
     PortalUserService userService;
     
-    LoginContext ctx = null;
     String logName = "";
     String logPass = "";
     String newName = "";
     String newPass = "";
     String newPermission = "";
+    PortalUser user = new PortalUser();
     List<String> availbleRoles = new ArrayList<>();
     
     public SecurityCtrl() {
@@ -49,15 +48,25 @@ public class SecurityCtrl {
     }    
     public void submitSignIn() {
         System.out.println("Loguje!" + logName + " :: " + logPass);
-        ctx = userService.sinIn(logName, logPass);
+        user = userService.sinIn(logName, logPass);
         logName = "";
         logPass = "";
     }
     
      public void submitSignOut() {
         System.out.println("Wylogowuje!" + logName + " :: " + logPass);
-        userService.sinOut(ctx);
+        userService.sinOut(user);
     }
+
+    public PortalUser getUser() {
+        return user;
+    }
+
+    public void setUser(PortalUser user) {
+        this.user = user;
+    }
+     
+    
 
     public String getNewName() {
         return newName;
@@ -82,8 +91,6 @@ public class SecurityCtrl {
         this.newPermission = newPermission;
     }
 
-    
-    
     public String getNewPass() {
         return newPass;
     }
