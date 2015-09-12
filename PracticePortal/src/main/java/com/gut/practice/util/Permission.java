@@ -5,12 +5,22 @@
  */
 package com.gut.practice.util;
 
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+
 /**
  *
  * @author janusz
  */
 public enum Permission {
     
-    STUDENT, EMPLOYEER, COORDINATOR
+    STUDENT, EMPLOYEER, COORDINATOR;
     
+    public List<String> permissionsToSignIn(){
+        List<String> result = new ArrayList<>();
+        EnumSet<Permission> set = EnumSet.of(Permission.STUDENT, Permission.EMPLOYEER);
+        set.forEach( (el) -> result.add(el.name()));
+        return result;
+    };
 }
