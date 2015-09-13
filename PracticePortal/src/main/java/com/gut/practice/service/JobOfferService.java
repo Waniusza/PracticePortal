@@ -83,6 +83,7 @@ public class JobOfferService extends BaseService<JobOffer> {
             System.out.printf("I got jobOffers: " + resultList.size());
             return resultList;
         } catch (Exception e) {
+            System.out.printf("Sorry, can't get all JobOffers " + e.toString());
             System.out.printf("Sorry, can't get all JobOffers ", e);
         };
         return new ArrayList<>();

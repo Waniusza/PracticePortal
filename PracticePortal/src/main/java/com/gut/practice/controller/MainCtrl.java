@@ -169,7 +169,7 @@ public class MainCtrl implements Serializable {
 
     @Deprecated
     private void initJobOffers() {
-        if (jobOfferService.getAll().isEmpty()) {
+//        if (jobOfferService.getAll().isEmpty()) {
             JobOffer jobOffer;
             for (int i = 1; i < 5; i++) {
                 jobOffer = new JobOffer();
@@ -178,7 +178,7 @@ public class MainCtrl implements Serializable {
                 jobOffer.setDateTo(new Date());
                 jobOfferService.add(jobOffer);
             }
-        }
+//        }
     }
 
     @Deprecated
