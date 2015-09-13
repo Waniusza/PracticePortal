@@ -5,7 +5,7 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-        <ui:repeat value="#{newsListCtrl.news}" var="new">
+        <ui:repeat value="#{listNewsCtrl.news}" var="new">
             <p:fieldset legend="#{new.title}" toggleable="true" toggleSpeed="500">
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:graphicImage name="#{new.urlPhoto}" alt="#{new.urlPhoto}" />

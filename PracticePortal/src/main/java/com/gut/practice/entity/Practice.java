@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -16,8 +16,8 @@ import lombok.ToString;
 
 @Entity
 @Getter
+@Setter
 @ToString
-@NoArgsConstructor
 
 public class Practice extends BaseModel {
     
@@ -34,32 +34,36 @@ public class Practice extends BaseModel {
 //    private Employer employer;
     private ConfirmationStatus confirmationStatus;
 
-    public Practice setConfirmationStatus(ConfirmationStatus confirmationStatus) {
+    public Practice() {
+    }
+
+    
+    public Practice setConfirmationStatusChain(ConfirmationStatus confirmationStatus) {
         this.confirmationStatus = confirmationStatus;
         return this;
     }
 
-    public Practice setDateFrom(Date dateFrom) {
+    public Practice setDateFromChain(Date dateFrom) {
         this.dateFrom = dateFrom;
         return this;
     }
 
-    public Practice setDateTo(Date dateTo) {
+    public Practice setDateToChain(Date dateTo) {
         this.dateTo = dateTo;
         return this;
     }
 
-    public Practice setDescription(String description) {
+    public Practice setDescriptionChain(String description) {
         this.description = description;
         return this;
     }
 
-    public Practice setHours(Integer hours) {
+    public Practice setHoursChain(Integer hours) {
         this.hours = hours;
         return this;
     }
 
-    public Practice setTitle(String title) {
+    public Practice setTitleChain(String title) {
         this.title = title;
         return this;
     }

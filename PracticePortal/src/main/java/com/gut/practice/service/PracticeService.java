@@ -27,10 +27,10 @@ public class PracticeService extends BaseService<Practice> {
 
     public Long add(Practice practice, boolean immediately, boolean endless) {
         if (immediately) {
-            practice.setDateFrom(new Date());
+            practice.setDateFromChain(new Date());
         }
         if (endless) {
-            practice.setDateTo(null);
+            practice.setDateToChain(null);
         }
         return add(practice);
     }
@@ -52,11 +52,11 @@ public class PracticeService extends BaseService<Practice> {
     public Boolean edit(Practice practice) {
         try {
             Practice model = em.find(Practice.class, practice.getId());
-            model.setDateFrom(practice.getDateFrom());
-            model.setDateTo(practice.getDateTo());
-            model.setHours(practice.getHours());
+            model.setDateFromChain(practice.getDateFrom());
+            model.setDateToChain(practice.getDateTo());
+            model.setHoursChain(practice.getHours());
 //            model.setEmployer(practice.getEmployer());
-            model.setConfirmationStatus(practice.getConfirmationStatus());
+            model.setConfirmationStatusChain(practice.getConfirmationStatus());
             return true;
         } catch (Exception e) {
             System.out.printf("Sorry, can't edit this Practice ", e);
@@ -121,7 +121,7 @@ public class PracticeService extends BaseService<Practice> {
         Practice model;
         try {
             model = em.find(Practice.class, id);
-            model.setConfirmationStatus(confirmationStatus);
+            model.setConfirmationStatusChain(confirmationStatus);
         } catch (Exception e) {
             System.out.printf("Sorry, can't get Practice with id: " + id + " and confirm status ", e);
         }

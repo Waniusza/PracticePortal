@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.controller;
+package com.gut.practice.controller.job;
 
 import com.gut.practice.entity.Company;
 import com.gut.practice.entity.JobOffer;

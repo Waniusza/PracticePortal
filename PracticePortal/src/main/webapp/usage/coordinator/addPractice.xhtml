@@ -14,25 +14,25 @@
         <ui:include src="/templates/schema/layout.xhtml" />
 
         <div class="col col-md-10">
+            <h2>#{msg.titles_addNews}</h2>
             <div class="panel panel-default">
-                <h2>#{msg.titles_addNews}</h2>
                 <h:form class="col-md-12">
                     <div class="panel-body">
 
-                        <div class="form-group">
+<!--                        <div class="form-group">
                             <p:outputLabel for="title" value="Tytuł:" class="col col-md-1"/>
-                            <p:inputText id="title" value="#{practiceCtrl.info.title}" />
+                            <p:inputText id="title" value="#{practiceCtrl.addPractice.title}" />
                         </div>
                         <div class="form-group">
                             <p:outputPanel id="test">
                                 <p:outputLabel for="dateFrom" value="Date to:" class="col col-md-1"/>
-                                <p:calendar id="dateFrom" value="#{practiceCtrl.info.dateFrom}" pattern="dd-MM-yyyy" mask="true" disabled="#{practiceCtrl.immediately}"/>
+                                <p:calendar id="dateFrom" value="#{practiceCtrl.addPractice.dateFrom}" pattern="dd-MM-yyyy" mask="true" disabled="#{practiceCtrl.immediately}"/>
                             </p:outputPanel>
                         </div>
                         <div class="form-group">
                             <label> Opis </label>
-                            <p:inputTextarea value="#{practiceCtrl.info.description}" class="form-control"/>
-                        </div>
+                            <p:inputTextarea value="#{practiceCtrl.addPractice.description}" class="form-control"/>
+                        </div>-->
                     </div>
                     <div class="panel-footer">
                         <div class="pull-right">

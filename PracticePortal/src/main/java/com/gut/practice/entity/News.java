@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -20,6 +21,7 @@ import lombok.ToString;
  */
 @Entity
 @Getter
+@Setter
 @ToString
 
 public class News extends BaseModel {
@@ -38,39 +40,33 @@ public class News extends BaseModel {
     }
 
     
-    public News setAuthor(PortalUser author) {
+    public News setAuthorChain(PortalUser author) {
         this.author = author;
         return this;
     }
 
-    public News setDescription(String description) {
+    public News setDescriptionChain(String description) {
         this.description = description;
         return this;
     }
 
-    public News setTitle(String title) {
+    public News setTitleChain(String title) {
         this.title = title;
         return this;
     }
 
-    public News setUrlPhoto(String urlPhoto) {
+    public News setUrlPhotoChain(String urlPhoto) {
         this.urlPhoto = urlPhoto;
         return this;
     }
 
-    public News setDateTo(Date dateTo) {
+    public News setDateToChain(Date dateTo) {
         this.dateTo = dateTo;
         return this;
     }
 
-    public News setDateFrom(Date dateFrom) {
+    public News setDateFromChain(Date dateFrom) {
         this.dateFrom = dateFrom;
         return this;
     }
-
-    
-    
-    
-    
-
 }

@@ -4,31 +4,23 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-
     <h:head>
         <ui:include src="/templates/schema/header.xhtml" />
     </h:head>
-
     <h:body  style="background: #50a1e5" >
-
         <ui:include src="/templates/schema/navbar.xhtml" />
-
         <ui:include src="/templates/schema/layout.xhtml" />
 
+        
         <div class="col col-md-10">
-            <h:form>
-                <ui:repeat value="#{listNewsCtrl.news}" var="new">
-                    <p:fieldset legend="#{new.title}" toggleable="true" toggleSpeed="500">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <p:graphicImage name="#{new.urlPhoto}" alt="#{new.urlPhoto}" />
-                            <h:outputText value="#{new.description}"></h:outputText>
-                            <h:outputText value="#{new.dateCreate}"></h:outputText>
-                        </h:panelGrid>
-                    </p:fieldset>
-                </ui:repeat>
-            </h:form> 
+            <h2>#{msg.titles_listNews}</h2>
+            <div class="panel panel-default">
+
+                <ui:include src="/templates/temp/listNews.xhtml" />
+
+            </div>
         </div>
+
         <ui:include src="/templates/schema/footer.xhtml" />
     </h:body>
 </html>
-

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.controller;
+package com.gut.practice.controller.job;
 
 import com.gut.practice.entity.Practice;
 import com.gut.practice.service.PracticeService;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -17,7 +18,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class PracticeCtrl {
+public class PracticeCtrl implements Serializable{
   
     // TODO :Implement view - 
     @EJB
@@ -27,6 +28,17 @@ public class PracticeCtrl {
     
     boolean immediately = true;
     boolean endless = false;
+
+    public void submit(){
+        System.out.println("SUBMITUJE");
+    }
+    public Practice getAddPractice() {
+        return addPractice;
+    }
+
+    public void setAddPractice(Practice addPractice) {
+        this.addPractice = addPractice;
+    }
  
     
     public boolean getImmediately() {

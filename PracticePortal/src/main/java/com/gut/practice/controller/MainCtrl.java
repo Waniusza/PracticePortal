@@ -157,12 +157,12 @@ public class MainCtrl implements Serializable {
             Practice practice;
             for (int i = 1; i < 5; i++) {
                 practice = new Practice();
-                practice.setTitle("Praktyka nr. " + i);
-                practice.setDescription("To jest opis dla praktyki nr" + i);
-                practice.setConfirmationStatus(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
-                practice.setHours(i * 55 % 80);
+                practice.setTitleChain("Praktyka nr. " + i);
+                practice.setDescriptionChain("To jest opis dla praktyki nr" + i);
+                practice.setConfirmationStatusChain(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
+                practice.setHoursChain(i * 55 % 80);
                 practiceService.add(practice);
-                practice.setDescription("Added practice" + practice.getTitle());
+                practice.setDescriptionChain("Added practice" + practice.getTitle());
             }
         }
     }

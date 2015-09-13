@@ -23,30 +23,29 @@
     <div class="col col-md-2">
         <div  style="background: #50a1e5">
             <p:accordionPanel style="background: #50a1e5">
-                <p:tab title="Student">
+                <p:tab title="#{msg.sidebar_student}">
                     <ul class="side_menu">
-                        <li><a href="#">My practices</a></li>
-                        <li><a href="#">My applications</a></li>                
+                        <li><a href="#">My practices</a></li>            
                     </ul>
                 </p:tab>
-                <p:tab title="Coordinator">
+                <p:tab title="#{msg.sidebar_coordinator}">
                     <ul class="side_menu">
-                        <li><a href="/PracticePortal/faces/usage/coordinator/addNews.xhtml">Add News</a></li>
-                        <li><a href="/PracticePortal/faces/usage/coordinator/manageNews.xhtml">Manage News</a></li>
+                        <li><a href="/PracticePortal/faces/usage/coordinator/addNews.xhtml">Dodaj wiadomość</a></li>
+                        <li><a href="/PracticePortal/faces/usage/coordinator/listNews.xhtml">Zarządzaj wiadomościami</a></li>  
                         <li><a href="/PracticePortal/faces/usage/coordinator/addPractice.xhtml">Add practice</a></li>
-                        <li><a href="/PracticePortal/faces/usage/coordinator/addEmployeer.xhtml">Add employer</a></li>
-                        <li><a href="/PracticePortal/faces/usage/coordinator/listEmployeer.xhtml">Manage employers</a></li>
-                        <li><a href="#">My applications</a></li>                
+                        <!--<li><a href="/PracticePortal/faces/usage/coordinator/addPractice.xhtml">Dodaj ofertę praktyki</a></li>-->
+                        <li><a href="/PracticePortal/faces/usage/coordinator/addEmployeer.xhtml">Dodaj pracodawcę</a></li>
+                        <li><a href="/PracticePortal/faces/usage/coordinator/listEmployeer.xhtml">Zarządzaj pracodawcami</a></li>
                     </ul>
                 </p:tab>
-                <p:tab title="Manage">
+                <p:tab title="#{msg.sidebar_manage}">
                     <ul class="side_menu">
                         <li><a  href="#">Manage confirmation</a></li>
                         <li><a  href="#">Manage parameters</a></li>
                         <li><a  href="#">Manage consultations</a></li>             
                     </ul>
                 </p:tab>
-                <p:tab title="Employeer">
+                <p:tab title="#{msg.sidebar_employeer}">
                     <ul class="side_menu">
                         <li><a href="/PracticePortal/faces/user/addView.xhtml">My Employeers</a></li>
                         <li><a href="/PracticePortal/faces/user/listView.xhtml">Manage practices</a></li>

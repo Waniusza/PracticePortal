@@ -6,21 +6,20 @@
       xmlns:p="http://primefaces.org/ui">
 
     <p:dataTable var="company" value="#{listCompanyCtrl.companies}">
-        <p:column headerText="Company name">
+        <p:column headerText="Nazwa firmy">
             <h:outputText value="#{company.companyName}" />
         </p:column>
-        <p:column headerText="HR">
+        <p:column headerText="Pracownik HR">
             <h:outputText value="#{company.HRfirstName}  #{company.HRlastName}" />
         </p:column>
-        <p:column headerText="E-mail">
+        <p:column headerText="E-mail HR">
             <h:outputText value="#{company.HRemail}" />
         </p:column>
-        <p:column headerText="Phone">
+        <p:column headerText="Telefon HR">
             <h:outputText value="#{company.HRphone}" />
         </p:column>
-        <p:column headerText="Options">
+        <p:column headerText="Opcje">
         </p:column>
-
     </p:dataTable>
 
 </html>
