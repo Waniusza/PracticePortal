@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.entity;
+package com.gut.practice.structs;
 
-import javax.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
@@ -15,11 +14,10 @@ import lombok.ToString;
  * @author janusz
  */
 
-@Entity
 @Getter
 @ToString
 @AllArgsConstructor
-public class Faq extends BaseModel{
+public class Faq {
     private String question;
     private String answer;
     
