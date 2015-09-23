@@ -5,7 +5,6 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.entity.Faq;
 import com.gut.practice.entity.JobOffer;
 import com.gut.practice.entity.News;
 import com.gut.practice.entity.Practice;
@@ -25,15 +24,20 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
  * @author janusz
  */
+@Stateful
 @ManagedBean
 public class MainCtrl implements Serializable {
-
+    private static final Logger log = LogManager.getLogger(MainCtrl.class);
+    
     @EJB
     NewsService newsService;
     @EJB
@@ -57,7 +61,7 @@ public class MainCtrl implements Serializable {
     private String newSubscribe = "";
 
     public MainCtrl() {
-        System.out.println("[MainCtrl] init");
+       log.debug("[MainCtrl] init");
     }
 
     @PostConstruct
@@ -65,7 +69,6 @@ public class MainCtrl implements Serializable {
         initNews();
         initRoles();
         initOptions();
-        initFaq();
         initPractice();
         initJobOffers();
         initUsers();
@@ -101,7 +104,7 @@ public class MainCtrl implements Serializable {
     }
 
     public void addNewSubscriber() {
-        System.out.println("[MainCtrl] addNewSubscribe - newSubscribe " + newSubscribe);
+        log.debug("[MainCtrl] addNewSubscribe - newSubscribe " + newSubscribe);
         subscribeService.add(newSubscribe);
     }
 
@@ -139,19 +142,6 @@ public class MainCtrl implements Serializable {
     }
 
     @Deprecated
-    private void initFaq() {
-        if (faqService.getAll().isEmpty()) {
-            Faq question = new Faq();
-            for (int i = 1; i < 5; i++) {
-                question = new Faq();
-                question.setQuestion("QUESTION " + i);
-                question.setAnswer("ANSWER " + i);
-                faqService.add(question);
-            }
-        }
-    }
-
-    @Deprecated
     private void initPractice() {
         if (practiceService.getAll().isEmpty()) {
             Practice practice;
@@ -183,9 +173,9 @@ public class MainCtrl implements Serializable {
 
     @Deprecated
     private void initUsers() {
-        System.out.println("[MainCtrl] initUsers");
+        log.debug("[MainCtrl] initUsers");
         if (userService.getAll().isEmpty()) {
-            System.out.println("[MainCtrl] initUsers EMPTY");
+            log.debug("[MainCtrl] initUsers EMPTY");
             List<Permission> permStud = new ArrayList<>();
             permStud.add(Permission.STUDENT);
             List<Permission> permCord = new ArrayList<>();

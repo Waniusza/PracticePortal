@@ -16,7 +16,8 @@ import javax.ejb.Stateless;
  * @author kongo
  */
 @Stateless
-public class StudentService extends PortalUserService {
+@Deprecated
+public class StudentService  {
     private static String INPUTFILE = "src/main/resources/PracticesCard.pdf";
     private static String OUTPUTFILE = "src/main/resources/OutPut.pdf";
     private static int gapLeft = 1;

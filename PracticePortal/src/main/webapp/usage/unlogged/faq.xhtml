@@ -14,20 +14,8 @@
         <ui:include src="/templates/schema/navbar.xhtml" />
 
         <ui:include src="/templates/schema/layout.xhtml" />
-        <div class="col col-md-10">
-            <h:form>
-                <ui:repeat value="#{faqListCtrl.questions}" var="faq">
-
-                    <p:fieldset legend="#{faq.question}" toggleable="true"    toggleSpeed="500" collapsed="true">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="#{faq.answer}"></h:outputText>
-                        </h:panelGrid>
-                    </p:fieldset>
-
-                </ui:repeat>
-
-            </h:form> 
-        </div>
+      <h:outputText value="#{faqListCtrl.questions}"></h:outputText>
+       
         <ui:include src="/templates/schema/footer.xhtml" />
     </h:body>
 </html>

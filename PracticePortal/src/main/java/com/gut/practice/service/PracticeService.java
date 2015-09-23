@@ -8,11 +8,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -22,8 +22,8 @@ import javax.persistence.criteria.Root;
 @SessionScoped
 public class PracticeService extends BaseService<Practice> {
 
-    @PersistenceContext
-    protected EntityManager em;
+    
+    private final static Logger log = LogManager.getLogger(PracticeService.class);
 
     public Long add(Practice practice, boolean immediately, boolean endless) {
         if (immediately) {
@@ -41,9 +41,9 @@ public class PracticeService extends BaseService<Practice> {
 
             em.persist(practice);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, Practice exist in DataBase! ", e);
+            log.warn("Sorry, Practice exist in DataBase! ", e);
         } catch (Exception e) {
-            System.out.printf("Sorry, can't add tihs Practice ", e);
+            log.warn("Sorry, can't add tihs Practice ", e);
         }
         return practice.getId();
     }
@@ -59,7 +59,7 @@ public class PracticeService extends BaseService<Practice> {
             model.setConfirmationStatusChain(practice.getConfirmationStatus());
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't edit this Practice ", e);
+            log.warn("Sorry, can't edit this Practice ", e);
         };
         return false;
     }
@@ -71,7 +71,7 @@ public class PracticeService extends BaseService<Practice> {
             model = em.find(Practice.class, id);
         } catch (Exception e) {
             model = new Practice();
-            System.out.printf("Sorry, can't get Practice with id: " + id, e);
+            log.warn("Sorry, can't get Practice with id: " + id, e);
         }
 
         return model;
@@ -79,19 +79,17 @@ public class PracticeService extends BaseService<Practice> {
 
     @Override
     public List<Practice> getAll() {
-        try {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Practice> cq = cb.createQuery(Practice.class);
             Root<Practice> root = cq.from(Practice.class);
 
+        try {
             return em.createQuery(cq.select(root)).getResultList();
 
         } catch (Exception e) {
-
-            System.out.printf("Sorry, can't get all Practices ", e);
-
+            log.warn("Sorry, can't get all Practices ", e);
         };
-        return new ArrayList<Practice>();
+        return new ArrayList<>();
     }
 
     @Override
@@ -101,18 +99,18 @@ public class PracticeService extends BaseService<Practice> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this Practice ", e);
+            log.warn("Sorry, can't remove this Practice ", e);
         }
         return false;
     }
 
     public List<Practice> getAllByDate(Date dateFrom, Date dateTo) {
-        List<Practice> pratices = new ArrayList<Practice>();
-        for (Practice practice : getAll()) {
+        List<Practice> pratices = new ArrayList<>();
+        getAll().forEach(practice -> {
             if (!practice.getDateFrom().before(dateFrom) || !practice.getDateTo().after(dateTo)) {
                 pratices.add(practice);
             }
-        }
+        });
 
         return pratices;
     }
@@ -123,7 +121,7 @@ public class PracticeService extends BaseService<Practice> {
             model = em.find(Practice.class, id);
             model.setConfirmationStatusChain(confirmationStatus);
         } catch (Exception e) {
-            System.out.printf("Sorry, can't get Practice with id: " + id + " and confirm status ", e);
+            log.warn("Sorry, can't get Practice with id: " + id + " and confirm status ", e);
         }
     }
 }

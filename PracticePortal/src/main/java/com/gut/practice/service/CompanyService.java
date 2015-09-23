@@ -10,6 +10,8 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -19,17 +21,20 @@ import javax.persistence.criteria.Root;
 @SessionScoped
 public class CompanyService extends BaseService<Company> {
 
+    
+    private static final Logger log = LogManager.getLogger(CompanyService.class);
+    
     @Override
     public Long add(Company oneNew) {
         try {
             oneNew.setDateCreate(new Date());
 //            oneNew.setAuthor(new PortalUser());
             em.persist(oneNew);
-            System.out.printf("Successed added this Company: " + oneNew);
+            log.debug("Successed added this Company: " + oneNew);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, Opinion exist in DataBase! " + e.toString());
+            log.warn("Sorry, Opinion exist in DataBase! " + e.toString());
         } catch (Exception e) {
-            System.err.printf("Sorry, can't add this Company " + e.toString());
+            log.warn("Sorry, can't add this Company " + e.toString());
         }
         return oneNew.getId();
     }
@@ -38,17 +43,16 @@ public class CompanyService extends BaseService<Company> {
     public Boolean edit(Company oneCompany) {
         try {
             Company model = em.find(Company.class, oneCompany.getId());
-            model.setAdress(oneCompany.getAdress());
-            model.setAssignation(oneCompany.getAssignation());
-            model.setCompanyName(oneCompany.getCompanyName());
-            model.setHRemail(oneCompany.getHRemail());
-            model.setHRfirstName(oneCompany.getHRfirstName());
-            model.setHRlastName(oneCompany.getHRlastName());
-            model.setHRphone(oneCompany.getHRphone());
+            model.setAssignation(oneCompany.getAssignation())
+                    .setCompanyName(oneCompany.getCompanyName())
+                    .setHRemail(oneCompany.getHRemail())
+                    .setHRfirstName(oneCompany.getHRfirstName())
+                    .setHRlastName(oneCompany.getHRlastName())
+                    .setHRphone(oneCompany.getHRphone());
             em.merge(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't edit this Company ", e);
+            log.warn("Sorry, can't edit this Company ", e);
         };
         return false;
     }
@@ -62,24 +66,24 @@ public class CompanyService extends BaseService<Company> {
             model = em.find(Company.class, id);
         } catch (Exception e) {
             model = new Company();
-            System.out.printf("Sorry, can't get Company with id: " + id, e);
+            log.warn("Sorry, can't get Company with id: " + id, e);
         }
         return model;
     }
 
     @Override
     public List<Company> getAll() {
-        System.out.printf("CompanyService: getAll");
+        log.debug("CompanyService: getAll");
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Company> cq = cb.createQuery(Company.class);
         Root<Company> root = cq.from(Company.class);
 
         try {
             final List<Company> result = em.createQuery(cq.select(root)).getResultList();
-            System.out.printf("Znaleziono wyników: " + result.size());
+            log.debug("Znaleziono wyników: " + result.size());
             return result;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't get all Company " + e);
+            log.warn("Sorry, can't get all Company " + e);
         }
         return new ArrayList<Company>();
     }
@@ -91,7 +95,7 @@ public class CompanyService extends BaseService<Company> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this New ", e);
+            log.warn("Sorry, can't remove this New ", e);
         }
         return false;
     }

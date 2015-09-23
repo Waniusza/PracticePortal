@@ -9,6 +9,8 @@ import com.gut.practice.entity.News;
 import com.gut.practice.service.NewsService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -16,18 +18,19 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class NewsCtrl {
+    private static final Logger log = LogManager.getLogger(NewsCtrl.class);
     
     @EJB
     private NewsService newsService;
     private News addNew = new News();
     
     public NewsCtrl() {
-        System.out.println("[NewsCtrl] init");
+        log.debug("[NewsCtrl] init");
     }
      
    
     public void submit()  {
-        System.out.println("SUBMITUJE : " + addNew.toString() + "!");
+        log.debug("SUBMITUJE : " + addNew.toString() + "!");
         newsService.add(addNew);
         addNew = new News();
     };

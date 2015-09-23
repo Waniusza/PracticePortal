@@ -26,6 +26,12 @@ public class AddCompanyCtrl {
     private String HRemail;
     private String HRphone;
     
+    private String city;
+    private String postcode;
+    private String street;
+    private int homeNumber;
+    private int apartmentNumber;
+    
     public AddCompanyCtrl() {
         System.out.println("[AddCompanyCtrl] init");
     }
@@ -36,7 +42,12 @@ public class AddCompanyCtrl {
                 .setHRemail(HRemail)
                 .setHRfirstName(HRfirstName)
                 .setHRlastName(HRlastName)
-                .setHRphone(HRphone);
+                .setHRphone(HRphone)
+                .setApartmentNumber(apartmentNumber)
+                .setCity(city)
+                .setHomeNumber(homeNumber)
+                .setPostcode(postcode)
+                .setStreet(street);
         
         System.out.println("SUBMITUJE : " + companyName + "!");
         companyService.add(newCompany);
@@ -80,6 +91,46 @@ public class AddCompanyCtrl {
 
     public void setHRphone(String HRphone) {
         this.HRphone = HRphone;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setHomeNumber(int homeNumber) {
+        this.homeNumber = homeNumber;
+    }
+
+    public int getHomeNumber() {
+        return homeNumber;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setApartmentNumber(int apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+    }
+
+    public int getApartmentNumber() {
+        return apartmentNumber;
     }
 
     

@@ -10,6 +10,8 @@ import javax.persistence.EntityExistsException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -19,17 +21,20 @@ import javax.persistence.criteria.Root;
 @Stateless
 @SessionScoped
 public class NewsService extends BaseService<News> {
+    
+    private final static Logger log = LogManager.getLogger(NewsService.class.getName());
+    
     @Override
     public Long add(News oneNew) {
         try {
             oneNew.setDateFrom(new Date());
 //            oneNew.setAuthor(new PortalUser());
             em.persist(oneNew);
-            System.out.printf("Successed added this News: " + oneNew);
+            log.debug("Successed added this News: " + oneNew);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, Opinion exist in DataBase! " + e.toString());
+            log.warn("Sorry, Opinion exist in DataBase! " + e.toString());
         } catch (Exception e) {
-            System.err.printf("Sorry, can't add this News " + e.toString());
+            log.warn("Sorry, can't add this News " + e.toString());
         }
         return oneNew.getId();
     }
@@ -45,7 +50,7 @@ public class NewsService extends BaseService<News> {
             em.merge(model);
             return true; 
         } catch (Exception e) { 
-            System.out.printf("Sorry, can't edit this News ", e); 
+            log.warn("Sorry, can't edit this News ", e); 
         }; 
         return false; 
     };
@@ -57,7 +62,7 @@ public class NewsService extends BaseService<News> {
             model = em.find(News.class, id);
         } catch (Exception e) {
             model = new News();
-            System.out.printf("Sorry, can't get News with id: " + id, e);
+            log.warn("Sorry, can't get News with id: " + id, e);
         }
         return model;
     }
@@ -69,10 +74,10 @@ public class NewsService extends BaseService<News> {
            CriteriaQuery <News> cq = cb.createQuery(News.class);
            Root<News> root = cq.from(News.class);
            final List<News> result = em.createQuery(cq.select(root)).getResultList();
-           System.out.printf("Znaleziono wyników: " + result.size());
+           log.debug("Znaleziono wyników: " + result.size());
            return result;
        } catch (Exception e) {
-           System.out.printf("Sorry, can't get all News " + e);
+           log.warn("Sorry, can't get all News " + e);
        }
        return new ArrayList<News>();
     }   
@@ -84,7 +89,7 @@ public class NewsService extends BaseService<News> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this New ", e);
+            log.warn("Sorry, can't remove this New ", e);
         }
         return false;
     }

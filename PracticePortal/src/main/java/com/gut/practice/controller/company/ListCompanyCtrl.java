@@ -11,6 +11,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -18,6 +20,7 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class ListCompanyCtrl {
+    private static final Logger log = LogManager.getLogger(ListCompanyCtrl.class);
 
     @EJB
     private CompanyService companyService;
@@ -25,7 +28,7 @@ public class ListCompanyCtrl {
     private List<Company> companies;
 
     public ListCompanyCtrl() {
-        System.out.println("[ListCompanyCtrl] init");
+        log.debug("[ListCompanyCtrl] init");
     }
 
     @PostConstruct
@@ -35,7 +38,7 @@ public class ListCompanyCtrl {
     }
 
     private void _getData() {
-        System.out.println("[ListCompanyCtrl] _getData");
+        log.debug("[ListCompanyCtrl] _getData");
         companies = companyService.getAll();
     }
 

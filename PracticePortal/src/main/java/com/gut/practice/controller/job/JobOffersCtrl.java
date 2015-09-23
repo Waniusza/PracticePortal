@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -19,6 +21,7 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class JobOffersCtrl {
+    private static final Logger log = LogManager.getLogger(JobOffersCtrl.class);
 
     @EJB
     JobOfferService jobOfferService;

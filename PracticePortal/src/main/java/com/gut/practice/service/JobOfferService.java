@@ -4,15 +4,14 @@ import com.gut.practice.entity.JobOffer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -22,9 +21,7 @@ import javax.persistence.criteria.Root;
 @SessionScoped
 public class JobOfferService extends BaseService<JobOffer> {
 
-    @PersistenceContext
-    protected EntityManager em;
-    private final static Logger log = Logger.getLogger(JobOfferService.class.getName());
+    private final static Logger log = LogManager.getLogger(JobOfferService.class.getName());
 
     @Override
     public Long add(JobOffer practice) {
@@ -32,11 +29,12 @@ public class JobOfferService extends BaseService<JobOffer> {
             
             practice.setDateCreate(new Date());
             em.persist(practice);
-            System.out.printf("Successed added this JobOffer: " + practice);
+            log.debug("Successed added this JobOffer.");
+            log.debug("Successed added this JobOffer: " + practice);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, JobOffer exist in DataBase! ", e);
+            log.warn("Sorry, JobOffer exist in DataBase! ", e);
         } catch (Exception e) {
-            System.out.printf("Sorry, can't add this JobOffer ", e);
+            log.warn("Sorry, can't add this JobOffer ", e);
         }
         return practice.getId();
     }
@@ -54,7 +52,7 @@ public class JobOfferService extends BaseService<JobOffer> {
             em.flush();
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't edit this JobOffer ", e);
+            log.warn("Sorry, can't edit this JobOffer ", e);
         };
         return false;
     }
@@ -66,7 +64,7 @@ public class JobOfferService extends BaseService<JobOffer> {
             model = em.find(JobOffer.class, id);
         } catch (Exception e) {
             model = new JobOffer();
-            System.out.printf("Sorry, can't get JobOffer with id: " + id, e);
+            log.warn("Sorry, can't get JobOffer with id: " + id, e);
         }
 
         return model;
@@ -80,10 +78,10 @@ public class JobOfferService extends BaseService<JobOffer> {
 
         try {
             List<JobOffer> resultList = em.createQuery(cq.select(root)).getResultList();
-            System.out.printf("I got jobOffers: " + resultList.size());
+            log.debug("I got jobOffers: " + resultList.size());
             return resultList;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't get all JobOffers ", e);
+            log.warn("Sorry, can't get all JobOffers ", e);
         };
         return new ArrayList<>();
     }
@@ -95,7 +93,7 @@ public class JobOfferService extends BaseService<JobOffer> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this JobOffer ", e);
+            log.warn("Sorry, can't remove this JobOffer ", e);
         }
         return false;
     }

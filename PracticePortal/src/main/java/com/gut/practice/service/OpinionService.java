@@ -6,11 +6,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -21,18 +21,16 @@ import javax.persistence.criteria.Root;
 @SessionScoped
 public class OpinionService extends BaseService<Opinion> {
     
-     @PersistenceContext
-    protected EntityManager em;
-    
+    private final static Logger log = LogManager.getLogger(OpinionService.class);
      
     @Override
     public Long add(Opinion opinion) {
         try {
             em.persist(opinion);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, Opinion exist in DataBase! ", e);
+            log.warn("Sorry, Opinion exist in DataBase! ", e);
         } catch (Exception e) {
-            System.out.printf("Sorry, can't add tihs Opinion ", e);
+            log.warn("Sorry, can't add tihs Opinion ", e);
         }
         return opinion.getId();
     }
@@ -48,7 +46,7 @@ public class OpinionService extends BaseService<Opinion> {
             em.merge(model);
             return true; } 
         catch (Exception e) { 
-            System.out.printf("Sorry, can't edit this Opinion ", e); 
+            log.warn("Sorry, can't edit this Opinion ", e); 
         }; 
         return false; 
     };
@@ -60,7 +58,7 @@ public class OpinionService extends BaseService<Opinion> {
             model = em.find(Opinion.class, id);
         } catch (Exception e) {
             model = new Opinion();
-            System.out.printf("Sorry, can't get Opinion with id: " + id, e);
+            log.warn("Sorry, can't get Opinion with id: " + id, e);
         }
         
         return model;
@@ -77,7 +75,7 @@ public class OpinionService extends BaseService<Opinion> {
          
        } catch (Exception e) {
            
-           System.out.printf("Sorry, can't get all Opinions " , e);
+           log.warn("Sorry, can't get all Opinions " , e);
            
        }
        return new ArrayList<Opinion>();
@@ -90,7 +88,7 @@ public class OpinionService extends BaseService<Opinion> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this Opinion ", e);
+            log.warn("Sorry, can't remove this Opinion ", e);
         }
         return false;
     }

@@ -1,0 +1,48 @@
+[
+    {
+        "question": "Czy moja praktyka może wynieść więcej niż 160h?",
+        "answer": "Tak, jednak w tym przypadku należy złożyć podanie do Dziekana ds. kształcenia z prośbą o pokrycie dodatkowo ubezpieczenia od NNW."
+    }, {
+        "question": "Jestem zamiejscowy, czy mogę ubiegać się o akademik w czasie trwania praktyk?",
+        "answer": "Tak, podanie o akademik należy złożyć w dziekanacie z prośbą o preferencyjne finansowanie i przydział odpowiedniego DS. Więcej informacji w dziekanacie."
+    }, {
+        "question": "Kiedy należy złożyć umowę o praktykę?",
+        "answer": "Najpóźniej na 2 tyg. przed jej rozpoczęciem, w praktyce jak już ktoś wie, gdzie będzie odbywał praktyki to proszę nie zwlekać. Proszę wziąć pod uwagę okres urlopowy i absencję dziekana."
+    }, {
+        "question": "Czy mogę odbyć praktykę w innym mieście?",
+        "answer": "Tak. Ubezpieczenie pozostaje bez zmian (nie dotyczy praktyk zagranicznych)."
+    }, {
+        "question": "W wakacje chcę odpocząć, czy mogę odbyć praktykę w semestrze zimowym?",
+        "answer": "Teoretycznie tak, ale należy być pewnym decyzji i uzgodnić z pracodawcą warunki oraz złożyć stosowne podanie do Dziekana ds. kształcenia jeszcze w lecie. Generalnie semestr zimowy jest b. intensywny i trudno pogodzić obowiązki wobec praktykodawcy i uczelni. Są to bardzo rzadkie przypadki..."
+    }, {
+        "question": "Jestem już na stażu w firmie, posiadam umowę o pracę/zlecenie/dzieło. Czy mogę taką pracę wakacyjną zaliczyć jako praktykę?",
+        "answer": "Tak, ale po uzgodnieniu szczegółów z koordynatorką (Panią Martą Łabuda)."
+    }, {
+        "question": "Jestem już na stażu w firmie, posiadam umowę o pracę/zlecenie/dzieło. Jakie dokumenty są potrzebne do zaliczenia praktyki?",
+        "answer": "Umowa z pracodawcą, podanie do koordynatora z prośbą o uznanie praktyk na podstawie ww. umowy. Kartę odbycia  praktyki z wypełnionymi zadaniami na rzecz  praco/praktykodawcy. Nie jest potrzebna umowa z  PG, gdyż zwykle pracodawca ubezpiecza pracownika. W takim przypadku kontaktować się proszę bezpośrednio z koordynatorką praktyk."
+    }, {
+        "question": "Chcę wyjechać na praktykę za granicę. Mam już praktykę. Co muszę zrobić?",
+        "answer": "Należy napisać podanie do Dziekana ds. kształcenia z danymi praktyk itp. Nie trzeba w tym wypadku podpisywać umowy z PG, gdyż ubezpieczenie jest ważne tylko w Polsce. \nW sprawach innych kontaktować się proszę bezpośrednio z koordynatorką praktyk (Panią Martą Łabuda)."
+    }, {
+        "question": "Wiem, że będę musiał powtórzyć rok i na pewno nie będę bronił pracy inżynierskiej w przyszłym roku. Czy mogę odłożyć praktykę na następny rok?",
+        "answer": "Należy napisać podanie do Dziekana ds. kształcenia o taką zgodę. Dotyczy to bardzo nielicznych przypadków."
+    }, {
+        "question": "Już wcześniej pracowałem/miałem praktyki przed lub podczas studiów na wcześniejszych semestrach. Czy mogę się ubiegać o zaliczenie tego czasu na poczet praktyk?",
+        "answer": "To zależy. Należy się skontaktować bezpośrednio z koordynatorką praktyk. (Panią Martą Łabuda). \nUwaga: jeśli taka praca jest dobrze udokumentowana  w postaci umowy, a były praktykodawca wyrazi wolę uzupełnienia innej dokumentacji, zwyczajowo nie  owinno być z tym problemu."
+    }, {
+        "question": "Chcę odbyć praktyki w różnych okresach i u różnych pracodawców. Czy taka opcja jest możliwa?",
+        "answer": "Tak, należy jednak podpisać dwie umowy, zrobić sprawozdanie z każdego okresu (kartę praktyki) i dopilnować odpowiednich terminów."
+    }, {
+        "question": "Chciałbym odbyć praktykę u pracodawcy odbiegającym profilem specjalistycznym od mojego kierunku studiów. Czy taka opcja jest możliwa?",
+        "answer": "Jest możliwa, aczkolwiek należy starać się nabywać różne kompetencje. Należy także w karcie praktyk wyróżnić szczególnie czynności mniej więcej zgodne z profilem studiów.  \n Nie będę robiła problemu z zaliczeniem takich  praktyk, ale nie mogą być to wypadki skrajne. \n Sytuację należy skonsultować z koordynatorką."
+    }, {
+        "question": "Kto „zalicza” praktyki? Na jakiej podstawie?",
+        "answer": "Koordynator, kiedy wszystkie wymogi formalne zgodnie z regulaminem praktyk zostaną wypełnione przez studenta."
+    }, {
+        "question": "Do kogo mam się zgłosić jeśli nie znalazłem odpowiedzi na swój problem?",
+        "answer": "Do koordynatora praktyk (kontakt e-mailowy)"
+    }, {
+        "question": "Jeśli mój koordynator jest nieobecny?",
+        "answer": "Do dziekanatu lub sekretariatu wydziału FTiMS. (osobiście lub kontakt mailowy)"
+    }
+]

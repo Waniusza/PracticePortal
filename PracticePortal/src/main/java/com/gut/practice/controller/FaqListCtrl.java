@@ -5,12 +5,12 @@
  */
 package com.gut.practice.controller;
 
-import com.gut.practice.entity.Faq;
 import com.gut.practice.service.FaqService;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONArray;
 
 /**
  *
@@ -18,23 +18,24 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class FaqListCtrl {
-
+    private static final Logger log = LogManager.getLogger(FaqListCtrl.class);
+    
     @EJB
     FaqService faqService;
     
-    private List<Faq> questions = new ArrayList<>();
+    private JSONArray questions = new JSONArray();
 
     public FaqListCtrl() {
-        System.out.println("[FaqListCtrl] init");
+        log.debug("[FaqListCtrl] init");
     }
 
-    public List<Faq> getQuestions() {
-        setQuestions(faqService.getAll());
-        return questions;
-    }
-
-    public void setQuestions(List<Faq> questions) {
-        this.questions = questions;
-    }
+//    public JSONArray getQuestions() {
+//        setQuestions(faqService.getAll());
+//        return questions;
+//    }
+//  
+//    public void setQuestions(JSONArray questions) {
+//        this.questions = questions;
+//    }
 
 }

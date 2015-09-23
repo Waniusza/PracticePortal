@@ -23,11 +23,19 @@
                 <p:outputLabel for="HRemail" value="HR email" class="col col-md-12"/>
                 <p:inputText id="HRemail" value="#{addCompanyCtrl.HRemail}"  class="col col-md-12"/>
             </div>
-            
+
             <div class="form-group  col col-md-3">
                 <p:outputLabel for="HRphone" value="HR phone" class="col col-md-12"/>
                 <p:inputText id="HRphone" value="#{addCompanyCtrl.HRphone}"  class="col col-md-12"/>
             </div>
+
+            <ui:include src="/templates/temp/address-form.xhtml">
+                <ui:param name="postCode" value="#{addCompanyCtrl.postcode}"/>
+                <ui:param name="city" value="#{addCompanyCtrl.city}"/>
+                <ui:param name="street" value="#{addCompanyCtrl.street}"/>
+                <ui:param name="home" value="#{addCompanyCtrl.homeNumber}"/>
+                <ui:param name="apartment" value="#{addCompanyCtrl.apartmentNumber}"/>
+            </ui:include>
         </div>
         <div class="panel-footer">
             <div class="pull-right">

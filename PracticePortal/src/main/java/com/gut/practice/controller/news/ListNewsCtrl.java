@@ -12,6 +12,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -19,20 +21,21 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class ListNewsCtrl {
+    private static final Logger log = LogManager.getLogger(ListNewsCtrl.class);
 
     @EJB
     NewsService newsService;
     List<News> news = new ArrayList<>();
 
     public ListNewsCtrl() {
-        System.out.println("[NewsListCtrl] init");
+        log.debug("[NewsListCtrl] init");
     }
 
     @PostConstruct
     public void init() {
 
         news = newsService.getAll();
-        System.out.println("[NewsListCtrl] init : Mam do wy≤świetlenia wiadomości: " + news.size());
+        log.debug("[NewsListCtrl] init : Mam do wy≤świetlenia wiadomości: " + news.size());
     }
 
     public List<News> getNews() {

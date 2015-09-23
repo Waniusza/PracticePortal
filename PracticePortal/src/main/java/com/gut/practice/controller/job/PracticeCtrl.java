@@ -11,6 +11,8 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -19,6 +21,7 @@ import javax.faces.bean.SessionScoped;
 @ManagedBean
 @SessionScoped
 public class PracticeCtrl implements Serializable{
+    private static final Logger log = LogManager.getLogger(PracticeCtrl.class);
   
     // TODO :Implement view - 
     @EJB
@@ -30,7 +33,7 @@ public class PracticeCtrl implements Serializable{
     boolean endless = false;
 
     public void submit(){
-        System.out.println("SUBMITUJE");
+        log.debug("SUBMITUJE");
     }
     public Practice getAddPractice() {
         return addPractice;

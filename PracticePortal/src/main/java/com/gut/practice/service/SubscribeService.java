@@ -12,11 +12,11 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityExistsException;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -26,9 +26,8 @@ import javax.persistence.criteria.Root;
 @SessionScoped
 public class SubscribeService extends BaseService<Subscribe> {
 
-    @PersistenceContext
-    protected EntityManager em;
-
+    private final static Logger log = LogManager.getLogger(SubscribeService.class);
+    
     public SubscribeService() {
     }
 
@@ -37,9 +36,9 @@ public class SubscribeService extends BaseService<Subscribe> {
         try {
             em.persist(sub);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, Subscription exist in DataBase! ", e);
+            log.warn("Sorry, Subscription exist in DataBase! ", e);
         } catch (Exception e) {
-            System.out.printf("Sorry, can't add tihs Subscription ", e);
+            log.warn("Sorry, can't add tihs Subscription ", e);
         }
         return sub.getId();
     }
@@ -52,9 +51,9 @@ public class SubscribeService extends BaseService<Subscribe> {
         try {
             em.persist(sub);
         } catch (EntityExistsException e) {
-            System.out.printf("Sorry, Subscription exist in DataBase! ", e);
+            log.warn("Sorry, Subscription exist in DataBase! ", e);
         } catch (Exception e) {
-            System.out.printf("Sorry, can't add tihs Subscription ", e);
+            log.warn("Sorry, can't add tihs Subscription ", e);
         }
         return sub.getId();
     }
@@ -66,9 +65,10 @@ public class SubscribeService extends BaseService<Subscribe> {
             model.setTypes(sub.getTypes());
             model.setActive(sub.getActive());
             model.setEmail(sub.getEmail());
+            em.merge(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't edit this Subscription ", e);
+            log.warn("Sorry, can't edit this Subscription ", e);
         };
         return false;
     }
@@ -82,7 +82,7 @@ public class SubscribeService extends BaseService<Subscribe> {
             model = em.find(Subscribe.class, id);
         } catch (Exception e) {
             model = new Subscribe();
-            System.out.printf("Sorry, can't get Subscription with id: " + id, e);
+            log.warn("Sorry, can't get Subscription with id: " + id, e);
         }
 
         return model;
@@ -98,11 +98,9 @@ public class SubscribeService extends BaseService<Subscribe> {
             return em.createQuery(cq.select(root)).getResultList();
 
         } catch (Exception e) {
-
-            System.out.printf("Sorry, can't get all Subscriptions ", e);
-
+            log.warn("Sorry, can't get all Subscriptions ", e);
         }
-        return new ArrayList<Subscribe>();
+        return new ArrayList<>();
     }
 
     public Boolean remove(Long id) {
@@ -111,7 +109,7 @@ public class SubscribeService extends BaseService<Subscribe> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this Subscription ", e);
+            log.warn("Sorry, can't remove this Subscription ", e);
         }
         return false;
     }

@@ -9,6 +9,7 @@ import com.gut.practice.entity.user.Student;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  *
@@ -16,8 +17,8 @@ import lombok.Getter;
  */
 @Entity
 @Getter
-
-public class Company extends BaseModel {
+@ToString
+public class Company extends BaseAddressModel {
 
     private String companyName;
 //TODO complete Adress
@@ -25,15 +26,34 @@ public class Company extends BaseModel {
     private String HRlastName;
     private String HRemail;
     private String HRphone;
-    private String adress;
     @ManyToOne
     private Student assignation;
 
     public Company() {
     }
 
-    public Company setAdress(String adress) {
-        this.adress = adress;
+    public Company setCity(String city) {
+        this.city = city;
+        return this;
+    }
+
+    public Company setApartmentNumber(int apartmentNumber) {
+        this.apartmentNumber = apartmentNumber;
+        return this;
+    }
+
+    public Company setHomeNumber(int homeNumber) {
+        this.homeNumber = homeNumber;
+        return this;
+    }
+
+    public Company setPostcode(String postcode) {
+        this.postcode = postcode;
+        return this;
+    }
+
+    public Company setStreet(String street) {
+        this.street = street;
         return this;
     }
 

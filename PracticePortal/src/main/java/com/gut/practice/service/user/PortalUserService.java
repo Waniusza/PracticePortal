@@ -12,6 +12,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.util.Strings;
 
 /**
  *
@@ -22,24 +25,24 @@ public class PortalUserService extends BaseService<PortalUser> {
 
     private static String INPUTFILE = "src/main/resources/jaas.config";
 
+    private static final Logger log = LogManager.getLogger(PortalUserService.class);
+    
     @PersistenceContext
     protected EntityManager em;
 
     @Override
     public Long add(PortalUser portalUser) {
         if (validateUser(portalUser)) {
-            System.out.println("Succes validation user");
-
             try {
                 em.persist(portalUser);
-                System.out.printf("Successfully added PortalUser id: " + portalUser.getId());
+                log.debug("Successfully added PortalUser id: " + portalUser.getId());
             } catch (EntityExistsException e) {
-                System.out.printf("Sorry, PortalUser exists in DataBase! ", e);
+                log.warn("Sorry, PortalUser exists in DataBase! ", e);
             } catch (Exception e) {
-                System.out.printf("Sorry, can't add this PortalUser ", e);
+                log.warn("Sorry, can't add this PortalUser ", e);
             }
         } else {
-            System.out.println("Fail validation user");
+            log.warn("Fail validation user");
         }
         return portalUser.getId();
     }
@@ -50,7 +53,7 @@ public class PortalUserService extends BaseService<PortalUser> {
         try {
             model = em.find(PortalUser.class, portalUser.getId());
         } catch (Exception e) {
-            System.out.printf("Sorry, can't edit this PortalUser ", e);
+            log.warn("Sorry, can't edit this PortalUser ", e);
             return false;
         }
         model.setFirstName(portalUser.getFirstName());
@@ -67,7 +70,7 @@ public class PortalUserService extends BaseService<PortalUser> {
             model = em.find(PortalUser.class, id);
         } catch (Exception e) {
             model = new PortalUser();
-            System.out.printf("Sorry, can't get PortalUser with id: " + id, e);
+            log.warn("Sorry, can't get PortalUser with id: " + id, e);
         }
 
         return model;
@@ -82,7 +85,7 @@ public class PortalUserService extends BaseService<PortalUser> {
         try {
             return em.createQuery(cq.select(root)).getResultList();
         } catch (Exception e) {
-            System.out.printf("Sorry, can't get all PortalUsers ", e);
+            log.warn("Sorry, can't get all PortalUsers ", e);
         }
         return new ArrayList<PortalUser>();
     }
@@ -94,7 +97,7 @@ public class PortalUserService extends BaseService<PortalUser> {
             em.remove(model);
             return true;
         } catch (Exception e) {
-            System.out.printf("Sorry, can't remove this PortalUser ", e);
+            log.warn("Sorry, can't remove this PortalUser ", e);
         }
         return false;
     }
@@ -105,12 +108,12 @@ public class PortalUserService extends BaseService<PortalUser> {
         if (user != null) {
             if (!user.isLoged()) {
                 user.setLoged(true);
-                System.out.println("Success! You get to log in!");
+                log.debug("Success! You get to log in!");
             } else {
-                System.out.println("Already loged");
+                log.debug("Already loged");
             }
         } else {
-            System.out.println("Sorry! Bad login or password.");
+            log.warn("Sorry! Bad login or password.");
         }
 
         return user;
@@ -143,7 +146,7 @@ public class PortalUserService extends BaseService<PortalUser> {
         return null;
     }
       public boolean validateUser(PortalUser user){
-         if(user.getName().length() == 0 || user.getPassword().length() == 0){
+         if(Strings.isBlank(user.getName()) || Strings.isBlank(user.getPassword())){
              return false;
          }
          

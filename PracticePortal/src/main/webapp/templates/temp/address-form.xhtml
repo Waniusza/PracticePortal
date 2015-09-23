@@ -1,0 +1,25 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"> 
+
+    <div>
+        <div class="form-group  col col-md-2">
+            <p:outputLabel for="city" value="Miejscowość:" class="col col-md-12"/>
+            <p:inputText id="city" value="#{city}"  class="col col-md-12"/>
+        </div>
+        <div class="form-group  col col-md-2">
+            <p:outputLabel for="postCode" value="Kod pocztowy:" class="col col-md-12"/>
+            <p:inputText id="postCode" value="#{postCode}"  class="col col-md-12"/>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group col col-md-6">
+            <p:outputLabel for="street" value="Ulica" class="col col-md-12"/>
+            <p:inputText id="street" value="#{street}"  class="col col-md-4"/>
+            <p:inputText id="house" value="#{house}"  class="col col-md-1"/>
+            <h:outputText value="m."  class="col col-md-1"/>
+            <p:inputText id="apartment" value="#{apartment}"  class="col col-md-1"/>
+        </div>
+    </div>
+</ui:composition>
