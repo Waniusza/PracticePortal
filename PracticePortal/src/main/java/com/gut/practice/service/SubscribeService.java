@@ -6,7 +6,7 @@
 package com.gut.practice.service;
 
 import com.gut.practice.entity.Subscribe;
-import com.gut.practice.util.SubscribeType;
+import com.gut.practice.helpers.util.SubscribeType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;

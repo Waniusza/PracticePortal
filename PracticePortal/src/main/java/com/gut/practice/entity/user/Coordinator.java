@@ -1,6 +1,6 @@
 package com.gut.practice.entity.user;
 
-import com.gut.practice.util.Speciality;
+import com.gut.practice.helpers.util.Speciality;
 import com.gut.practice.entity.TimePeriod;
 import java.util.List;
 import javax.persistence.Entity;

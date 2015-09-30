@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <p:dataTable var="practice" value="#{listPracticeCtrl.practices}">
+        <p:column headerText="Nazwa">
+            <h:outputText value="#{practice.title}" />
+        </p:column>
+        <p:column headerText="Pracodawca">
+            <h:outputText value="#{practice.company.companyName}" />
+        </p:column>
+        <p:column headerText="Stanowisko">
+            <h:outputText value="#{practice.duty}" />
+        </p:column>
+        <p:column headerText="Termin">
+            <h:outputText value="#{practice.dateFrom}">
+                <f:convertDateTime pattern="#{msg.date_format}" type="date" />
+            </h:outputText>
+            
+            <h:outputText value=" - "> </h:outputText> 
+            <h:outputText value="#{practice.dateTo}">
+                <f:convertDateTime pattern="#{msg.date_format}" type="date" />
+            </h:outputText>
+        </p:column>
+        <p:column headerText="Godzin">
+            <h:outputText value="#{practice.hours}" />
+        </p:column>
+        <p:column headerText="Opcje">
+            <h:outputText value="Szczegóły" />
+<!--            <h:outputText value="Edycja" />
+            <h:outputText value="Skasuj" />
+            <h:outputText value="Przypisane konto" />-->
+        </p:column>
+    </p:dataTable>
+
+</html>
+

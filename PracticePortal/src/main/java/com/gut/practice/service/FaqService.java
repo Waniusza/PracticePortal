@@ -2,7 +2,7 @@ package com.gut.practice.service;
 
 import com.gut.practice.helpers.Configuration;
 import com.gut.practice.helpers.JsonHelper;
-import com.gut.practice.structs.Faq;
+import com.gut.practice.helpers.structs.Faq;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;

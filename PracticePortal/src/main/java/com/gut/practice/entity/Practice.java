@@ -1,8 +1,12 @@
 package com.gut.practice.entity;
 
-import com.gut.practice.util.ConfirmationStatus;
+import com.gut.practice.helpers.util.ConfirmationStatus;
+import com.gut.practice.helpers.util.JobOfferType;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
@@ -24,15 +28,19 @@ public class Practice extends BaseModel {
     private String title;
     //TODO Adnotation for Long String
     private String description;
+    private String duty;
     
     @Temporal(TemporalType.DATE)
     private Date dateFrom;
     @Temporal(TemporalType.DATE)
     private Date dateTo;
     private Integer hours;
-//    @ManyToOne
-//    private Employer employer;
+    @ManyToOne
+    private Company company;
     private ConfirmationStatus confirmationStatus;
+    @Enumerated(EnumType.STRING)
+    private JobOfferType type;
+    
 
     public Practice() {
     }
@@ -55,6 +63,10 @@ public class Practice extends BaseModel {
 
     public Practice setDescriptionChain(String description) {
         this.description = description;
+        return this;
+    }
+    public Practice setDutyChain(String duty) {
+        this.duty = duty;
         return this;
     }
 

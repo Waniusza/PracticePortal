@@ -1,7 +1,7 @@
 package com.gut.practice.service.login;
 
 import com.gut.practice.entity.BaseModel;
-import com.gut.practice.util.Permission;
+import com.gut.practice.helpers.util.Permission;
 import java.util.List;
 import javax.persistence.Entity;
 import lombok.Getter;

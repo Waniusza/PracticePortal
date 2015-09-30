@@ -14,25 +14,59 @@
         <ui:include src="/templates/schema/layout.xhtml" />
 
         <div class="col col-md-10">
-            <h2>#{msg.titles_addNews}</h2>
+            <h2>#{msg.titles_addPractice}</h2>
             <div class="panel panel-default">
                 <h:form class="col-md-12">
                     <div class="panel-body">
-
-<!--                        <div class="form-group">
-                            <p:outputLabel for="title" value="Tytuł:" class="col col-md-1"/>
-                            <p:inputText id="title" value="#{practiceCtrl.addPractice.title}" />
+                        
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="title" value="Krótki opis:"  class="col col-md-3"/>
+                            <p:inputText id="title" value="#{addPracticeCtrl.title}" class="col col-md-9"/>
+                        </div>   
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="company" value="Firma:" class="col col-md-3"/>
+                            <p:selectOneMenu id="company" 
+                                             filter="true" filterMatchMode="contains" value="#{addPracticeCtrl.company}">
+                                <f:selectItem itemLabel="Select One" itemValue="" />
+                                <f:selectItems value="#{addPracticeCtrl.availableCompanies}"  var="company" itemLabel="#{company.companyName}" itemValue="#{company}"/>
+                            </p:selectOneMenu>
                         </div>
-                        <div class="form-group">
-                            <p:outputPanel id="test">
-                                <p:outputLabel for="dateFrom" value="Date to:" class="col col-md-1"/>
-                                <p:calendar id="dateFrom" value="#{practiceCtrl.addPractice.dateFrom}" pattern="dd-MM-yyyy" mask="true" disabled="#{practiceCtrl.immediately}"/>
-                            </p:outputPanel>
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="type" value="Typ:"  class="col col-md-3"/>
+                            <p:selectOneMenu id="type"  
+                                             filter="true" filterMatchMode="contains" value="#{addPracticeCtrl.type}">
+                                <f:selectItem itemLabel="Select One" itemValue="" />
+                                <f:selectItems value="#{addPracticeCtrl.availableTypes}"/>
+                            </p:selectOneMenu>
                         </div>
-                        <div class="form-group">
-                            <label> Opis </label>
-                            <p:inputTextarea value="#{practiceCtrl.addPractice.description}" class="form-control"/>
-                        </div>-->
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="duty" value="Stanowisko:"  class="col col-md-3"/>
+                            <p:inputText id="duty" value="#{addPracticeCtrl.duty}" class="col col-md-9"/>
+                        </div>   
+                        <div class="form-group col col-md-12"></div>
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="department" value="Wydziały:"  class="col col-md-3"/>
+                            <p:selectManyCheckbox id="department"  layout="grid" columns="2"  class="col col-md-9"
+                                            value="#{addPracticeCtrl.specialities}">
+                                <f:selectItems value="#{addPracticeCtrl.availableSpecialities}"/>
+                            </p:selectManyCheckbox>
+                        </div>
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="dateFrom" value="Data od:"  class="col col-md-3"/>
+                            <p:calendar id="dateFrom" value="#{addPracticeCtrl.dateFrom}" class="col col-md-9"/>
+                        </div>     
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="dateTo" value="Data do:"  class="col col-md-3"/>
+                            <p:calendar id="dateTo" value="#{addPracticeCtrl.dateTo}" class="col col-md-9"/>
+                        </div>   
+                        <div class="form-group col col-md-3">
+                            <p:outputLabel for="salary" value="Zapłata"  class="col col-md-3"/>
+                            <p:inputMask id="salary" value="#{addPracticeCtrl.salary}" mask="9999-99999"  class="col col-md-9"/>
+                        </div>
+                        <div class="form-group col col-md-12">
+                            <p:outputLabel for="description" value="Opis:"  class="col col-md-3"/>
+                            <p:inputTextarea id="description" value="#{addPracticeCtrl.description}" class="col col-md-12"/>
+                        </div>
                     </div>
                     <div class="panel-footer">
                         <div class="pull-right">

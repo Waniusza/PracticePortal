@@ -6,7 +6,7 @@
 package com.gut.practice.controller;
 
 import com.gut.practice.service.FaqService;
-import com.gut.practice.structs.Faq;
+import com.gut.practice.helpers.structs.Faq;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;

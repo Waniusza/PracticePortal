@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.gut.practice.util;
+package com.gut.practice.helpers.util;
 
 /**
  *
  * @author janusz
  */
-public enum OpinionName {
-     POOR, WEEK, OK, NICE, GREAT;
+public enum JobOfferType {
+
+    PRAKTICE, JOB, INTERNSHIP, TRAINING
+
 }

@@ -7,7 +7,7 @@ package com.gut.practice.controller;
 
 import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.user.PortalUserService;
-import com.gut.practice.util.Permission;
+import com.gut.practice.helpers.util.Permission;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;

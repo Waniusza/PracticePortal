@@ -1,7 +1,7 @@
 package com.gut.practice.entity.user;
 
 import com.gut.practice.entity.Practice;
-import com.gut.practice.util.Speciality;
+import com.gut.practice.helpers.util.Speciality;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;

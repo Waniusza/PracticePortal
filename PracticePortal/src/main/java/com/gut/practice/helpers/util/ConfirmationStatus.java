@@ -1,4 +1,4 @@
-package com.gut.practice.util;
+package com.gut.practice.helpers.util;
 
 /**
  *

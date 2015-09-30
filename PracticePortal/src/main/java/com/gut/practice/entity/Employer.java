@@ -1,5 +1,6 @@
-package com.gut.practice.entity.user;
+package com.gut.practice.entity;
 
+import com.gut.practice.entity.user.PortalUser;
 import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

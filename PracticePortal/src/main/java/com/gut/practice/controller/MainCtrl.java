@@ -5,23 +5,26 @@
  */
 package com.gut.practice.controller;
 
+import com.gut.practice.entity.Company;
 import com.gut.practice.entity.JobOffer;
 import com.gut.practice.entity.News;
 import com.gut.practice.entity.Practice;
 import com.gut.practice.entity.user.PortalUser;
+import com.gut.practice.helpers.util.ConfirmationStatus;
+import com.gut.practice.helpers.util.OpinionName;
+import com.gut.practice.helpers.util.Permission;
+import com.gut.practice.service.CompanyService;
 import com.gut.practice.service.FaqService;
 import com.gut.practice.service.JobOfferService;
 import com.gut.practice.service.NewsService;
 import com.gut.practice.service.PracticeService;
 import com.gut.practice.service.SubscribeService;
 import com.gut.practice.service.user.PortalUserService;
-import com.gut.practice.util.ConfirmationStatus;
-import com.gut.practice.util.OpinionName;
-import com.gut.practice.util.Permission;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
@@ -37,7 +40,7 @@ import org.apache.logging.log4j.Logger;
 @ManagedBean
 public class MainCtrl implements Serializable {
     private static final Logger log = LogManager.getLogger(MainCtrl.class);
-    
+
     @EJB
     NewsService newsService;
     @EJB
@@ -50,9 +53,12 @@ public class MainCtrl implements Serializable {
     SubscribeService subscribeService;
     @EJB
     PortalUserService userService;
+    @EJB
+    private CompanyService companyService;
 
     private final List<String> availbleRoles = new ArrayList<>();
     private String selectedRole;
+    private Random generator;
 
     private OpinionName[] availableOpinions;
     private String selectedOpinion = "";
@@ -61,7 +67,8 @@ public class MainCtrl implements Serializable {
     private String newSubscribe = "";
 
     public MainCtrl() {
-       log.debug("[MainCtrl] init");
+        log.debug("[MainCtrl] init");
+        generator = new Random();
     }
 
     @PostConstruct
@@ -69,6 +76,7 @@ public class MainCtrl implements Serializable {
         initNews();
         initRoles();
         initOptions();
+        initCompany();
         initPractice();
         initJobOffers();
         initUsers();
@@ -90,7 +98,6 @@ public class MainCtrl implements Serializable {
         this.newOpinion = newOpinion;
     }
 
-    
     public String getNewOpinion() {
         return newOpinion;
     }
@@ -142,22 +149,6 @@ public class MainCtrl implements Serializable {
     }
 
     @Deprecated
-    private void initPractice() {
-        if (practiceService.getAll().isEmpty()) {
-            Practice practice;
-            for (int i = 1; i < 5; i++) {
-                practice = new Practice();
-                practice.setTitleChain("Praktyka nr. " + i);
-                practice.setDescriptionChain("To jest opis dla praktyki nr" + i);
-                practice.setConfirmationStatusChain(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
-                practice.setHoursChain(i * 55 % 80);
-                practiceService.add(practice);
-                practice.setDescriptionChain("Added practice" + practice.getTitle());
-            }
-        }
-    }
-
-    @Deprecated
     private void initJobOffers() {
         if (jobOfferService.getAll().isEmpty()) {
             JobOffer jobOffer;
@@ -187,13 +178,13 @@ public class MainCtrl implements Serializable {
                     .setPassword("wania")
                     .setPermissions(permStud);
             userService.add(user1);
-            
+
             PortalUser user2 = new PortalUser()
                     .setName("Patryk")
                     .setPassword("kongo")
                     .setPermissions(permCord);
             userService.add(user2);
-            
+
             PortalUser user3 = new PortalUser()
                     .setName("Patryk")
                     .setPassword("profesor")
@@ -202,4 +193,40 @@ public class MainCtrl implements Serializable {
         }
     }
 
+    @Deprecated
+    private void initCompany() {
+        Random generator = new Random();
+        log.debug("[MainCtrl] initCompany");
+        if (companyService.getAll().isEmpty()) {
+            log.debug("[MainCtrl] initCompany EMPTY");
+            for (int i = 1; i < 5; i++) {
+                Company newCompany = new Company()
+                        .setCompanyName("Company " + i)
+                        .setHRfirstName("Name" + i)
+                        .setHRlastName("Surname" + i)
+                        .setHRphone(Integer.toString((generator.nextInt(1000000000))));
+                companyService.add(newCompany);
+            }
+        }
+    }
+  @Deprecated
+    private void initPractice() {
+        List<Company> allCompanies = companyService.getAll();
+        if (practiceService.getAll().isEmpty()) {
+            Practice practice;
+            for (int i = 1; i < 5; i++) {
+                practice = new Practice();
+                practice.setTitleChain("Praktyka nr. " + i);
+                practice.setDutyChain("Duty. " + i);
+                practice.setCompany(allCompanies.get(generator.nextInt(allCompanies.size() - 1)));
+                practice.setDescriptionChain("To jest opis dla praktyki nr" + i);
+                practice.setConfirmationStatusChain(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
+                practice.setHoursChain(i * 55 % 80);
+                practice.setDateFrom(new Date());
+                practice.setDateTo(new Date(new Date().getTime() + 3532432));
+                practiceService.add(practice);
+                practice.setDescriptionChain("Added practice" + practice.getTitle());
+            }
+        }
+    }    
 }

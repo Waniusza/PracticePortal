@@ -7,7 +7,7 @@ package com.gut.practice.service;
 
 import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.service.login.User;
-import com.gut.practice.util.Permission;
+import com.gut.practice.helpers.util.Permission;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
 

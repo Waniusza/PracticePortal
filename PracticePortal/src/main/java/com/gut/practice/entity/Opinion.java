@@ -1,7 +1,7 @@
 package com.gut.practice.entity;
 
 import com.gut.practice.entity.user.PortalUser;
-import com.gut.practice.util.OpinionName;
+import com.gut.practice.helpers.util.OpinionName;
 import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.ToString;

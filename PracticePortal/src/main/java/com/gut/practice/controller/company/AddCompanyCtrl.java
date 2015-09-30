@@ -9,6 +9,8 @@ import com.gut.practice.entity.Company;
 import com.gut.practice.service.CompanyService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -16,6 +18,7 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class AddCompanyCtrl {
+    private static final Logger log = LogManager.getLogger(AddCompanyCtrl.class);
     
     @EJB
     private CompanyService companyService;
@@ -33,7 +36,7 @@ public class AddCompanyCtrl {
     private int apartmentNumber;
     
     public AddCompanyCtrl() {
-        System.out.println("[AddCompanyCtrl] init");
+        log.debug("[AddCompanyCtrl] init");
     }
      
     public void submit()  {
@@ -49,7 +52,7 @@ public class AddCompanyCtrl {
                 .setPostcode(postcode)
                 .setStreet(street);
         
-        System.out.println("SUBMITUJE : " + companyName + "!");
+        log.debug("SUBMITUJE : " + companyName + "!");
         companyService.add(newCompany);
     }
 

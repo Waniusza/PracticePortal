@@ -7,7 +7,6 @@
     <class>com.gut.practice.entity.Practice</class>
     <class>com.gut.practice.entity.JobOffer</class>
     <class>com.gut.practice.entity.Opinion</class>
-    <class>com.gut.practice.entity.user.Employer</class>
     <class>com.gut.practice.entity.News</class>
     <class>com.gut.practice.entity.Subscribe</class>
     <class>com.gut.practice.entity.user.Student</class>
@@ -16,8 +15,9 @@
     <class>com.gut.practice.entity.user.Coordinator</class>
     <class>com.gut.practice.entity.TimePeriod</class>
     <class>com.gut.practice.entity.file.Document</class>
-    <class>com.gut.practice.structs.Faq</class>
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <class>com.gut.practice.helpers.structs.Faq</class>
+    <class>com.gut.practice.entity.Employer</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
