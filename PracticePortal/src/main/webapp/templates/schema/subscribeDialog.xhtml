@@ -14,11 +14,20 @@
     <br/>
     <div class="center-block">
         <h:form>
-        <p:outputLabel value="Your e-mail:" for="subscribeMail" />
-        <p:inputText id="subscribeMail" value="#{mainCtrl.newSubscribe}"   />
-        <p:commandButton value="#{msg.close}"  actionListener="#{mainCtrl.addNewSubscriber()}" oncomplete="PF('subscribeDialog').hide();" >
-            
-        </p:commandButton>
+            <div class="form-group col col-md-12">
+                <p:outputLabel for="opinion" value="Typ subskrybcjii: " class="col-md-2" />
+                <p:selectOneRadio id="opinion" value="#{mainCtrl.selectedSubType}"  layout="grid" columns="3" class="col-md-10">
+                    <f:selectItems value="#{mainCtrl.availableSubType}" var="c" itemLabel="#{subType}" itemValue="#{subType}"/>
+                </p:selectOneRadio>
+            </div>
+            <div class="form-group  col col-md-12">
+
+                <p:outputLabel value="Your e-mail:" for="subscribeMail" class="col-md-2"  />
+                <p:inputText id="subscribeMail" value="#{mainCtrl.newSubscribe}" class="col-md-10"   />
+            </div>
+            <div class="text-right">
+                <p:commandButton value="#{msg.close}"  actionListener="#{mainCtrl.addNewSubscriber()}" oncomplete="PF('subscribeDialog').hide();" >            </p:commandButton>
+            </div>
         </h:form>
     </div>
 </ui:composition>

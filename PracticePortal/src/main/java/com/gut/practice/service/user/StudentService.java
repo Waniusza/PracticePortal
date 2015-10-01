@@ -26,7 +26,7 @@ public class StudentService  {
     public boolean addPratice(Practice practice){
         try { 
             Student student = new Student();//FIXME
-            student.getPracticeList().add(practice);
+//            student.getPracticeList().add(practice);
             return true; } 
         catch (Exception e) { 
             System.out.printf("Sorry, can't add Pratice ", e); 
@@ -50,15 +50,15 @@ public class StudentService  {
             content.showTextAligned(PdfContentByte.ALIGN_LEFT, "Specializacja", 176 + gapLeft, 526 + gapDown, 0);
             // Pracodawca
             // TODO if(text.lenght>) split to two lines
-            if(student.getPracticeList().size() >0){
-//                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getEmployer().getComapnyName(), 71 + gapLeft, 459 + gapDown, 0);
-                content.showTextAligned(PdfContentByte.ALIGN_LEFT, "adres firmy", 71 + gapLeft, 430 + gapDown, 0);
-                // poczatek praktyk
-                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getDateFrom().toString(), 155 + gapLeft, 389 + gapDown, 0);
-                // TODO BHP 
-                // koniec praktyk
-                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getDateTo().toString(), 145 + gapLeft, 260 + gapDown, 0);
-            }
+//            if(student.getPracticeList().size() >0){
+////                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getEmployer().getComapnyName(), 71 + gapLeft, 459 + gapDown, 0);
+//                content.showTextAligned(PdfContentByte.ALIGN_LEFT, "adres firmy", 71 + gapLeft, 430 + gapDown, 0);
+//                // poczatek praktyk
+//                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getDateFrom().toString(), 155 + gapLeft, 389 + gapDown, 0);
+//                // TODO BHP 
+//                // koniec praktyk
+//                content.showTextAligned(PdfContentByte.ALIGN_LEFT, student.getPracticeList().get(0).getDateTo().toString(), 145 + gapLeft, 260 + gapDown, 0);
+//            }
 
             content.endText();
 

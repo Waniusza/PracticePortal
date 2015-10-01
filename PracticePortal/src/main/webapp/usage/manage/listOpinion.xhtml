@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <ui:include src="/templates/schema/header.xhtml" />
+    </h:head>
+    <h:body  style="background: #50a1e5" >
+        <ui:include src="/templates/schema/navbar.xhtml" />
+        <ui:include src="/templates/schema/layout.xhtml" />
+
+        <div class="col col-md-10">
+            <h2>List otrzymanych opinii</h2>
+            <div>
+                <p:dataTable var="practice" value="#{listOpinionCtrl.allOpinions}">
+                    <p:column headerText="Nazwa">
+                        <h:outputText value="#{practice.text}" />
+                    </p:column>
+                    <p:column headerText="Typ">
+                        <h:outputText value="#{practice.opinion}" />
+                    </p:column>
+                    <p:column headerText="Data">
+                        <h:outputText value="#{practice.dateCreate}" >
+                            <f:convertDateTime pattern="#{msg.date_format}" type="date" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Opcje">
+                        <h:outputText value="Szczegóły" />
+                        <!--            <h:outputText value="Edycja" />
+                                    <h:outputText value="Skasuj" />
+                                    <h:outputText value="Przypisane konto" />-->
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </div>
+
+        <ui:include src="/templates/schema/footer.xhtml" />
+    </h:body>
+</html>
+

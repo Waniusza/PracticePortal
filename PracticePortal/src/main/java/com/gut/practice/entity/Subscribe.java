@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.gut.practice.entity;
 
+import com.gut.practice.helpers.util.SubscribeType;
 import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.ToString;
@@ -22,10 +18,12 @@ public class Subscribe extends BaseModel{
     
     private String email;
     private Boolean active = true;
-     
-//    @Enumerated(EnumType.STRING)
-    private String types;
+    private Integer subscribeTypeENUM;
 
+    
+    public Subscribe() {
+    }
+    
     public Subscribe setActive(Boolean active) {
         this.active = active;
         return this;
@@ -35,15 +33,19 @@ public class Subscribe extends BaseModel{
         this.email = email;
         return this;
     }
+    
 
-    public Subscribe setTypes(String types) {
-        this.types = types;
+    public SubscribeType getSubscribeType () {
+        return SubscribeType.getType(this.subscribeTypeENUM);
+    }
+ 
+    public Subscribe setSubscribeType(SubscribeType type) {
+ 
+        if (type == null) {
+            this.subscribeTypeENUM = null;
+        } else {
+            this.subscribeTypeENUM = type.getId();
+        }
         return this;
     }
-    
-    
-    public Subscribe() {
-    }
-    
-    
 }

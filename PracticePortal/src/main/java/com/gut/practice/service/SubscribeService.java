@@ -27,7 +27,7 @@ import org.apache.logging.log4j.Logger;
 public class SubscribeService extends BaseService<Subscribe> {
 
     private final static Logger log = LogManager.getLogger(SubscribeService.class);
-    
+
     public SubscribeService() {
     }
 
@@ -43,11 +43,11 @@ public class SubscribeService extends BaseService<Subscribe> {
         return sub.getId();
     }
 
-    public Long add(String email) {
+    public Long add(String mail, SubscribeType type) {
         Subscribe sub = new Subscribe()
-                .setEmail(email)
                 .setActive(Boolean.TRUE)
-                .setTypes(SubscribeType.ALL.name());
+                .setEmail(mail)
+                .setSubscribeType(type);
         try {
             em.persist(sub);
         } catch (EntityExistsException e) {
@@ -62,7 +62,7 @@ public class SubscribeService extends BaseService<Subscribe> {
     public Boolean edit(Subscribe sub) {
         try {
             Subscribe model = em.find(Subscribe.class, sub.getId());
-            model.setTypes(sub.getTypes());
+            model.setSubscribeType(sub.getSubscribeType());
             model.setActive(sub.getActive());
             model.setEmail(sub.getEmail());
             em.merge(model);
@@ -103,6 +103,7 @@ public class SubscribeService extends BaseService<Subscribe> {
         return new ArrayList<>();
     }
 
+    @Override
     public Boolean remove(Long id) {
         try {
             Subscribe model = em.find(Subscribe.class, id);
@@ -127,11 +128,12 @@ public class SubscribeService extends BaseService<Subscribe> {
     public List<Subscribe> getAllByType(SubscribeType type) {
         List<Subscribe> subscribes = new ArrayList<Subscribe>();
         for (Subscribe subscribe : getAll()) {
-            if (subscribe.getTypes().equals(type)) {
+            if (subscribe.getSubscribeType().equals(type)) {
                 subscribes.add(subscribe);
                 break;
             }
         }
         return subscribes;
     }
+
 }

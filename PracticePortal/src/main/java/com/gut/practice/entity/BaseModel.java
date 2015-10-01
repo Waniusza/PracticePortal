@@ -20,11 +20,11 @@ import lombok.Setter;
  *
  * @author janusz & kongo
  */
-
 @MappedSuperclass
 @Getter
 @Setter
-public abstract class  BaseModel  implements Serializable{
+public abstract class BaseModel implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -33,5 +33,5 @@ public abstract class  BaseModel  implements Serializable{
 
     public BaseModel() {
     }
-    
+
 }

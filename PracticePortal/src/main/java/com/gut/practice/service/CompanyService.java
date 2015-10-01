@@ -21,9 +21,8 @@ import org.apache.logging.log4j.Logger;
 @SessionScoped
 public class CompanyService extends BaseService<Company> {
 
-    
     private static final Logger log = LogManager.getLogger(CompanyService.class);
-    
+
     @Override
     public Long add(Company oneNew) {
         try {
@@ -43,8 +42,8 @@ public class CompanyService extends BaseService<Company> {
     public Boolean edit(Company oneCompany) {
         try {
             Company model = em.find(Company.class, oneCompany.getId());
-            model.setAssignation(oneCompany.getAssignation())
-                    .setCompanyName(oneCompany.getCompanyName())
+//           .setAssignation(oneCompany.getAssignation())
+            model.setCompanyName(oneCompany.getCompanyName())
                     .setHRemail(oneCompany.getHRemail())
                     .setHRfirstName(oneCompany.getHRfirstName())
                     .setHRlastName(oneCompany.getHRlastName())
@@ -85,7 +84,7 @@ public class CompanyService extends BaseService<Company> {
         } catch (Exception e) {
             log.warn("Sorry, can't get all Company " + e);
         }
-        return new ArrayList<Company>();
+        return new ArrayList<>();
     }
 
     @Override

@@ -16,11 +16,10 @@ import lombok.ToString;
 @ToString
 
 public class Opinion extends BaseModel {
-    private long commentedEntityId;
    
-    private OpinionName name;
     private String text;
     private PortalUser author = null;
+    private Integer opinionNameEnum;
     
     public Opinion() {
     }
@@ -30,18 +29,22 @@ public class Opinion extends BaseModel {
         return this;
     }
 
-    public Opinion setCommentedEntityId(long commentedEntityId) {
-        this.commentedEntityId = commentedEntityId;
-        return this;
-    }
-
-    public Opinion setName(OpinionName name) {
-        this.name = name;
-        return this;
-    }
 
     public Opinion setText(String text) {
         this.text = text;
+        return this;
+    }
+    
+    public OpinionName getOpinion(){
+        return OpinionName.getOpinion(this.opinionNameEnum);
+    }
+    
+    public Opinion setOpinionName(OpinionName opinion) {
+        if (opinion == null) {
+            this.opinionNameEnum = null;
+        } else {
+            this.opinionNameEnum = opinion.getId();
+        }
         return this;
     }
     

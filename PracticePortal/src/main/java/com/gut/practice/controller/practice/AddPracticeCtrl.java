@@ -55,9 +55,9 @@ public class AddPracticeCtrl {
     public void submit() {
         Practice practice = new Practice()
                 .setTitleChain(title)
-                .setDateFromChain(dateFrom)
-                .setDateToChain(dateTo)
-                .setDescriptionChain(description);
+                .setDateFrom(dateFrom)
+                .setDateTo(dateTo)
+                .setDescription(description);
 
         practice.setType(type);
         practice.setCompany(company);

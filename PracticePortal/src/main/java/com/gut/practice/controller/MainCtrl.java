@@ -13,21 +13,23 @@ import com.gut.practice.entity.user.PortalUser;
 import com.gut.practice.helpers.util.ConfirmationStatus;
 import com.gut.practice.helpers.util.OpinionName;
 import com.gut.practice.helpers.util.Permission;
+import com.gut.practice.helpers.util.SubscribeType;
 import com.gut.practice.service.CompanyService;
 import com.gut.practice.service.FaqService;
 import com.gut.practice.service.JobOfferService;
 import com.gut.practice.service.NewsService;
+import com.gut.practice.service.OpinionService;
 import com.gut.practice.service.PracticeService;
 import com.gut.practice.service.SubscribeService;
 import com.gut.practice.service.user.PortalUserService;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,9 +38,9 @@ import org.apache.logging.log4j.Logger;
  *
  * @author janusz
  */
-@Stateful
 @ManagedBean
 public class MainCtrl implements Serializable {
+
     private static final Logger log = LogManager.getLogger(MainCtrl.class);
 
     @EJB
@@ -52,6 +54,8 @@ public class MainCtrl implements Serializable {
     @EJB
     SubscribeService subscribeService;
     @EJB
+    OpinionService opinionService;
+    @EJB
     PortalUserService userService;
     @EJB
     private CompanyService companyService;
@@ -60,13 +64,16 @@ public class MainCtrl implements Serializable {
     private String selectedRole;
     private Random generator;
 
-    private OpinionName[] availableOpinions;
-    private String selectedOpinion = "";
+    private EnumSet<OpinionName> availableOpinions;
     private String newOpinion = "";
+    private OpinionName selectedOpinion = OpinionName.OK;
 
+    private final EnumSet<SubscribeType> availableSubType = EnumSet.allOf(SubscribeType.class);
     private String newSubscribe = "";
+    private SubscribeType selectedSubType = SubscribeType.ALL;
 
     public MainCtrl() {
+        this.availableOpinions = EnumSet.allOf(OpinionName.class);
         log.debug("[MainCtrl] init");
         generator = new Random();
     }
@@ -77,48 +84,24 @@ public class MainCtrl implements Serializable {
         initRoles();
         initOptions();
         initCompany();
-        initPractice();
+//        initPractice();
         initJobOffers();
         initUsers();
     }
 
-    public OpinionName[] getAvailableOpinions() {
-        return availableOpinions;
-    }
-
-    public String getSelectedOpinion() {
-        return selectedOpinion;
-    }
-
-    public void setSelectedOpinion(String selectedOpinion) {
-        this.selectedOpinion = selectedOpinion;
-    }
-
-    public void setNewOpinion(String newOpinion) {
-        this.newOpinion = newOpinion;
-    }
-
-    public String getNewOpinion() {
-        return newOpinion;
-    }
-
-    public String getNewSubscribe() {
-        return newSubscribe;
-    }
-
-    public void setNewSubscribe(String newSubscribe) {
-        this.newSubscribe = newSubscribe;
-    }
-
     public void addNewSubscriber() {
-        log.debug("[MainCtrl] addNewSubscribe - newSubscribe " + newSubscribe);
-        subscribeService.add(newSubscribe);
+        log.debug(" addNewSubscribe - newSubscribe " + newSubscribe);
+        subscribeService.add(newSubscribe, selectedSubType);
+    }
+
+    public void addNewOpinion() {
+        log.debug(" addNewOpinion - newOpinion " + newOpinion);
+        log.debug( "result : " + opinionService.add(newOpinion, selectedOpinion));
+
     }
 
     @Deprecated
     private void initOptions() {
-        availableOpinions = OpinionName.values();
-        setSelectedOpinion(availableOpinions[2].name());
     }
 
     @Deprecated
@@ -209,7 +192,8 @@ public class MainCtrl implements Serializable {
             }
         }
     }
-  @Deprecated
+
+    @Deprecated
     private void initPractice() {
         List<Company> allCompanies = companyService.getAll();
         if (practiceService.getAll().isEmpty()) {
@@ -217,16 +201,56 @@ public class MainCtrl implements Serializable {
             for (int i = 1; i < 5; i++) {
                 practice = new Practice();
                 practice.setTitleChain("Praktyka nr. " + i);
-                practice.setDutyChain("Duty. " + i);
+                practice.setDuty("Duty. " + i);
                 practice.setCompany(allCompanies.get(generator.nextInt(allCompanies.size() - 1)));
-                practice.setDescriptionChain("To jest opis dla praktyki nr" + i);
-                practice.setConfirmationStatusChain(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
-                practice.setHoursChain(i * 55 % 80);
+                practice.setDescription("To jest opis dla praktyki nr" + i);
+                practice.setConfirmationStatus(ConfirmationStatus.values()[ConfirmationStatus.values().length % i]);
+                practice.setHours(i * 55 % 80);
                 practice.setDateFrom(new Date());
                 practice.setDateTo(new Date(new Date().getTime() + 3532432));
                 practiceService.add(practice);
-                practice.setDescriptionChain("Added practice" + practice.getTitle());
+                practice.setDescription("Added practice" + practice.getTitle());
             }
         }
-    }    
+    }
+
+    public EnumSet<OpinionName> getAvailableOpinions() {
+        return availableOpinions;
+    }
+
+    public OpinionName getSelectedOpinion() {
+        return selectedOpinion;
+    }
+
+    public void setSelectedOpinion(OpinionName selectedOpinion) {
+        this.selectedOpinion = selectedOpinion;
+    }
+
+    public EnumSet<SubscribeType> getAvailableSubType() {
+        return availableSubType;
+    }
+
+    public SubscribeType getSelectedSubType() {
+        return selectedSubType;
+    }
+
+    public void setSelectedSubType(SubscribeType selectedSubType) {
+        this.selectedSubType = selectedSubType;
+    }
+
+    public void setNewOpinion(String newOpinion) {
+        this.newOpinion = newOpinion;
+    }
+
+    public String getNewOpinion() {
+        return newOpinion;
+    }
+
+    public String getNewSubscribe() {
+        return newSubscribe;
+    }
+
+    public void setNewSubscribe(String newSubscribe) {
+        this.newSubscribe = newSubscribe;
+    }
 }
