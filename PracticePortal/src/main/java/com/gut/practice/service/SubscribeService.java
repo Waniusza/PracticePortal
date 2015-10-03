@@ -8,6 +8,7 @@ package com.gut.practice.service;
 import com.gut.practice.entity.Subscribe;
 import com.gut.practice.helpers.util.SubscribeType;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.faces.bean.SessionScoped;
@@ -48,6 +49,8 @@ public class SubscribeService extends BaseService<Subscribe> {
                 .setActive(Boolean.TRUE)
                 .setEmail(mail)
                 .setSubscribeType(type);
+        sub.setDateCreate(new Date());
+        
         try {
             em.persist(sub);
         } catch (EntityExistsException e) {

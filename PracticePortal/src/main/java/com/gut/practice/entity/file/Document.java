@@ -7,7 +7,6 @@ package com.gut.practice.entity.file;
 
 import com.gut.practice.entity.properties.Format;
 import com.gut.practice.entity.user.PortalUser;
-import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -15,7 +14,7 @@ import lombok.ToString;
  *
  * @author kongo
  */
-@Entity
+//@Entity
 @Getter
 @ToString
 public class Document extends BaseFile {

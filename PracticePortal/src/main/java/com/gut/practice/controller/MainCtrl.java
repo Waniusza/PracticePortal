@@ -91,12 +91,13 @@ public class MainCtrl implements Serializable {
 
     public void addNewSubscriber() {
         log.debug(" addNewSubscribe - newSubscribe " + newSubscribe);
-        subscribeService.add(newSubscribe, selectedSubType);
+        log.debug(" result :" + subscribeService.add(newSubscribe, selectedSubType));
+
     }
 
     public void addNewOpinion() {
         log.debug(" addNewOpinion - newOpinion " + newOpinion);
-        log.debug( "result : " + opinionService.add(newOpinion, selectedOpinion));
+        log.debug("result : " + opinionService.add(newOpinion, selectedOpinion));
 
     }
 

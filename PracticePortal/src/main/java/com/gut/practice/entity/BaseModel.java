@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import lombok.Getter;
@@ -22,11 +23,12 @@ import lombok.Setter;
  */
 @MappedSuperclass
 @Getter
-@Setter
+@Setter 
+@SequenceGenerator(name="seq",  initialValue=10000, allocationSize=100)
 public abstract class BaseModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
     private Long id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateCreate;

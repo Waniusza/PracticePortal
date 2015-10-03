@@ -1,6 +1,5 @@
 package com.gut.practice.entity.properties;
 
-import javax.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,7 @@ import lombok.ToString;
  * @author kongo
  */
 
-@Entity
+//@Entity
 @Getter
 @Setter
 @ToString
